@@ -1,4 +1,4 @@
-package com.example.commonlibrary.base.fragment;
+package com.example.song.greatehua.base;
 
 import android.content.DialogInterface;
 import android.graphics.Color;

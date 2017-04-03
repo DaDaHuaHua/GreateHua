@@ -1,4 +1,4 @@
-package com.example.song.greatehua.app;
+package com.example.song.greatehua.application;
 
 import com.example.commonlibrary.base.application.BaseApplication;
 

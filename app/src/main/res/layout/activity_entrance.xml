@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.song.greatehua.EntranceActivity">
+
+
+<TextView
+    android:id="@+id/tv_to_app"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="@color/colorAccent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:textSize="20sp"
+    android:text="myApp"
+    />
+    <TextView
+        android:id="@+id/tv_to_test"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="myTest"
+        />
+
+</LinearLayout>

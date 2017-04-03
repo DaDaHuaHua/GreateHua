@@ -8,14 +8,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".app.App">
-        <activity android:name=".MainActivity">
+        android:name=".application.App">
+        <activity android:name=".EntranceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mytest.homework.shared_element.SharedElementActivityA"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mytest.homework.shared_element.SharedElementActivityB"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mytest.TestMainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mytest.homework.HomeworkMain"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mytest.demo.DemoMain"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
