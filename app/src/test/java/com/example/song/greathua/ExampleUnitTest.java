@@ -1,4 +1,4 @@
-package com.example.song.greatehua;
+package com.example.song.greathua;
 
 import org.junit.Test;
 

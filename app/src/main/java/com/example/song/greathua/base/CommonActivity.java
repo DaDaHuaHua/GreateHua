@@ -1,7 +1,5 @@
-package com.example.song.greatehua.base;
+package com.example.song.greathua.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.example.commonlibrary.base.activity.BaseActivity;

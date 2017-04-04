@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.song.greatehua">
+    package="com.example.song.greathua">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
 
     <application
+        android:name="com.example.song.greathua.application.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".application.App">
-        <activity android:name=".EntranceActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name="com.example.song.greathua.EntranceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mytest.homework.shared_element.SharedElementActivityA"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mytest.homework.shared_element.SharedElementActivityB"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mytest.TestMainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mytest.homework.HomeworkMain"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mytest.demo.DemoMain"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.song.greathua.mytest.homework.shared_element.SharedElementActivityA"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.song.greathua.mytest.homework.shared_element.SharedElementActivityB"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.song.greathua.mytest.TestMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.song.greathua.mytest.homework.HomeworkMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.song.greathua.mytest.demo.DemoMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.song.greathua.mytest.homework.vector.VectorActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

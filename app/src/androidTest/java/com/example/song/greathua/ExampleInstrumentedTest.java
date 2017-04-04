@@ -1,4 +1,4 @@
-package com.example.song.greatehua;
+package com.example.song.greathua;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

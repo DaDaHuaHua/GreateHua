@@ -1,4 +1,4 @@
-package com.example.song.greatehua.base;
+package com.example.song.greathua.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
