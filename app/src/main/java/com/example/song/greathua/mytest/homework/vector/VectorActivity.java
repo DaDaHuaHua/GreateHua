@@ -23,6 +23,7 @@ public class VectorActivity extends CommonActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vector_activity);
+
     }
 
     @OnClick({R.id.iv_vector})
