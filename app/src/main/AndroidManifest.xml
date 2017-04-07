@@ -2,11 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.song.greathua">
 
+    //----------------  Bugly start------------------------------
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    //----------------  Bugly end--------------------------------
+
+    //----------------  七牛 start------------------------------
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    //----------------  七牛 end--------------------------------
 
 
     <application
@@ -41,6 +49,8 @@
         <activity
             android:name="com.example.song.greathua.mytest.homework.vector.VectorActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".mytest.demo.media.player.PiliVideoPlayerActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -10,9 +10,13 @@ import com.example.commonlibrary.mobile.Mobile;
  */
 
 public class BaseApplication extends Application {
+    public static BaseApplication app;
     @Override
     public void onCreate() {
         super.onCreate();
+        synchronized (this) {
+            app = this;
+        }
         Mobile.init(this);
     }
 }
