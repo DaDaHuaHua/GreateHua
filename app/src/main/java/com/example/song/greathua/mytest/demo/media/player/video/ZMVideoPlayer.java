@@ -21,6 +21,7 @@ public class ZMVideoPlayer extends RelativeLayout {
     private PlayerCallback.OnPrepareListener mOnPrepareListener;
     private PlayerCallback.OnErrorListener mOnErrorListener;
     private PlayerCallback.OnCompleteListener mOnCompleteListener;
+    private View mBufferingView;
 
     public ZMVideoPlayer(Context context) {
         this(context, null);
@@ -55,6 +56,7 @@ public class ZMVideoPlayer extends RelativeLayout {
         mVideoPlayerOption.setOnPrepareListener(mOnPrepareListener);
         mVideoPlayerOption.setOnErrorListener(mOnErrorListener);
         mVideoPlayerOption.setOnCompleteListener(mOnCompleteListener);
+        mVideoPlayerOption.setBufferingView(mBufferingView);
         mVideoPlayerOption.init(getContext().getApplicationContext());
         View contentView = mVideoPlayerOption.getPlayerLayout();
         ViewGroup.LayoutParams params = contentView.getLayoutParams();
@@ -105,6 +107,10 @@ public class ZMVideoPlayer extends RelativeLayout {
 
     public int getDisplayAspectRatio(){
         return  mVideoPlayerOption.getDisplayAspectRatio();
+    }
+
+    public void setBufferingView(View view){
+        this.mBufferingView = view;
     }
 
 }

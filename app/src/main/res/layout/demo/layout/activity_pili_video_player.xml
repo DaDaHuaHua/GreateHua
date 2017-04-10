@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-<com.example.song.greathua.mytest.demo.media.player.video.ZMVideoPlayer
-    android:id="@+id/player"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
+
+    <!--<com.example.song.greathua.mytest.demo.media.player.video.ZMVideoPlayer-->
+        <!--android:id="@+id/player"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <com.pili.pldroid.player.widget.PLVideoTextureView
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <TextView
         android:id="@+id/switch_orientation"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="旋转0°"
-        android:textSize="20sp"
-        android:gravity="center"
         android:background="@color/colorAccent"
-        />
+        android:gravity="center"
+        android:text="旋转0°"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/switch_ratio"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="比例"
         android:layout_alignParentRight="true"
-        android:textSize="20sp"
-        android:gravity="center"
         android:background="@color/colorAccent"
-        />
+        android:gravity="center"
+        android:text="比例"
+        android:textSize="20sp" />
 </RelativeLayout>

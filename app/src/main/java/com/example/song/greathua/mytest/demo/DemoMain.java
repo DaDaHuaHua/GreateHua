@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.greathua.R;
 import com.example.song.greathua.base.CommonActivity;
+import com.example.song.greathua.mytest.demo.media.demo.PLVideoTextureActivity;
 import com.example.song.greathua.mytest.demo.media.player.PiliVideoPlayerActivity;
 
 import butterknife.BindView;
@@ -39,6 +40,7 @@ public class DemoMain extends CommonActivity {
             switch (position){
                 case 0:
                     startActivity(new Intent(DemoMain.this, PiliVideoPlayerActivity.class));
+                    //startActivity(new Intent(DemoMain.this, PLVideoTextureActivity.class));
                     break;
 
             }

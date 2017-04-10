@@ -1,8 +1,10 @@
 package com.example.song.greathua.mytest.demo.media.player;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.commonlibrary.util.ToastUtil;
@@ -35,11 +37,19 @@ public class PiliVideoPlayerActivity extends CommonActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pili_video_player);
         initView();
         mVideoPlayer.setDecodeType(AVOptions.MEDIA_CODEC_AUTO)
-                .setDisplayOrientation(0)
+                .setDisplayOrientation(90)
                 .setVideoType(0)
                 .setOnPrepareListener(new PlayerCallback.OnPrepareListener() {
                     @Override
@@ -59,7 +69,7 @@ public class PiliVideoPlayerActivity extends CommonActivity {
                     public void onComplete() {
                         ToastUtil.showMessage("complete");
                     }
-                }).setVideoPath(mVideoPath).setDisplayOrientation(90).build().start();
+                }).setVideoPath(mVideoPath).build().start();
     }
 
     private void initView(){
@@ -72,9 +82,11 @@ public class PiliVideoPlayerActivity extends CommonActivity {
         super.onClick(v);
         switch (v.getId()){
             case R.id.switch_orientation :
-                mCurrentDegree = (mCurrentDegree += 90 )> 270 ?  0 : mCurrentDegree ;
+//                mCurrentDegree = (mCurrentDegree += 90 )> 270 ?  0 : mCurrentDegree ;
+//                mVideoPlayer.setDisplayOrientation(mCurrentDegree);
+//                mTvSwitchOrientation.setText("旋转"+mCurrentDegree+"°");
+                mCurrentDegree = (mCurrentDegree + 90) % 360;
                 mVideoPlayer.setDisplayOrientation(mCurrentDegree);
-                mTvSwitchOrientation.setText("旋转"+mCurrentDegree+"°");
                 break;
 
             case R.id.switch_ratio:

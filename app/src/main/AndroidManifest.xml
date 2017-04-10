@@ -50,7 +50,9 @@
             android:name="com.example.song.greathua.mytest.homework.vector.VectorActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".mytest.demo.media.player.PiliVideoPlayerActivity"
-            android:screenOrientation="portrait"/>
+            android:theme="@style/AppThemeFullscreen" />
+        <activity android:name=".mytest.demo.media.demo.PLVideoTextureActivity"
+            android:theme="@style/AppThemeFullscreen"/>
     </application>
 
 </manifest>
