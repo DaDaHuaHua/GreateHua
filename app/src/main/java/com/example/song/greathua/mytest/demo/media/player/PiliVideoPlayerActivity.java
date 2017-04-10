@@ -24,12 +24,9 @@ import butterknife.OnClick;
  */
 
 public class PiliVideoPlayerActivity extends CommonActivity {
-    @BindView(R.id.player)
-     ZMVideoPlayer mVideoPlayer;
-    @BindView(R.id.switch_orientation)
-    TextView mTvSwitchOrientation;
-    @BindView(R.id.switch_ratio)
-    TextView mTvSwitchRatio;
+     private ZMVideoPlayer mVideoPlayer;
+    private TextView mTvSwitchOrientation;
+    private TextView mTvSwitchRatio;
     private int mCurrentDegree = 0;
     private int mDisplayAspectRatio = PLVideoTextureView.ASPECT_RATIO_FIT_PARENT; //default
 
@@ -48,8 +45,7 @@ public class PiliVideoPlayerActivity extends CommonActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pili_video_player);
         initView();
-        mVideoPlayer.setDecodeType(AVOptions.MEDIA_CODEC_AUTO)
-                .setDisplayOrientation(90)
+        mVideoPlayer.setDecodeType(AVOptions.MEDIA_CODEC_SW_DECODE)
                 .setVideoType(0)
                 .setOnPrepareListener(new PlayerCallback.OnPrepareListener() {
                     @Override
@@ -73,10 +69,14 @@ public class PiliVideoPlayerActivity extends CommonActivity {
     }
 
     private void initView(){
+      //  mVideoPlayer = (ZMVideoPlayer) findViewById(R.id.player);
+        mTvSwitchOrientation = (TextView) findViewById(R.id.switch_orientation);
+        mTvSwitchOrientation.setOnClickListener(this);
+        mTvSwitchRatio = (TextView) findViewById(R.id.switch_ratio);
+        mTvSwitchRatio.setOnClickListener(this);
         mTvSwitchOrientation.setText("旋转0°");
     }
 
-    @OnClick({R.id.switch_orientation ,R.id.switch_ratio})
     @Override
     public void onClick(View v) {
         super.onClick(v);

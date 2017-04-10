@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.greathua.R;
 import com.example.song.greathua.base.CommonActivity;
+import com.example.song.greathua.mytest.homework.rebound.ReboundActivity;
 import com.example.song.greathua.mytest.homework.shared_element.SharedElementActivityA;
 import com.example.song.greathua.mytest.homework.vector.VectorActivity;
 
@@ -24,7 +25,7 @@ public class HomeworkMain extends CommonActivity{
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"Vector","SharedElement"};
+    private String[] menu = {"Vector","SharedElement","facebook-Rebound"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,9 @@ public class HomeworkMain extends CommonActivity{
                     break;
                 case 1:
                     startActivity(new Intent(HomeworkMain.this , SharedElementActivityA.class));
+                    break;
+                case  2:
+                    startActivity(new Intent(HomeworkMain.this, ReboundActivity.class));
                     break;
             }
         }

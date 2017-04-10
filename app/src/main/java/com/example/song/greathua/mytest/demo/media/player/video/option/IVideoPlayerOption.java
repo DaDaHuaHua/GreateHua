@@ -17,7 +17,7 @@ public interface IVideoPlayerOption {
      * 初始化播放器操作
      * @param context
      */
-    void init(Context context , int decodeType);
+    void init(Context context);
 
     void start();
     void stop();

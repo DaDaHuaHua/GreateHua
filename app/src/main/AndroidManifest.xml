@@ -53,6 +53,8 @@
             android:theme="@style/AppThemeFullscreen" />
         <activity android:name=".mytest.demo.media.demo.PLVideoTextureActivity"
             android:theme="@style/AppThemeFullscreen"/>
+        <activity android:name=".mytest.demo.media.demo.TestActivity"
+           />
     </application>
 
 </manifest>

@@ -36,12 +36,11 @@ public class PiliPlayerOption implements IVideoPlayerOption {
     public PiliPlayerOption(Context context) {
         this.mContext = context;
         mPlayer = new PLVideoTextureView(context);
+        mPlayer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
     @Override
-    public void init(Context context , int decodeType) {
-        this.mDecodeType = decodeType;
-        mPlayer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+    public void init(Context context ) {
         setOptions();
         mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
             @Override

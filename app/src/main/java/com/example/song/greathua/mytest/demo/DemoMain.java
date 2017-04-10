@@ -11,12 +11,14 @@ import android.widget.ListView;
 import com.example.song.greathua.R;
 import com.example.song.greathua.base.CommonActivity;
 import com.example.song.greathua.mytest.demo.media.demo.PLVideoTextureActivity;
+import com.example.song.greathua.mytest.demo.media.demo.TestActivity;
 import com.example.song.greathua.mytest.demo.media.player.PiliVideoPlayerActivity;
 
 import butterknife.BindView;
 
 /**
  * Created by PVer on 2017/4/2.
+ *
  */
 
 public class DemoMain extends CommonActivity {
@@ -39,8 +41,9 @@ public class DemoMain extends CommonActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             switch (position){
                 case 0:
-                    startActivity(new Intent(DemoMain.this, PiliVideoPlayerActivity.class));
+                    //startActivity(new Intent(DemoMain.this, PiliVideoPlayerActivity.class));
                     //startActivity(new Intent(DemoMain.this, PLVideoTextureActivity.class));
+                    startActivity(new Intent(DemoMain.this, TestActivity.class));
                     break;
 
             }
