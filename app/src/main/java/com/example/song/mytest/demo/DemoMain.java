@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
+import com.example.song.mytest.demo.dialogfragment.DialogFragmentTest;
 import com.example.song.mytest.demo.media.demo.TestActivity;
 import com.example.song.mytest.demo.media.player.PiliVideoPlayerActivity;
 
@@ -24,7 +25,7 @@ public class DemoMain extends CommonActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器"};
+    private String[] menu = {"播放器","DialogFragment"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class DemoMain extends CommonActivity {
                     //startActivity(new Intent(DemoMain.this, PiliVideoPlayerActivity.class));
                    startActivity(new Intent(DemoMain.this, TestActivity.class));
                     break;
+                case 1:
+                    startActivity(new Intent(DemoMain.this, DialogFragmentTest.class));
+                    break;
+
 
             }
         }
