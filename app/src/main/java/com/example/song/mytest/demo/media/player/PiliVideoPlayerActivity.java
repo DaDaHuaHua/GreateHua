@@ -15,8 +15,6 @@ import com.example.song.greathua.mytest.demo.media.player.video.callback.PlayerC
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Created by zz on 2017/4/5.
@@ -69,7 +67,7 @@ public class PiliVideoPlayerActivity extends CommonActivity {
     }
 
     private void initView(){
-      //  mVideoPlayer = (ZMVideoPlayer) findViewById(R.id.player);
+       // mVideoPlayer = (ZMVideoPlayer) findViewById(R.id.player);
         mTvSwitchOrientation = (TextView) findViewById(R.id.switch_orientation);
         mTvSwitchOrientation.setOnClickListener(this);
         mTvSwitchRatio = (TextView) findViewById(R.id.switch_ratio);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,6 +8,7 @@
     <!--android:id="@+id/player"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent" />-->
+
     <!--<com.pili.pldroid.player.widget.PLVideoTextureView-->
     <!--android:id="@+id/player"-->
     <!--android:layout_width="match_parent"-->
@@ -22,7 +24,7 @@
         android:layout_height="50dp"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:text="旋转0°"
+        android:text="旋转"
         android:textSize="20sp" />
 
     <TextView
@@ -34,4 +36,5 @@
         android:gravity="center"
         android:text="比例"
         android:textSize="20sp" />
+
 </RelativeLayout>

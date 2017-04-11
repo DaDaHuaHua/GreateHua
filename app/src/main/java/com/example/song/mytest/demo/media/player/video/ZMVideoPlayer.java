@@ -60,7 +60,7 @@ public class ZMVideoPlayer extends RelativeLayout {
         mVideoPlayerOption.init(getContext().getApplicationContext());
         View contentView = mVideoPlayerOption.getPlayerLayout();
         ViewGroup.LayoutParams params = contentView.getLayoutParams();
-        addView(contentView, params);
+        addView(contentView);
         return this;
     }
 

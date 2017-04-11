@@ -3,7 +3,6 @@ package com.example.song.greathua.mytest.demo.media.demo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -11,13 +10,13 @@ import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.greathua.R;
 import com.example.song.greathua.base.CommonActivity;
 import com.example.song.greathua.mytest.demo.media.player.video.MediaController;
-import com.example.song.greathua.mytest.demo.media.player.video.ZMVideoPlayer;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 
 /**
  * Created by zz on 2017/4/10.
+ *
  */
 
 public class TestActivity extends CommonActivity {
@@ -51,13 +50,12 @@ public class TestActivity extends CommonActivity {
                 switchRatio();
             }
         });
-        // mPlayer = (PLVideoTextureView) findViewById(R.id.player);
+//      mPlayer = (PLVideoTextureView) findViewById(R.id.player);
         mPlayer = new PLVideoTextureView(this);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         mPlayer.setLayoutParams(params);
         RelativeLayout content = (RelativeLayout) findViewById(R.id.layout_content);
         content.addView(mPlayer);
-
 
         mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
             @Override

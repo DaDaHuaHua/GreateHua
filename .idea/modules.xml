@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GreateHua.iml" filepath="$PROJECT_DIR$/GreateHua.iml" />
-      <module fileurl="file://$PROJECT_DIR$/GreateHua.iml" filepath="$PROJECT_DIR$/GreateHua.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commonlib/commonlib.iml" filepath="$PROJECT_DIR$/commonlib/commonlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonlib/commonlib.iml" filepath="$PROJECT_DIR$/commonlib/commonlib.iml" />
     </modules>
   </component>

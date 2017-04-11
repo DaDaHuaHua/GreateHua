@@ -51,10 +51,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".mytest.demo.media.player.PiliVideoPlayerActivity"
             android:theme="@style/AppThemeFullscreen" />
-        <activity android:name=".mytest.demo.media.demo.PLVideoTextureActivity"
-            android:theme="@style/AppThemeFullscreen"/>
         <activity android:name=".mytest.demo.media.demo.TestActivity"
            />
+        <activity android:name=".mytest.homework.rebound.ReboundActivity"/>
     </application>
 
 </manifest>
