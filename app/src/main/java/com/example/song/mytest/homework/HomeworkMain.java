@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.homework;
+package com.example.song.mytest.homework;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +8,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
-import com.example.song.greathua.mytest.homework.rebound.ReboundActivity;
-import com.example.song.greathua.mytest.homework.shared_element.SharedElementActivityA;
-import com.example.song.greathua.mytest.homework.vector.VectorActivity;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
+import com.example.song.mytest.homework.rebound.ReboundActivity;
+import com.example.song.mytest.homework.shared_element.SharedElementActivityA;
+import com.example.song.mytest.homework.vector.VectorActivity;
 
 import butterknife.BindView;
 

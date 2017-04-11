@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.homework.shared_element;
+package com.example.song.mytest.homework.shared_element;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

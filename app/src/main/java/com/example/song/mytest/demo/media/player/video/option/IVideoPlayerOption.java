@@ -1,10 +1,9 @@
-package com.example.song.greathua.mytest.demo.media.player.video.option;
+package com.example.song.mytest.demo.media.player.video.option;
 
 import android.content.Context;
 import android.view.View;
 
-import com.example.song.greathua.mytest.demo.media.player.video.callback.PlayerCallback;
-import com.pili.pldroid.player.IMediaController;
+import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
 
 /**
  * Created by Song on 2017/3/31.

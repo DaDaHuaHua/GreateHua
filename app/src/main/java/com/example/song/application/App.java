@@ -1,13 +1,14 @@
-package com.example.song.greathua.application;
+package com.example.song.application;
 
 import android.content.Context;
 
 import com.example.commonlibrary.base.application.BaseApplication;
-import com.example.song.greathua.BuildConfig;
+import com.example.song.BuildConfig;
 import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * Created by Song on 2017/1/20.
+ *
  */
 
 public class App extends BaseApplication {

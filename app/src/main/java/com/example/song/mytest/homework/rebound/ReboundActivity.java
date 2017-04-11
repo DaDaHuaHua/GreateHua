@@ -1,12 +1,12 @@
-package com.example.song.greathua.mytest.homework.rebound;
+package com.example.song.mytest.homework.rebound;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;

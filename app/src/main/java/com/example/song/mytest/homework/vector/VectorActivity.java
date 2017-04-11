@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.homework.vector;
+package com.example.song.mytest.homework.vector;
 
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

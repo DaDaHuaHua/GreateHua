@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.demo.media.player.video;
+package com.example.song.mytest.demo.media.player.video;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

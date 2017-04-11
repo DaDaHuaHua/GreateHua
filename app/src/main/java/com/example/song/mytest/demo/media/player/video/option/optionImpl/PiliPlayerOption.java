@@ -1,13 +1,13 @@
-package com.example.song.greathua.mytest.demo.media.player.video.option.optionImpl;
+package com.example.song.mytest.demo.media.player.video.option.optionImpl;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.song.greathua.mytest.demo.media.player.video.MediaController;
-import com.example.song.greathua.mytest.demo.media.player.video.callback.PlayerCallback;
-import com.example.song.greathua.mytest.demo.media.player.video.option.IVideoPlayerOption;
+import com.example.song.mytest.demo.media.player.video.MediaController;
+import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.video.option.IVideoPlayerOption;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.IMediaController;
 import com.pili.pldroid.player.PLMediaPlayer;

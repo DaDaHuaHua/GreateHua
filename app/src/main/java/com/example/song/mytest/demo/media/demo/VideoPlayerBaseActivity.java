@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.demo.media.demo;
+package com.example.song.mytest.demo.media.demo;
 
 import android.os.Build;
 import android.os.Bundle;

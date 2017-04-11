@@ -1,10 +1,10 @@
-package com.example.song.greathua.mytest.homework.shared_element;
+package com.example.song.mytest.homework.shared_element;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
 
 /**
  * Created by PVer on 2017/4/2.

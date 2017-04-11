@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.demo.media.demo;
+package com.example.song.mytest.demo.media.demo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,9 +7,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.commonlibrary.util.ToastUtil;
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
-import com.example.song.greathua.mytest.demo.media.player.video.MediaController;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
+import com.example.song.mytest.demo.media.player.video.MediaController;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;

@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.demo.media.player.video;
+package com.example.song.mytest.demo.media.player.video;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.example.song.greathua.mytest.demo.media.player.video.callback.PlayerCallback;
-import com.example.song.greathua.mytest.demo.media.player.video.option.IVideoPlayerOption;
-import com.example.song.greathua.mytest.demo.media.player.video.option.optionImpl.PiliPlayerOption;
+import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.video.option.IVideoPlayerOption;
+import com.example.song.mytest.demo.media.player.video.option.optionImpl.PiliPlayerOption;
 
 /**
  * Created by zz on 2017/3/31.

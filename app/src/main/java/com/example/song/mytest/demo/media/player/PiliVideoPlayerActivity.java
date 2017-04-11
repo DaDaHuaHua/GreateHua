@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.demo.media.player;
+package com.example.song.mytest.demo.media.player;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.commonlibrary.util.ToastUtil;
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
-import com.example.song.greathua.mytest.demo.media.player.video.ZMVideoPlayer;
-import com.example.song.greathua.mytest.demo.media.player.video.callback.PlayerCallback;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
+import com.example.song.mytest.demo.media.player.video.ZMVideoPlayer;
+import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 

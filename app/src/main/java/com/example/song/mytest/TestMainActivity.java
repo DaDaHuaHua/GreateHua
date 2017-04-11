@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest;
+package com.example.song.mytest;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,10 +6,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
-import com.example.song.greathua.mytest.demo.DemoMain;
-import com.example.song.greathua.mytest.homework.HomeworkMain;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
+import com.example.song.mytest.demo.DemoMain;
+import com.example.song.mytest.homework.HomeworkMain;
 
 import butterknife.BindView;
 import butterknife.OnClick;

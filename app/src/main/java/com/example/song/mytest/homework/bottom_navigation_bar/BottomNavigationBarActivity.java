@@ -1,12 +1,12 @@
-package com.example.song.greathua.mytest.homework.bottom_navigation_bar;
+package com.example.song.mytest.homework.bottom_navigation_bar;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
 
 import butterknife.BindView;
 

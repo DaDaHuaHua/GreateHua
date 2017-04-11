@@ -1,4 +1,4 @@
-package com.example.song.greathua.mytest.demo;
+package com.example.song.mytest.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.song.greathua.R;
-import com.example.song.greathua.base.CommonActivity;
-import com.example.song.greathua.mytest.demo.media.demo.TestActivity;
-import com.example.song.greathua.mytest.demo.media.player.PiliVideoPlayerActivity;
+import com.example.song.R;
+import com.example.song.base.CommonActivity;
+import com.example.song.mytest.demo.media.demo.TestActivity;
+import com.example.song.mytest.demo.media.player.PiliVideoPlayerActivity;
 
 import butterknife.BindView;
 
