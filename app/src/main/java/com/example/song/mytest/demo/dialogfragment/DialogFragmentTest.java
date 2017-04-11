@@ -38,12 +38,13 @@ public class DialogFragmentTest extends CommonActivity {
         if (mDialog == null) {
             mDialog = ExampleDialogFragment.newInstance();
         }
+        mDialog.setModel(new Model("i am initial"));
         mDialog.showAllowingStateLoss(getSupportFragmentManager(),null);
     }
 
     private void changeAndShow(){
-        mDialog.showAllowingStateLoss(getSupportFragmentManager(),null);
         mDialog.setModel(new Model("i have been changed"));
+        mDialog.showAllowingStateLoss(getSupportFragmentManager(),null);
     }
 
 

@@ -24,8 +24,7 @@ public class ExampleDialogFragment extends BaseDialogFragment {
     private Model mModel;
 
     public static  ExampleDialogFragment newInstance( ){
-        ExampleDialogFragment exampleDialogFragment = new ExampleDialogFragment();
-        return  exampleDialogFragment;
+        return  new ExampleDialogFragment();
     }
 
     @Override
@@ -53,7 +52,6 @@ public class ExampleDialogFragment extends BaseDialogFragment {
     }
 
     private void init(){
-        mModel = getArguments().getParcelable("model");
         mTvDesc = $(mContent,R.id.tv_desc);
         mTvDesc.setText(mModel.desc);
     }
@@ -75,7 +73,6 @@ public class ExampleDialogFragment extends BaseDialogFragment {
 
     public void setModel(Model model){
         this.mModel = model;
-        mTvDesc.setText(model.desc);
     }
 
 
