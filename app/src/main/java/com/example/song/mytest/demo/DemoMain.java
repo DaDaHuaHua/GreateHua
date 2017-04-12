@@ -41,8 +41,8 @@ public class DemoMain extends CommonActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             switch (position){
                 case 0:
-                    //startActivity(new Intent(DemoMain.this, PiliVideoPlayerActivity.class));
-                   startActivity(new Intent(DemoMain.this, TestActivity.class));
+                    startActivity(new Intent(DemoMain.this, PiliVideoPlayerActivity.class));
+                  // startActivity(new Intent(DemoMain.this, TestActivity.class));
                     break;
                 case 1:
                     startActivity(new Intent(DemoMain.this, DialogFragmentTest.class));

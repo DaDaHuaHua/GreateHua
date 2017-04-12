@@ -4,19 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<com.example.song.greathua.mytest.demo.media.player.video.ZMVideoPlayer-->
-    <!--android:id="@+id/player"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
+    <com.example.song.mytest.demo.media.player.video.ZMVideoPlayer
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!--<com.pili.pldroid.player.widget.PLVideoTextureView-->
     <!--android:id="@+id/player"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent" />-->
-    <RelativeLayout
-        android:id="@+id/layout_content"
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/layout_content"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+    <ImageView
+        android:id="@+id/cover_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_player_cover"/>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 
     <TextView
         android:id="@+id/switch_orientation"
