@@ -36,6 +36,9 @@ public class ExampleDialogFragment extends BaseDialogFragment {
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
+        if (mModel != null) {
+            return;
+        }
         if (savedInstanceState != null) {
             mModel = savedInstanceState.getParcelable("model");
         } else {
