@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
 import com.example.song.mytest.demo.dialogfragment.DialogFragmentTest;
+import com.example.song.mytest.demo.media.PlayerMain;
 import com.example.song.mytest.demo.media.demo.TestActivity;
 import com.example.song.mytest.demo.media.player.PiliVideoPlayerActivity;
 
@@ -41,8 +42,8 @@ public class DemoMain extends CommonActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             switch (position){
                 case 0:
-                    startActivity(new Intent(DemoMain.this, PiliVideoPlayerActivity.class));
-                  // startActivity(new Intent(DemoMain.this, TestActivity.class));
+                    startActivity(new Intent(DemoMain.this, PlayerMain.class));
+
                     break;
                 case 1:
                     startActivity(new Intent(DemoMain.this, DialogFragmentTest.class));

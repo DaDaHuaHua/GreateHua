@@ -1,7 +1,8 @@
-package com.example.song.mytest.demo.media.player.video.player.playerImpl;
+package com.example.song.mytest.demo.media.player.video.player.playerimpl;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 import com.example.song.R;
@@ -9,18 +10,18 @@ import com.example.song.mytest.demo.media.player.video.MediaController;
 import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
 import com.example.song.mytest.demo.media.player.video.player.IVideoPlayer;
 import com.pili.pldroid.player.AVOptions;
-import com.pili.pldroid.player.IMediaController;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 
 /**
  * Created by zz on 2017/3/31.
+ * 基于PiliVideoTextureView 实现的播放器
  */
 
 public class PiliVideoPlayer implements IVideoPlayer {
 
+    private static String TAG = "PiliVideoPlayerTAG";
     private PLVideoTextureView mPlayer;
-    private IMediaController mediaController;
     private Context mContext;
 
     /***
@@ -83,26 +84,55 @@ public class PiliVideoPlayer implements IVideoPlayer {
 
     @Override
     public void init() {
-        setOptions();
+        buildOptions();
         mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(PLMediaPlayer plMediaPlayer) {
-                mOnPrepareListener.onPrepare();
+                if (mOnPrepareListener != null) {
+                    mOnPrepareListener.onPrepared();
+                }
             }
         });
         mPlayer.setOnErrorListener(new PLMediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(PLMediaPlayer plMediaPlayer, int i) {
-                return mOnErrorListener.onError(i);
+                if (mOnErrorListener != null) {
+                    return mOnErrorListener.onError(i);
+                }
+                return false;
             }
         });
         mPlayer.setOnCompletionListener(new PLMediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(PLMediaPlayer plMediaPlayer) {
-                mOnCompleteListener.onComplete();
+                if (mOnCompleteListener != null) {
+                    mOnCompleteListener.onComplete();
+                }
             }
         });
-        mediaController = new MediaController(mContext, false, mVideoType == 1);
+        //onInfo()不暴露出去
+        mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
+            @Override
+            public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
+                Log.i(TAG, "OnInfo, what = " + i + ", extra = " + i1);
+                return true;
+            }
+        });
+        //onBufferingUpdate() 不暴露出去
+        mPlayer.setOnBufferingUpdateListener(new PLMediaPlayer.OnBufferingUpdateListener() {
+            @Override
+            public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
+                Log.d(TAG, "onBufferingUpdate: " + i + "%");
+            }
+        });
+        //setOnInfoListener 不暴露出去
+        mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
+            @Override
+            public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
+                return false;
+            }
+        });
+        MediaController mediaController = new MediaController(mContext, false, mVideoType == 1);
         mPlayer.setMediaController(mediaController);
 
     }
@@ -110,7 +140,7 @@ public class PiliVideoPlayer implements IVideoPlayer {
     /**
      * 配置播放参数
      */
-    private void setOptions() {
+    private void buildOptions() {
         mAvOptions = new AVOptions();
         // 解码方式:
         // codec＝AVOptions.MEDIA_CODEC_HW_DECODE，硬解
@@ -159,6 +189,19 @@ public class PiliVideoPlayer implements IVideoPlayer {
     }
 
     @Override
+    public void release() {
+        if (mPlayer != null) {
+            mPlayer.stopPlayback();
+            mPlayer.releaseSurfactexture();
+        }
+    }
+
+    @Override
+    public void setVolume(float l, float r) {
+        mPlayer.setVolume(l, r);
+    }
+
+    @Override
     public void setDisplayOrientation(int degree) {
         mPlayer.setDisplayOrientation(degree);
     }
@@ -191,12 +234,12 @@ public class PiliVideoPlayer implements IVideoPlayer {
     }
 
     @Override
-    public void setVideoPath(String path) {
+    public void setPath(String path) {
         mPlayer.setVideoPath(path);
     }
 
     @Override
-    public void setVideoType(int type) {
+    public void setPlayerType(int type) {
         if (mVideoType != type) {
             this.mVideoType = type;
             if (mAvOptions != null) {

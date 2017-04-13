@@ -51,10 +51,14 @@
             android:screenOrientation="portrait" />
         <activity android:name=".mytest.demo.media.player.PiliVideoPlayerActivity"
             android:theme="@style/AppThemeFullscreen" />
+        <activity android:name=".mytest.demo.media.player.PiliAudioPlayerActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".mytest.demo.media.demo.TestActivity"
            />
         <activity android:name=".mytest.homework.rebound.ReboundActivity"/>
         <activity android:name=".mytest.demo.dialogfragment.DialogFragmentTest"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mytest.demo.media.PlayerMain"
             android:screenOrientation="portrait"/>
     </application>
 

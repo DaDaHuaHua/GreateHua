@@ -8,7 +8,9 @@ import android.widget.RelativeLayout;
 
 import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
 import com.example.song.mytest.demo.media.player.video.player.IVideoPlayer;
-import com.example.song.mytest.demo.media.player.video.player.playerImpl.PiliVideoPlayer;
+import com.example.song.mytest.demo.media.player.video.player.playerimpl.PiliVideoPlayer;
+
+import java.io.IOException;
 
 /**
  * Created by zz on 2017/3/31.
@@ -20,7 +22,7 @@ public class ZMVideoPlayer extends RelativeLayout {
     /**
      * 更换播放器实现对应的 IVideoPlayerOption即可
      */
-    private IVideoPlayer mVideoPlayerOption;
+    private IVideoPlayer mVideoPlayer;
 
     private PlayerCallback.OnPrepareListener mOnPrepareListener;
     private PlayerCallback.OnErrorListener mOnErrorListener;
@@ -38,7 +40,7 @@ public class ZMVideoPlayer extends RelativeLayout {
 
     public ZMVideoPlayer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mVideoPlayerOption = new PiliVideoPlayer(context);
+        mVideoPlayer = new PiliVideoPlayer(context);
     }
 
     /**
@@ -46,35 +48,37 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @return ZMVideoPlayer
      */
     public ZMVideoPlayer build() {
-        if(mOnPrepareListener == null || mOnErrorListener == null || mOnCompleteListener ==null ) throw  new NullPointerException("u need set listeners before invoke \"build()\"");
-        mVideoPlayerOption.setOnPrepareListener(mOnPrepareListener);
-        mVideoPlayerOption.setOnErrorListener(mOnErrorListener);
-        mVideoPlayerOption.setOnCompleteListener(mOnCompleteListener);
-        mVideoPlayerOption.setBufferingView(mBufferingView);
-        mVideoPlayerOption.setCoverView(mCoverView);
-        mVideoPlayerOption.init();
-        View contentView = mVideoPlayerOption.getPlayerLayout();
+        mVideoPlayer.setOnPrepareListener(mOnPrepareListener);
+        mVideoPlayer.setOnErrorListener(mOnErrorListener);
+        mVideoPlayer.setOnCompleteListener(mOnCompleteListener);
+        mVideoPlayer.setBufferingView(mBufferingView);
+        mVideoPlayer.setCoverView(mCoverView);
+        mVideoPlayer.init();
+        View contentView = mVideoPlayer.getPlayerLayout();
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         addView(contentView,params);
         return this;
     }
 
     public void start() {
-        mVideoPlayerOption.start();
+        mVideoPlayer.start();
     }
 
     public void stop() {
-        mVideoPlayerOption.stop();
+        mVideoPlayer.stop();
     }
 
     public void pause() {
-        mVideoPlayerOption.pause();
+        mVideoPlayer.pause();
     }
 
     public void seekTo(long time) {
-        mVideoPlayerOption.seekTo(time);
+        mVideoPlayer.seekTo(time);
     }
 
+    public void release(){
+        mVideoPlayer.release();
+    }
 
     /**
      * 设置当前播放的是否为在线直播，如果是，底层会有一些播放优化
@@ -82,7 +86,7 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @return  ZMVideoPlayer
      */
     public ZMVideoPlayer setVideoType(int videoType){
-        mVideoPlayerOption.setVideoType(videoType);
+        mVideoPlayer.setPlayerType(videoType);
         return this;
     }
 
@@ -92,7 +96,7 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @return ZMVideoPlayer
      */
     public ZMVideoPlayer setDecodeType(int type){
-        mVideoPlayerOption.setDecodeType(type);
+        mVideoPlayer.setDecodeType(type);
         return this;
     }
 
@@ -102,7 +106,7 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @return ZMVideoPlayer
      */
     public ZMVideoPlayer setDisplayOrientation(int degree){
-        mVideoPlayerOption.setDisplayOrientation(degree);
+        mVideoPlayer.setDisplayOrientation(degree);
         return this;
     }
 
@@ -111,8 +115,8 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @param path path
      * @return ZMVideoPlayer
      */
-    public ZMVideoPlayer setVideoPath(String path){
-        mVideoPlayerOption.setVideoPath(path);
+    public ZMVideoPlayer setVideoPath(String path) throws IOException {
+        mVideoPlayer.setPath(path);
         return this;
     }
 
@@ -130,12 +134,12 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @return ZMVideoPlayer
      */
     public ZMVideoPlayer setDisplayAspectRatio(int ratio){
-        mVideoPlayerOption.setDisplayAspectRatio(ratio);
+        mVideoPlayer.setDisplayAspectRatio(ratio);
         return this;
     }
 
     public int getDisplayAspectRatio(){
-        return  mVideoPlayerOption.getDisplayAspectRatio();
+        return  mVideoPlayer.getDisplayAspectRatio();
     }
 
     /**

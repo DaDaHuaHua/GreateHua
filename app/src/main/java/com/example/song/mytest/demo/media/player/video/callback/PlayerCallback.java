@@ -7,7 +7,7 @@ package com.example.song.mytest.demo.media.player.video.callback;
 
 public class PlayerCallback {
    public interface OnPrepareListener{
-        void onPrepare();
+        void onPrepared();
     }
     public interface  OnErrorListener{
         boolean onError(int errorCode);

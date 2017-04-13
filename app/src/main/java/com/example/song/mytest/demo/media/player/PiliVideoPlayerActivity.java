@@ -17,6 +17,8 @@ import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 
+import java.io.IOException;
+
 
 /**
  * Created by zz on 2017/4/5.
@@ -47,31 +49,36 @@ public class PiliVideoPlayerActivity extends CommonActivity {
         initView();
         ProgressBar loading = (ProgressBar) findViewById(R.id.loading);
         ImageView cover = (ImageView) findViewById(R.id.cover_view);
-        mVideoPlayer.setDecodeType(AVOptions.MEDIA_CODEC_SW_DECODE)
-                .setVideoType(0)
-                .setOnPrepareListener(new PlayerCallback.OnPrepareListener() {
-                    @Override
-                    public void onPrepare() {
-                        ToastUtil.showMessage("prepared ");
-                    }
-                })
-                .setOnErrorListener(new PlayerCallback.OnErrorListener() {
-                    @Override
-                    public boolean onError(int errorCode) {
-                        ToastUtil.showMessage("onError code ==" + errorCode);
-                        return true;
-                    }
-                })
-                .setOnCompleteListener(new PlayerCallback.OnCompleteListener() {
-                    @Override
-                    public void onComplete() {
-                        ToastUtil.showMessage("complete");
-                    }
-                })
-                .setBufferingView(loading)
-                .setCoverView(cover)
-                .setVideoPath(mVideoPath)
-                .build().start();
+        try {
+            mVideoPlayer.setDecodeType(AVOptions.MEDIA_CODEC_SW_DECODE)
+                    .setVideoType(0)
+                    .setOnPrepareListener(new PlayerCallback.OnPrepareListener() {
+                        @Override
+                        public void onPrepared() {
+                            ToastUtil.showMessage("prepared ");
+                        }
+                    })
+                    .setOnErrorListener(new PlayerCallback.OnErrorListener() {
+                        @Override
+                        public boolean onError(int errorCode) {
+                            ToastUtil.showMessage("onError code ==" + errorCode);
+                            return true;
+                        }
+                    })
+                    .setOnCompleteListener(new PlayerCallback.OnCompleteListener() {
+                        @Override
+                        public void onComplete() {
+                            ToastUtil.showMessage("complete");
+                        }
+                    })
+                    .setBufferingView(loading)
+                    .setCoverView(cover)
+                    .setVideoPath(mVideoPath)
+                    .build().start();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     private void initView(){
