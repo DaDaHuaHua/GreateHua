@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.demo.dialogfragment.DialogFragmentTest;
+import com.example.song.mytest.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.mytest.demo.media.PlayerMain;
 import com.example.song.mytest.demo.media.demo.TestActivity;
 import com.example.song.mytest.demo.media.player.PiliVideoPlayerActivity;
@@ -46,7 +46,7 @@ public class DemoMain extends CommonActivity {
 
                     break;
                 case 1:
-                    startActivity(new Intent(DemoMain.this, DialogFragmentTest.class));
+                    startActivity(new Intent(DemoMain.this, DialogFragmentMain.class));
                     break;
 
 

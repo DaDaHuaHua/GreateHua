@@ -12,7 +12,7 @@ import butterknife.OnClick;
  *
  */
 
-public class DialogFragmentTest extends CommonActivity {
+public class DialogFragmentMain extends CommonActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
