@@ -59,6 +59,10 @@ public class PiliVideoPlayer implements IVideoPlayer {
      */
     private PlayerCallback.OnErrorListener mOnErrorListener;
 
+    private PlayerCallback.OnInfoListener mOnInfoListener;
+    private PlayerCallback.OnBufferingUpdateListener mOnBufferingUpdateListener;
+    private PlayerCallback.OnSeekCompleteListener mOnSeekCompleteListener;
+
     //播放类型 0回放 1直播
     private int mVideoType;
     //解码类型 0软解码 1硬解码 2自动
@@ -110,26 +114,29 @@ public class PiliVideoPlayer implements IVideoPlayer {
                 }
             }
         });
-        //onInfo()不暴露出去
         mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
             @Override
             public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
-                Log.i(TAG, "OnInfo, what = " + i + ", extra = " + i1);
+                if (mOnInfoListener != null) {
+                    mOnInfoListener.onInfo(i, i1);
+                }
                 return true;
             }
         });
-        //onBufferingUpdate() 不暴露出去
         mPlayer.setOnBufferingUpdateListener(new PLMediaPlayer.OnBufferingUpdateListener() {
             @Override
             public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
-                Log.d(TAG, "onBufferingUpdate: " + i + "%");
+                if (mOnBufferingUpdateListener != null) {
+                    mOnBufferingUpdateListener.onBufferingUpdate(i);
+                }
             }
         });
-        //setOnInfoListener 不暴露出去
-        mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
+        mPlayer.setOnSeekCompleteListener(new PLMediaPlayer.OnSeekCompleteListener() {
             @Override
-            public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
-                return false;
+            public void onSeekComplete(PLMediaPlayer plMediaPlayer) {
+                if (mOnSeekCompleteListener != null) {
+                    mOnSeekCompleteListener.onSeekComplete();
+                }
             }
         });
         MediaController mediaController = new MediaController(mContext, false, mVideoType == 1);
@@ -257,19 +264,85 @@ public class PiliVideoPlayer implements IVideoPlayer {
         this.mDecodeType = type;
     }
 
+
     @Override
-    public void setOnPrepareListener(PlayerCallback.OnPrepareListener listener) {
+    public void setOnPrepareListener(final PlayerCallback.OnPrepareListener listener) {
         this.mOnPrepareListener = listener;
+        if (mPlayer != null) {
+            mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(PLMediaPlayer plMediaPlayer) {
+                    listener.onPrepared();
+                }
+            });
+        }
     }
 
     @Override
-    public void setOnErrorListener(PlayerCallback.OnErrorListener listener) {
+    public void setOnErrorListener(final PlayerCallback.OnErrorListener listener) {
         this.mOnErrorListener = listener;
+        if (mPlayer != null) {
+            mPlayer.setOnErrorListener(new PLMediaPlayer.OnErrorListener() {
+                @Override
+                public boolean onError(PLMediaPlayer plMediaPlayer, int i) {
+                    return listener.onError(i);
+                }
+            });
+        }
     }
 
     @Override
-    public void setOnCompleteListener(PlayerCallback.OnCompleteListener listener) {
+    public void setOnCompleteListener(final PlayerCallback.OnCompleteListener listener) {
         this.mOnCompleteListener = listener;
+        if (mPlayer != null) {
+            mPlayer.setOnCompletionListener(new PLMediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(PLMediaPlayer plMediaPlayer) {
+                    listener.onComplete();
+                }
+            });
+        }
+    }
+
+    @Override
+    public void setOnInfoListener(PlayerCallback.OnInfoListener listener) {
+        this.mOnInfoListener = listener;
+        if (mPlayer != null) {
+            mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
+                @Override
+                public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
+                    mOnInfoListener.onInfo(i, i1);
+                    return true;
+                }
+            });
+        }
+    }
+
+    @Override
+    public void setOnBufferingUpdateListener(PlayerCallback.OnBufferingUpdateListener listener) {
+        this.mOnBufferingUpdateListener = listener;
+        if (mPlayer != null) {
+            mPlayer.setOnBufferingUpdateListener(new PLMediaPlayer.OnBufferingUpdateListener() {
+                @Override
+                public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
+                    mOnBufferingUpdateListener.onBufferingUpdate(i);
+                }
+            });
+        }
+    }
+
+
+    @Override
+    public void setOnSeekCompleteListener(PlayerCallback.OnSeekCompleteListener listener) {
+        this.mOnSeekCompleteListener = listener;
+        if (mPlayer != null) {
+            mPlayer.setOnSeekCompleteListener(new PLMediaPlayer.OnSeekCompleteListener() {
+                @Override
+                public void onSeekComplete(PLMediaPlayer plMediaPlayer) {
+                    mOnSeekCompleteListener.onSeekComplete();
+                }
+            });
+        }
     }
 
 

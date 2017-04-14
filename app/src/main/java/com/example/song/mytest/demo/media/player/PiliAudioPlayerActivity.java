@@ -52,9 +52,9 @@ public class PiliAudioPlayerActivity extends CommonActivity {
     }
 
 
-    public void prepare(){
-        mPlayer = new ZMAudioPlayer(this);
-        try {
+    public void prepare() {
+        if (mPlayer == null) {
+            mPlayer = new ZMAudioPlayer(this);
             mPlayer.setDecodeType(0)
                     .setVolume(1.0f, 1.0f)
                     .setPlayerType(0)
@@ -67,7 +67,7 @@ public class PiliAudioPlayerActivity extends CommonActivity {
                     .setOnCompleteListener(new PlayerCallback.OnCompleteListener() {
                         @Override
                         public void onComplete() {
-                            ToastUtil.showMessage( "Play Completed !");
+                            ToastUtil.showMessage("Play Completed !");
                         }
                     })
                     .setOnPrepareListener(new PlayerCallback.OnPrepareListener() {
@@ -79,8 +79,10 @@ public class PiliAudioPlayerActivity extends CommonActivity {
                         }
                     })
                     .setWakeMode(PowerManager.PARTIAL_WAKE_LOCK)
-                    .prepareAsync()
-                    .setPath(mPath);
+                    .build();
+        }
+        try {
+            mPlayer .setPath(mPath).prepareAsync();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +97,7 @@ public class PiliAudioPlayerActivity extends CommonActivity {
         }
     }
 
-    private boolean onError(int errorCode){
+    private boolean onError(int errorCode) {
         boolean isNeedReconnect = false;
         Log.e(TAG, "Error happened, errorCode = " + errorCode);
         switch (errorCode) {
