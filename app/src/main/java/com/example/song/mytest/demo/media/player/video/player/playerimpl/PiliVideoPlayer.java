@@ -24,41 +24,6 @@ public class PiliVideoPlayer implements IVideoPlayer {
     private PLVideoTextureView mPlayer;
     private Context mContext;
 
-    /***
-     * 监听播放器的 prepare 过程
-     * prepare 过程主要包括：创建资源、建立连接、请求码流等等
-     * 当 prepare 完成后， 会回调onPrepare 。可以调用播放器的 start() 启动播放
-     */
-    private PlayerCallback.OnPrepareListener mOnPrepareListener;
-
-    /***
-     * 监听播放结束的消息
-     * 如果是播放文件，则是播放到文件结束后产生回调
-     * 如果是在线视频，则会在读取到码流的EOF信息后产生回调，回调前会先播放完已缓冲的数据
-     * 如果播放过程中产生onError，并且没有处理的话，最后也会回调本接口
-     * 如果播放前设置了 setLooping(true)，则播放结束后会自动重新开始，不会回调本接口
-     */
-    private PlayerCallback.OnCompleteListener mOnCompleteListener;
-
-    /***
-     * 监听播放器的错误消息
-     * 返回值决定了该错误是否已经被处理，如果返回 false，则代表没有被处理，下一步则会触发 onCompletion 消息。
-     errorCode	                  value	             描述
-     MEDIA_ERROR_UNKNOWN	         -1	        未知错误
-     ERROR_CODE_INVALID_URI	         -2	        无效的 URL
-     ERROR_CODE_IO_ERROR	         -5	        网络异常
-     ERROR_CODE_STREAM_DISCONNECTED	-11	        与服务器连接断开
-     ERROR_CODE_EMPTY_PLAYLIST	-541478725	    空的播放列表
-     ERROR_CODE_404_NOT_FOUND	-875574520	    播放资源不存在
-     ERROR_CODE_CONNECTION_REFUSED	-111	    服务器拒绝连接
-     ERROR_CODE_CONNECTION_TIMEOUT	-110	    连接超时
-     ERROR_CODE_UNAUTHORIZED	-825242872	    未授权，播放一个禁播的流
-     ERROR_CODE_PREPARE_TIMEOUT	-2001	        播放器准备超时
-     ERROR_CODE_READ_FRAME_TIMEOUT	-2002	    读取数据超时
-     ERROR_CODE_HW_DECODE_FAILURE	-2003	    硬解码失败
-     */
-    private PlayerCallback.OnErrorListener mOnErrorListener;
-
     //播放类型 0回放 1直播
     private int mVideoType;
     //解码类型 0软解码 1硬解码 2自动
@@ -85,53 +50,6 @@ public class PiliVideoPlayer implements IVideoPlayer {
     @Override
     public void init() {
         buildOptions();
-        mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(PLMediaPlayer plMediaPlayer) {
-                if (mOnPrepareListener != null) {
-                    mOnPrepareListener.onPrepared();
-                }
-            }
-        });
-        mPlayer.setOnErrorListener(new PLMediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(PLMediaPlayer plMediaPlayer, int i) {
-                if (mOnErrorListener != null) {
-                    return mOnErrorListener.onError(i);
-                }
-                return false;
-            }
-        });
-        mPlayer.setOnCompletionListener(new PLMediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(PLMediaPlayer plMediaPlayer) {
-                if (mOnCompleteListener != null) {
-                    mOnCompleteListener.onComplete();
-                }
-            }
-        });
-        //onInfo()不暴露出去
-        mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
-            @Override
-            public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
-                Log.i(TAG, "OnInfo, what = " + i + ", extra = " + i1);
-                return true;
-            }
-        });
-        //onBufferingUpdate() 不暴露出去
-        mPlayer.setOnBufferingUpdateListener(new PLMediaPlayer.OnBufferingUpdateListener() {
-            @Override
-            public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
-                Log.d(TAG, "onBufferingUpdate: " + i + "%");
-            }
-        });
-        //setOnInfoListener 不暴露出去
-        mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
-            @Override
-            public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
-                return false;
-            }
-        });
         MediaController mediaController = new MediaController(mContext, false, mVideoType == 1);
         mPlayer.setMediaController(mediaController);
 
@@ -197,11 +115,6 @@ public class PiliVideoPlayer implements IVideoPlayer {
     }
 
     @Override
-    public void setVolume(float l, float r) {
-        mPlayer.setVolume(l, r);
-    }
-
-    @Override
     public void setDisplayOrientation(int degree) {
         mPlayer.setDisplayOrientation(degree);
     }
@@ -235,7 +148,9 @@ public class PiliVideoPlayer implements IVideoPlayer {
 
     @Override
     public void setPath(String path) {
-        mPlayer.setVideoPath(path);
+        if (mPlayer != null) {
+            mPlayer.setVideoPath(path);
+        }
     }
 
     @Override
@@ -252,24 +167,133 @@ public class PiliVideoPlayer implements IVideoPlayer {
         }
     }
 
+
     @Override
     public void setDecodeType(int type) {
         this.mDecodeType = type;
     }
 
+    /***
+     * 监听播放器的 prepare 过程
+     * prepare 过程主要包括：创建资源、建立连接、请求码流等等
+     * 当 prepare 完成后， 会回调onPrepare 。可以调用播放器的 start() 启动播放
+     */
     @Override
-    public void setOnPrepareListener(PlayerCallback.OnPrepareListener listener) {
-        this.mOnPrepareListener = listener;
+    public void setOnPrepareListener(final PlayerCallback.OnPrepareListener listener) {
+        if (mPlayer != null) {
+            mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(PLMediaPlayer plMediaPlayer) {
+                    listener.onPrepared();
+                }
+            });
+        }
     }
 
+
+    /***
+     * 监听播放器的错误消息
+     * 返回值决定了该错误是否已经被处理，如果返回 false，则代表没有被处理，下一步则会触发 onCompletion 消息。
+     errorCode	                  value	             描述
+     MEDIA_ERROR_UNKNOWN	         -1	        未知错误
+     ERROR_CODE_INVALID_URI	         -2	        无效的 URL
+     ERROR_CODE_IO_ERROR	         -5	        网络异常
+     ERROR_CODE_STREAM_DISCONNECTED	-11	        与服务器连接断开
+     ERROR_CODE_EMPTY_PLAYLIST	-541478725	    空的播放列表
+     ERROR_CODE_404_NOT_FOUND	-875574520	    播放资源不存在
+     ERROR_CODE_CONNECTION_REFUSED	-111	    服务器拒绝连接
+     ERROR_CODE_CONNECTION_TIMEOUT	-110	    连接超时
+     ERROR_CODE_UNAUTHORIZED	-825242872	    未授权，播放一个禁播的流
+     ERROR_CODE_PREPARE_TIMEOUT	-2001	        播放器准备超时
+     ERROR_CODE_READ_FRAME_TIMEOUT	-2002	    读取数据超时
+     ERROR_CODE_HW_DECODE_FAILURE	-2003	    硬解码失败
+     */
     @Override
-    public void setOnErrorListener(PlayerCallback.OnErrorListener listener) {
-        this.mOnErrorListener = listener;
+    public void setOnErrorListener(final PlayerCallback.OnErrorListener listener) {
+        if (mPlayer != null) {
+            mPlayer.setOnErrorListener(new PLMediaPlayer.OnErrorListener() {
+                @Override
+                public boolean onError(PLMediaPlayer plMediaPlayer, int i) {
+                    return listener.onError(i);
+                }
+            });
+        }
     }
 
+
+    /**
+     如果是播放文件，则是播放到文件结束后产生回调
+     如果是在线视频，则会在读取到码流的EOF信息后产生回调，回调前会先播放完已缓冲的数据
+     如果播放过程中产生onError，并且没有处理的话，最后也会回调本接口
+     如果播放前设置了 setLooping(true)，则播放结束后会自动重新开始，不会回调本接口
+     */
     @Override
-    public void setOnCompleteListener(PlayerCallback.OnCompleteListener listener) {
-        this.mOnCompleteListener = listener;
+    public void setOnCompleteListener(final PlayerCallback.OnCompleteListener listener) {
+        if (mPlayer != null) {
+            mPlayer.setOnCompletionListener(new PLMediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(PLMediaPlayer plMediaPlayer) {
+                    listener.onComplete();
+                }
+            });
+        }
+    }
+
+    /**
+     * what             	            value                描述
+     MEDIA_INFO_UNKNOWN	                1	                未知消息
+     MEDIA_INFO_VIDEO_RENDERING_START	3	                第一帧视频已成功渲染
+     MEDIA_INFO_BUFFERING_START     	701	                开始缓冲
+     MEDIA_INFO_BUFFERING_END	        702	                停止缓冲
+     MEDIA_INFO_VIDEO_ROTATION_CHANGED	10001	            获取到视频的播放角度
+     MEDIA_INFO_AUDIO_RENDERING_START	10002	            第一帧音频已成功播放
+     MEDIA_INFO_VIDEO_GOP_TIME	        10003	            获取视频的I帧间隔
+     MEDIA_INFO_SWITCHING_SW_DECODE	    802	                硬解失败，自动切换软解
+     * @param listener listener
+     */
+    @Override
+    public void setOnInfoListener(final PlayerCallback.OnInfoListener listener) {
+        if (mPlayer != null) {
+            mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
+                @Override
+                public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
+                    listener.onInfo(i, i1);
+                    return true;
+                }
+            });
+        }
+    }
+
+    /**
+     * 已经缓冲的数据量占整个视频时长的百分比。
+     * 仅在播放文件和回放时才有效
+     */
+    @Override
+    public void setOnBufferingUpdateListener(final PlayerCallback.OnBufferingUpdateListener listener) {
+        if (mPlayer != null) {
+            mPlayer.setOnBufferingUpdateListener(new PLMediaPlayer.OnBufferingUpdateListener() {
+                @Override
+                public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
+                    listener.onBufferingUpdate(i);
+                }
+            });
+        }
+    }
+
+    /**
+     * seek 完成后回调
+     * 当调用的播放器的 seekTo 方法后，会在 seek 成功后触发该回调。
+     */
+    @Override
+    public void setOnSeekCompleteListener(final PlayerCallback.OnSeekCompleteListener listener) {
+        if (mPlayer != null) {
+            mPlayer.setOnSeekCompleteListener(new PLMediaPlayer.OnSeekCompleteListener() {
+                @Override
+                public void onSeekComplete(PLMediaPlayer plMediaPlayer) {
+                    listener.onSeekComplete();
+                }
+            });
+        }
     }
 
 

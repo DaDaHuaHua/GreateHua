@@ -9,6 +9,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
@@ -52,11 +53,12 @@ public class PiliAudioPlayerActivity extends CommonActivity {
     }
 
 
-    public void prepare(){
-        mPlayer = new ZMAudioPlayer(this);
+    public void prepare() {
+        if (mPlayer == null) {
+            mPlayer = new ZMAudioPlayer(this);
+        }
         try {
             mPlayer.setDecodeType(0)
-                    .setVolume(1.0f, 1.0f)
                     .setPlayerType(0)
                     .setOnErrorListener(new PlayerCallback.OnErrorListener() {
                         @Override
@@ -67,7 +69,7 @@ public class PiliAudioPlayerActivity extends CommonActivity {
                     .setOnCompleteListener(new PlayerCallback.OnCompleteListener() {
                         @Override
                         public void onComplete() {
-                            ToastUtil.showMessage( "Play Completed !");
+                            ToastUtil.showMessage("Play Completed !");
                         }
                     })
                     .setOnPrepareListener(new PlayerCallback.OnPrepareListener() {
@@ -78,9 +80,27 @@ public class PiliAudioPlayerActivity extends CommonActivity {
                             mIsStopped = false;
                         }
                     })
-                    .setWakeMode(PowerManager.PARTIAL_WAKE_LOCK)
-                    .prepareAsync()
-                    .setPath(mPath);
+                    .setOnInfoListener(new PlayerCallback.OnInfoListener() {
+                        @Override
+                        public void onInfo(int what, int extra) {
+
+                        }
+                    })
+                    .setOnSeekCompleteListener(new PlayerCallback.OnSeekCompleteListener() {
+                        @Override
+                        public void onSeekComplete() {
+
+                        }
+                    })
+                    .setOnBufferingUpdateListener(new PlayerCallback.OnBufferingUpdateListener() {
+                        @Override
+                        public void onBufferingUpdate(int percent) {
+
+                        }
+                    }).setWakeMode(PowerManager.PARTIAL_WAKE_LOCK)
+                    .build()
+                    .setPath(mPath)
+                    .prepareAsync();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +115,7 @@ public class PiliAudioPlayerActivity extends CommonActivity {
         }
     }
 
-    private boolean onError(int errorCode){
+    private boolean onError(int errorCode) {
         boolean isNeedReconnect = false;
         Log.e(TAG, "Error happened, errorCode = " + errorCode);
         switch (errorCode) {
@@ -237,6 +257,10 @@ public class PiliAudioPlayerActivity extends CommonActivity {
         mIsStopped = true;
         mPlayer = null;
     }
+
+    private float volumeL = 0.0f;
+    private float volumeR = 0.0f;
+
 
 
 }
