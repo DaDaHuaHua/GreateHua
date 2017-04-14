@@ -51,7 +51,7 @@ public class PiliVideoPlayerActivity extends CommonActivity {
         ImageView cover = (ImageView) findViewById(R.id.cover_view);
         try {
             mVideoPlayer.setDecodeType(AVOptions.MEDIA_CODEC_SW_DECODE)
-                    .setVideoType(0)
+                    .setPlayerType(0)
                     .setOnPrepareListener(new PlayerCallback.OnPrepareListener() {
                         @Override
                         public void onPrepared() {

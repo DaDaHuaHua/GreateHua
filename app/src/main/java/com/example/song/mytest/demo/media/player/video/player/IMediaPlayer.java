@@ -15,7 +15,7 @@ interface IMediaPlayer {
     /**
      * 初始化播放器操作
      */
-    void init();
+    void init() throws IOException;
 
     void start();
 
@@ -26,14 +26,6 @@ interface IMediaPlayer {
     void seekTo(long time);
 
     void release();
-
-    /**
-     * 设置播放音量
-     *
-     * @param l 左声道 0.0~1.0
-     * @param r 右声道 0.0~1.0
-     */
-    void setVolume(float l, float r);
 
     /**
      * 设置播放路径

@@ -1,12 +1,13 @@
 package com.example.song.mytest.demo.media.player.video;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.util.Log;
 
+import com.example.commonlibrary.util.StringUtil;
 import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
 import com.example.song.mytest.demo.media.player.video.player.IAudioPlayer;
 import com.example.song.mytest.demo.media.player.video.player.playerimpl.PiliAudioPlayer;
-import com.pili.pldroid.player.PLMediaPlayer;
 
 import java.io.IOException;
 
@@ -21,155 +22,114 @@ public class ZMAudioPlayer {
      */
     private IAudioPlayer mAudioPlayer;
 
-    private PlayerCallback.OnPrepareListener mOnPrepareListener;
-    private PlayerCallback.OnErrorListener mOnErrorListener;
-    private PlayerCallback.OnCompleteListener mOnCompleteListener;
-    private PlayerCallback.OnInfoListener mOnInfoListener;
-    private PlayerCallback.OnBufferingUpdateListener mOnBufferingUpdateListener;
-    private PlayerCallback.OnSeekCompleteListener mOnSeekCompleteListener;
-
-    private int mDecodeType = -1;
-    //默认是回放
-    private int mPlayerType = 0;
-
-
     public ZMAudioPlayer(Context context) {
         mAudioPlayer = new PiliAudioPlayer(context);
     }
 
 
-    public ZMAudioPlayer build() {
-        mAudioPlayer.setDecodeType(mDecodeType);
-        mAudioPlayer.setPlayerType(mPlayerType);
-        mAudioPlayer.setOnPrepareListener(mOnPrepareListener);
-        mAudioPlayer.setOnCompleteListener(mOnCompleteListener);
-        mAudioPlayer.setOnErrorListener(mOnErrorListener);
+    /**
+     * 配置播放器后需要调用此方法创建真正的播放器实现
+     */
+    public ZMAudioPlayer build() throws IOException {
         mAudioPlayer.init();
         return this;
     }
 
-    public ZMAudioPlayer prepareAsync() {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.prepareAsync();
-        }
-        return this;
+    public void prepareAsync() {
+        mAudioPlayer.prepareAsync();
     }
 
     public void start() {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.start();
-        }
+        mAudioPlayer.start();
     }
 
     public void pause() {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.pause();
-        }
+        mAudioPlayer.pause();
     }
 
     public void stop() {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.stop();
-        }
+        mAudioPlayer.stop();
     }
 
     public ZMAudioPlayer seekTo(long time) {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.seekTo(time);
-        }
+        mAudioPlayer.seekTo(time);
         return this;
     }
 
     public void release() {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.release();
-        }
+        mAudioPlayer.release();
     }
 
     public void reset() {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.reset();
-        }
+        mAudioPlayer.reset();
     }
 
+    /**
+     *
+     *  mode 设置wakeLock模式
+     */
     public ZMAudioPlayer setWakeMode(int mode) {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.setWakeMode(mode);
-        }
+        mAudioPlayer.setWakeMode(mode);
         return this;
     }
 
-    public ZMAudioPlayer setVolume(float l, float r) {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.setVolume(l, r);
-        }
-        return this;
-    }
-
+    /**
+     * 设置当前播放的是否为在线直播，如果是，底层会有一些播放优化
+     *
+     * @param type 0 回放 1直播
+     * @return ZMVideoPlayer
+     */
     public ZMAudioPlayer setPlayerType(int type) {
-        this.mPlayerType = type;
+        mAudioPlayer.setPlayerType(type);
         return this;
     }
 
+    /**
+     * 设置解码方式
+     *
+     * @param type 0软解码 1硬解码 2自动解码
+     * @return ZMVideoPlayer
+     */
     public ZMAudioPlayer setDecodeType(int type) {
-        this.mDecodeType = type;
+        mAudioPlayer.setDecodeType(type);
         return this;
     }
 
+    /**
+     * 设置播放路径
+     */
     public ZMAudioPlayer setPath(String path) throws IOException {
-        if (mAudioPlayer != null) {
-            mAudioPlayer.setPath(path);
-        } else {
-            Log.e("ZMAudioPlayer", "mAudioPlayer is null , 'setPath() ' is useless , just ignore ,");
-        }
+        mAudioPlayer.setPath(path);
         return this;
     }
 
     public ZMAudioPlayer setOnPrepareListener(PlayerCallback.OnPrepareListener listener) {
-        this.mOnPrepareListener = listener;
-        if (mAudioPlayer != null) {
-            mAudioPlayer.setOnPrepareListener(listener);
-        }
+        mAudioPlayer.setOnPrepareListener(listener);
         return this;
     }
 
     public ZMAudioPlayer setOnErrorListener(PlayerCallback.OnErrorListener listener) {
-        this.mOnErrorListener = listener;
-        if (mAudioPlayer != null) {
-            mAudioPlayer.setOnErrorListener(listener);
-        }
+        mAudioPlayer.setOnErrorListener(listener);
         return this;
     }
 
     public ZMAudioPlayer setOnCompleteListener(PlayerCallback.OnCompleteListener listener) {
-        this.mOnCompleteListener = listener;
-        if (mAudioPlayer != null) {
-            mAudioPlayer.setOnCompleteListener(listener);
-        }
+        mAudioPlayer.setOnCompleteListener(listener);
         return this;
     }
 
     public ZMAudioPlayer setOnInfoListener(PlayerCallback.OnInfoListener listener) {
-        this.mOnInfoListener = listener;
-        if(mAudioPlayer != null){
-            mAudioPlayer.setOnInfoListener(listener);
-        }
+        mAudioPlayer.setOnInfoListener(listener);
         return this;
     }
 
     public ZMAudioPlayer setOnBufferingUpdateListener(PlayerCallback.OnBufferingUpdateListener listener) {
-        this.mOnBufferingUpdateListener = listener;
-        if(mAudioPlayer != null){
-            mAudioPlayer.setOnBufferingUpdateListener(listener);
-        }
+        mAudioPlayer.setOnBufferingUpdateListener(listener);
         return this;
     }
 
     public ZMAudioPlayer setOnSeekCompleteListener(PlayerCallback.OnSeekCompleteListener listener) {
-        this.mOnSeekCompleteListener = listener;
-        if (mAudioPlayer != null) {
-            mAudioPlayer.setOnSeekCompleteListener(listener);
-        }
+        mAudioPlayer.setOnSeekCompleteListener(listener);
         return this;
     }
 

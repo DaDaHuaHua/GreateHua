@@ -3,6 +3,8 @@ package com.example.song.mytest.demo.media.player.video.player.playerimpl;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.commonlibrary.util.StringUtil;
+import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
 import com.example.song.mytest.demo.media.player.video.player.IAudioPlayer;
 import com.pili.pldroid.player.AVOptions;
@@ -19,9 +21,9 @@ public class PiliAudioPlayer implements IAudioPlayer {
     private static final String TAG = "PiliAudioPlayerTag";
     private Context mContext;
     private PLMediaPlayer mPlayer;
-    //PiliAudio不支持切换
     private int mAudioType = -1;
     private int mDecodeType = -1;
+    private int mWakeMode = -1;
     private AVOptions mAVOptions;
     private PlayerCallback.OnCompleteListener mOnCompleteListener;
     private PlayerCallback.OnPrepareListener mOnPrepareListener;
@@ -29,7 +31,8 @@ public class PiliAudioPlayer implements IAudioPlayer {
     private PlayerCallback.OnInfoListener mOnInfoListener;
     private PlayerCallback.OnBufferingUpdateListener mOnBufferingUpdateListener;
     private PlayerCallback.OnSeekCompleteListener mOnSeekCompleteListener;
-    private int mWakeMode = -1;
+
+    private String mPath;
 
     public PiliAudioPlayer(Context context) {
         this.mContext = context;
@@ -49,9 +52,10 @@ public class PiliAudioPlayer implements IAudioPlayer {
     }
 
     @Override
-    public void init() {
+    public void init() throws IOException {
         buildOptions();
         mPlayer = new PLMediaPlayer(mContext, mAVOptions);
+
         if (mWakeMode != -1) {
             mPlayer.setWakeMode(mContext.getApplicationContext(), mWakeMode);
         }
@@ -82,7 +86,6 @@ public class PiliAudioPlayer implements IAudioPlayer {
                 }
             }
         });
-        //onInfo()不暴露出去
         mPlayer.setOnInfoListener(new PLMediaPlayer.OnInfoListener() {
             @Override
             public boolean onInfo(PLMediaPlayer plMediaPlayer, int i, int i1) {
@@ -92,7 +95,6 @@ public class PiliAudioPlayer implements IAudioPlayer {
                 return true;
             }
         });
-        //onBufferingUpdate() 不暴露出去
         mPlayer.setOnBufferingUpdateListener(new PLMediaPlayer.OnBufferingUpdateListener() {
             @Override
             public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
@@ -109,6 +111,9 @@ public class PiliAudioPlayer implements IAudioPlayer {
                 }
             }
         });
+        if (StringUtil.isNotBlank(mPath)) {
+            mPlayer.setDataSource(mPath);
+        }
     }
 
     @Override
@@ -162,6 +167,10 @@ public class PiliAudioPlayer implements IAudioPlayer {
         }
     }
 
+    /**
+     *
+     * @param mode
+     */
     @Override
     public void setWakeMode(int mode) {
         if (mWakeMode == -1) {
@@ -172,22 +181,20 @@ public class PiliAudioPlayer implements IAudioPlayer {
 
     }
 
-    @Override
-    public void setVolume(float l, float r) {
-        if (mPlayer != null) {
-            mPlayer.setVolume(l, r);
-        } else {
-            Log.e("PiliAudioPlayer", "u should initialize player before set volume ,have u invoked init() or build() ? ");
-        }
-    }
+
 
     @Override
     public void setPath(String path) throws IOException {
+        this.mPath = path;
         if (mPlayer != null) {
             mPlayer.setDataSource(path);
         }
     }
 
+    /**
+     *
+     * @param type 0:回放 1：直播
+     */
     @Override
     public void setPlayerType(int type) {
         if (mAudioType == -1) {
@@ -197,6 +204,10 @@ public class PiliAudioPlayer implements IAudioPlayer {
         }
     }
 
+    /**
+     *
+     * @param type
+     */
     @Override
     public void setDecodeType(int type) {
         if (mDecodeType == -1) {

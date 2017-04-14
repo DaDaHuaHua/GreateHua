@@ -24,14 +24,6 @@ public class ZMVideoPlayer extends RelativeLayout {
      */
     private IVideoPlayer mVideoPlayer;
 
-    private PlayerCallback.OnPrepareListener mOnPrepareListener;
-    private PlayerCallback.OnErrorListener mOnErrorListener;
-    private PlayerCallback.OnCompleteListener mOnCompleteListener;
-    private PlayerCallback.OnInfoListener mOnInfoListener;
-    private PlayerCallback.OnBufferingUpdateListener mOnBufferingUpdateListener;
-    private PlayerCallback.OnSeekCompleteListener mOnSeekCompleteListener;
-    private View mBufferingView;
-    private View mCoverView;
 
     public ZMVideoPlayer(Context context) {
         this(context, null);
@@ -51,12 +43,7 @@ public class ZMVideoPlayer extends RelativeLayout {
      *
      * @return ZMVideoPlayer
      */
-    public ZMVideoPlayer build() {
-        mVideoPlayer.setOnPrepareListener(mOnPrepareListener);
-        mVideoPlayer.setOnErrorListener(mOnErrorListener);
-        mVideoPlayer.setOnCompleteListener(mOnCompleteListener);
-        mVideoPlayer.setBufferingView(mBufferingView);
-        mVideoPlayer.setCoverView(mCoverView);
+    public ZMVideoPlayer build() throws IOException {
         mVideoPlayer.init();
         View contentView = mVideoPlayer.getPlayerLayout();
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -90,7 +77,7 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @param videoType 0 回放 1直播
      * @return ZMVideoPlayer
      */
-    public ZMVideoPlayer setVideoType(int videoType) {
+    public ZMVideoPlayer setPlayerType(int videoType) {
         mVideoPlayer.setPlayerType(videoType);
         return this;
     }
@@ -154,7 +141,7 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @param view view
      */
     public ZMVideoPlayer setBufferingView(View view) {
-        this.mBufferingView = view;
+        mVideoPlayer.setBufferingView(view);
         return this;
     }
 
@@ -164,53 +151,72 @@ public class ZMVideoPlayer extends RelativeLayout {
      * @param view view
      */
     public ZMVideoPlayer setCoverView(View view) {
-        this.mCoverView = view;
+        mVideoPlayer.setCoverView(view);
         return this;
     }
 
+
+    /***
+     * 监听播放器的 prepare 过程
+     * prepare 过程主要包括：创建资源、建立连接、请求码流等等
+     * 当 prepare 完成后， 会回调onPrepare 。可以调用播放器的 start() 启动播放
+     */
     public ZMVideoPlayer setOnPrepareListener(PlayerCallback.OnPrepareListener listener) {
-        this.mOnPrepareListener = listener;
         if (mVideoPlayer != null) {
             mVideoPlayer.setOnPrepareListener(listener);
         }
         return this;
     }
 
+    /***
+     * 监听播放器的错误消息
+     * 返回值决定了该错误是否已经被处理，如果返回 false，则代表没有被处理，下一步则会触发 onCompletion 消息。
+     */
     public ZMVideoPlayer setOnErrorListener(PlayerCallback.OnErrorListener listener) {
-        this.mOnErrorListener = listener;
         if (mVideoPlayer != null) {
             mVideoPlayer.setOnErrorListener(listener);
         }
         return this;
     }
 
+    /***
+     * 监听播放结束的消息
+     * 具体参见详细播放器的实现
+     */
     public ZMVideoPlayer setOnCompleteListener(PlayerCallback.OnCompleteListener listener) {
-        this.mOnCompleteListener = listener;
         if(mVideoPlayer !=null ){
             mVideoPlayer.setOnCompleteListener(listener);
         }
         return this;
     }
 
-
+    /**
+     * 在播放器启动后，播放器发生状态变化时调用该对象的 onInfo 方法，同步状态信息。
+     * 播放信息见具体播放器的实现
+     */
     public ZMVideoPlayer setOnInfoListener(PlayerCallback.OnInfoListener listener) {
-        this.mOnInfoListener = listener;
         if (mVideoPlayer != null) {
             mVideoPlayer.setOnInfoListener(listener);
         }
         return this;
     }
 
+    /**
+     * 已经缓冲的数据量占整个视频时长的百分比。
+     * 仅在播放文件和回放时才有效
+     */
     public ZMVideoPlayer setOnBufferingUpdateListener(PlayerCallback.OnBufferingUpdateListener listener) {
-        this.mOnBufferingUpdateListener = listener;
         if (mVideoPlayer != null) {
             mVideoPlayer.setOnBufferingUpdateListener(listener);
         }
         return this;
     }
 
+    /**
+     * seek 完成后回调
+     * 当调用的播放器的 seekTo 方法后，会在 seek 成功后触发该回调。
+     */
     public ZMVideoPlayer setOnSeekCompleteListener(PlayerCallback.OnSeekCompleteListener listener) {
-        this.mOnSeekCompleteListener = listener;
         if (mVideoPlayer != null) {
             mVideoPlayer.setOnSeekCompleteListener(listener);
         }
