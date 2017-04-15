@@ -18,7 +18,6 @@ import java.io.IOException;
  */
 
 public class PiliAudioPlayer implements IAudioPlayer {
-    private static final String TAG = "PiliAudioPlayerTag";
     private Context mContext;
     private PLMediaPlayer mPlayer;
     private int mAudioType = -1;
@@ -169,14 +168,15 @@ public class PiliAudioPlayer implements IAudioPlayer {
 
     /**
      *
-     * @param mode
+     *  wakeloke
+     * @param
      */
     @Override
     public void setWakeMode(int mode) {
         if (mWakeMode == -1) {
             this.mWakeMode = mode;
         } else {
-            Log.e("PiliAudioPlayer", " 'setWakeMode(int)' do not support repeat invoke");
+            Log.e("PiliAudioPlayer", " 'setWakeMode(int)' does not support repeat invoke");
         }
 
     }
