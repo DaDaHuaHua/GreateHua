@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.demo.media.player.video.MediaController;
+import com.example.song.mytest.demo.media.player.MediaController;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;

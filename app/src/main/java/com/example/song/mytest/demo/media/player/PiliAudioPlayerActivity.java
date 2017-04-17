@@ -9,13 +9,11 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.demo.media.player.video.ZMAudioPlayer;
-import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
 import com.pili.pldroid.player.PLMediaPlayer;
 
 import java.io.IOException;

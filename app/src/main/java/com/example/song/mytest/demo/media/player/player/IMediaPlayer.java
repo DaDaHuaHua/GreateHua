@@ -1,8 +1,6 @@
-package com.example.song.mytest.demo.media.player.video.player;
+package com.example.song.mytest.demo.media.player.player;
 
-import android.view.View;
-
-import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
 
 import java.io.IOException;
 

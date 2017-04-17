@@ -1,13 +1,10 @@
-package com.example.song.mytest.demo.media.player.video;
+package com.example.song.mytest.demo.media.player;
 
 import android.content.Context;
-import android.graphics.Point;
-import android.util.Log;
 
-import com.example.commonlibrary.util.StringUtil;
-import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
-import com.example.song.mytest.demo.media.player.video.player.IAudioPlayer;
-import com.example.song.mytest.demo.media.player.video.player.playerimpl.PiliAudioPlayer;
+import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.player.IAudioPlayer;
+import com.example.song.mytest.demo.media.player.player.playerimpl.PiliAudioPlayer;
 
 import java.io.IOException;
 

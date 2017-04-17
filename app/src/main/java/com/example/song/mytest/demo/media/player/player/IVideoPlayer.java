@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media.player.video.player;
+package com.example.song.mytest.demo.media.player.player;
 
 import android.view.View;
 

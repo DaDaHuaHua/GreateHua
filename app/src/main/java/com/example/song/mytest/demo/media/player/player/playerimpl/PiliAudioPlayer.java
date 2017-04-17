@@ -1,12 +1,11 @@
-package com.example.song.mytest.demo.media.player.video.player.playerimpl;
+package com.example.song.mytest.demo.media.player.player.playerimpl;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.example.commonlibrary.util.StringUtil;
-import com.example.commonlibrary.util.ToastUtil;
-import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
-import com.example.song.mytest.demo.media.player.video.player.IAudioPlayer;
+import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.player.IAudioPlayer;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 

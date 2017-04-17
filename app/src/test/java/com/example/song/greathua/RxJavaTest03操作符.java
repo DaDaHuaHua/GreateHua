@@ -91,44 +91,48 @@ public class RxJavaTest03操作符 {
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
                 System.out.println("emit 1");
                 e.onNext(1);
-                Thread.sleep(1000);
+               // Thread.sleep(1000);
 
                 System.out.println("emit 2");
                 e.onNext(2);
-                Thread.sleep(1000);
+               // Thread.sleep(1000);
 
                 System.out.println("emit 3");
                 e.onNext(3);
-                Thread.sleep(1000);
+               // Thread.sleep(1000);
 
                 System.out.println("emit 4");
                 e.onNext(4);
-                Thread.sleep(1000);
+               // Thread.sleep(1000);
 
                 System.out.println("emit onComplete1");
                 e.onComplete();
             }
-        }).subscribeOn(Schedulers.io());
+        })
+                //.subscribeOn(Schedulers.io())
+                ;
 
         Observable<String> observable2 = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> e) throws Exception {
                 System.out.println("emit A");
                 e.onNext("A");
-                Thread.sleep(1000);
+                //Thread.sleep(1000);
 
                 System.out.println("emit B");
                 e.onNext("B");
-                Thread.sleep(1000);
+               // Thread.sleep(1000);
 
                 System.out.println("emit C");
                 e.onNext("C");
-                Thread.sleep(1000);
+                //Thread.sleep(1000);
 
                 System.out.println("emit onComplete2");
                 e.onComplete();
             }
-        }).subscribeOn(Schedulers.io());
+        })
+              //  .subscribeOn(Schedulers.io())
+                ;
 
         Observable.zip(observable1, observable2, new BiFunction<Integer, String, String>() {
             @Override

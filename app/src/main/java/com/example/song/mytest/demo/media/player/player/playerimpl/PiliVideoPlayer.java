@@ -1,14 +1,13 @@
-package com.example.song.mytest.demo.media.player.video.player.playerimpl;
+package com.example.song.mytest.demo.media.player.player.playerimpl;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 
 import com.example.song.R;
-import com.example.song.mytest.demo.media.player.video.MediaController;
-import com.example.song.mytest.demo.media.player.video.callback.PlayerCallback;
-import com.example.song.mytest.demo.media.player.video.player.IVideoPlayer;
+import com.example.song.mytest.demo.media.player.MediaController;
+import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.player.IVideoPlayer;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;

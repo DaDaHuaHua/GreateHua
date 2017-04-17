@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.song.mytest.demo.media.player.video.ZMVideoPlayer
+    <com.example.song.mytest.demo.media.player.ZMVideoPlayer
         android:id="@+id/player"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
