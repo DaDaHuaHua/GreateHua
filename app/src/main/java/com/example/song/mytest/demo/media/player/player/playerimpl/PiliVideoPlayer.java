@@ -30,6 +30,9 @@ public class PiliVideoPlayer implements IVideoPlayer {
     //播放器配置
     private AVOptions mAvOptions;
 
+    private PlayerCallback.OnPrepareListener mPlayerOnPrepareListener;
+    private PlayerCallback.OnPrepareListener mControllerOnPrepareListener;
+
     /**
      * 播放器显示比例
      * PLVideoTextureView.ASPECT_RATIO_ORIGIN           原始尺寸
@@ -51,7 +54,6 @@ public class PiliVideoPlayer implements IVideoPlayer {
         buildOptions();
         MediaController mediaController = new MediaController(mContext, false, mVideoType == 1);
         mPlayer.setMediaController(mediaController);
-
     }
 
     /**
@@ -166,6 +168,26 @@ public class PiliVideoPlayer implements IVideoPlayer {
         }
     }
 
+    @Override
+    public int getPlayerType() {
+        return mVideoType;
+    }
+
+    @Override
+    public long getDuration() {
+        if (mPlayer != null) {
+            return mPlayer.getDuration();
+        }
+        return 0;
+    }
+
+    @Override
+    public long getCurrentPosition() {
+        if(mPlayer != null ){
+            return mPlayer.getCurrentPosition();
+        }
+        return 0;
+    }
 
     @Override
     public void setDecodeType(int type) {
@@ -173,22 +195,47 @@ public class PiliVideoPlayer implements IVideoPlayer {
     }
 
     /***
-     * 监听播放器的 prepare 过程
+     * 监听播放器的 prepare 过程 ，提供给ZMVideoPlayer设置并监听piliVideoPlayer的prepare过程
+     *
      * prepare 过程主要包括：创建资源、建立连接、请求码流等等
      * 当 prepare 完成后， 会回调onPrepare 。可以调用播放器的 start() 启动播放
      */
     @Override
-    public void setOnPrepareListener(final PlayerCallback.OnPrepareListener listener) {
+    public void setOnPrepareListener( PlayerCallback.OnPrepareListener listener) {
+        this.mPlayerOnPrepareListener = listener;
         if (mPlayer != null) {
             mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(PLMediaPlayer plMediaPlayer) {
-                    listener.onPrepared();
+                    mPlayerOnPrepareListener.onPrepared();
+                    if(mControllerOnPrepareListener != null){
+                        mControllerOnPrepareListener.onPrepared();
+                    }
                 }
             });
         }
     }
 
+    /***
+     * 监听播放器的 prepare 过程 ， 提供给MediaController监听piliVideoPlayer的prepare过程
+     *
+     *  同{@link #setOnPrepareListener }
+     */
+    @Override
+    public void setControllerOnPrepareListener( PlayerCallback.OnPrepareListener controllerOnPrepareListener) {
+        this.mControllerOnPrepareListener = controllerOnPrepareListener;
+        if(mPlayer != null ){
+            mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(PLMediaPlayer plMediaPlayer) {
+                    if(mPlayerOnPrepareListener!= null){
+                        mPlayerOnPrepareListener.onPrepared();
+                    }
+                    mControllerOnPrepareListener.onPrepared();
+                }
+            });
+        }
+    }
 
     /***
      * 监听播放器的错误消息
@@ -221,10 +268,10 @@ public class PiliVideoPlayer implements IVideoPlayer {
 
 
     /**
-     如果是播放文件，则是播放到文件结束后产生回调
-     如果是在线视频，则会在读取到码流的EOF信息后产生回调，回调前会先播放完已缓冲的数据
-     如果播放过程中产生onError，并且没有处理的话，最后也会回调本接口
-     如果播放前设置了 setLooping(true)，则播放结束后会自动重新开始，不会回调本接口
+     * 如果是播放文件，则是播放到文件结束后产生回调
+     * 如果是在线视频，则会在读取到码流的EOF信息后产生回调，回调前会先播放完已缓冲的数据
+     * 如果播放过程中产生onError，并且没有处理的话，最后也会回调本接口
+     * 如果播放前设置了 setLooping(true)，则播放结束后会自动重新开始，不会回调本接口
      */
     @Override
     public void setOnCompleteListener(final PlayerCallback.OnCompleteListener listener) {
@@ -240,14 +287,15 @@ public class PiliVideoPlayer implements IVideoPlayer {
 
     /**
      * what             	            value                描述
-     MEDIA_INFO_UNKNOWN	                1	                未知消息
-     MEDIA_INFO_VIDEO_RENDERING_START	3	                第一帧视频已成功渲染
-     MEDIA_INFO_BUFFERING_START     	701	                开始缓冲
-     MEDIA_INFO_BUFFERING_END	        702	                停止缓冲
-     MEDIA_INFO_VIDEO_ROTATION_CHANGED	10001	            获取到视频的播放角度
-     MEDIA_INFO_AUDIO_RENDERING_START	10002	            第一帧音频已成功播放
-     MEDIA_INFO_VIDEO_GOP_TIME	        10003	            获取视频的I帧间隔
-     MEDIA_INFO_SWITCHING_SW_DECODE	    802	                硬解失败，自动切换软解
+     * MEDIA_INFO_UNKNOWN	                1	                未知消息
+     * MEDIA_INFO_VIDEO_RENDERING_START	3	                第一帧视频已成功渲染
+     * MEDIA_INFO_BUFFERING_START     	701	                开始缓冲
+     * MEDIA_INFO_BUFFERING_END	        702	                停止缓冲
+     * MEDIA_INFO_VIDEO_ROTATION_CHANGED	10001	            获取到视频的播放角度
+     * MEDIA_INFO_AUDIO_RENDERING_START	10002	            第一帧音频已成功播放
+     * MEDIA_INFO_VIDEO_GOP_TIME	        10003	            获取视频的I帧间隔
+     * MEDIA_INFO_SWITCHING_SW_DECODE	    802	                硬解失败，自动切换软解
+     *
      * @param listener listener
      */
     @Override

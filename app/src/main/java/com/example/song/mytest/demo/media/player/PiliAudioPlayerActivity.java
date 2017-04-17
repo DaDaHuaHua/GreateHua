@@ -44,7 +44,6 @@ public class PiliAudioPlayerActivity extends CommonActivity {
         setContentView(R.layout.activity_pili_audio_player);
         AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         audioManager.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
-
         prepare();
         startTelephonyListener();
 
@@ -95,7 +94,7 @@ public class PiliAudioPlayerActivity extends CommonActivity {
                         public void onBufferingUpdate(int percent) {
 
                         }
-                    }).setWakeMode(PowerManager.PARTIAL_WAKE_LOCK)
+                    })
                     .build()
                     .setPath(mPath)
                     .prepareAsync();

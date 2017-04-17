@@ -1,8 +1,10 @@
 package com.example.song.mytest.demo.media.player.player.playerimpl;
 
 import android.content.Context;
+import android.os.PowerManager;
 import android.util.Log;
 
+import com.example.commonlibrary.util.ListUtil;
 import com.example.commonlibrary.util.StringUtil;
 import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
 import com.example.song.mytest.demo.media.player.player.IAudioPlayer;
@@ -10,6 +12,8 @@ import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zz on 2017/4/13.
@@ -21,16 +25,17 @@ public class PiliAudioPlayer implements IAudioPlayer {
     private PLMediaPlayer mPlayer;
     private int mAudioType = -1;
     private int mDecodeType = -1;
-    private int mWakeMode = -1;
     private AVOptions mAVOptions;
     private PlayerCallback.OnCompleteListener mOnCompleteListener;
-    private PlayerCallback.OnPrepareListener mOnPrepareListener;
+    private PlayerCallback.OnPrepareListener mPlayerOnPrepareListener;
+    private PlayerCallback.OnPrepareListener mControllerOnPrepareListener;
     private PlayerCallback.OnErrorListener mOnErrorListener;
     private PlayerCallback.OnInfoListener mOnInfoListener;
     private PlayerCallback.OnBufferingUpdateListener mOnBufferingUpdateListener;
     private PlayerCallback.OnSeekCompleteListener mOnSeekCompleteListener;
 
     private String mPath;
+
 
     public PiliAudioPlayer(Context context) {
         this.mContext = context;
@@ -53,16 +58,13 @@ public class PiliAudioPlayer implements IAudioPlayer {
     public void init() throws IOException {
         buildOptions();
         mPlayer = new PLMediaPlayer(mContext, mAVOptions);
-
-        if (mWakeMode != -1) {
-            mPlayer.setWakeMode(mContext.getApplicationContext(), mWakeMode);
-        }
+        mPlayer.setWakeMode(mContext.getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
 
         mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(PLMediaPlayer plMediaPlayer) {
-                if (mOnPrepareListener != null) {
-                    mOnPrepareListener.onPrepared();
+                if (mPlayerOnPrepareListener != null) {
+                    mPlayerOnPrepareListener.onPrepared();
                 }
             }
         });
@@ -165,22 +167,6 @@ public class PiliAudioPlayer implements IAudioPlayer {
         }
     }
 
-    /**
-     *
-     *  wakeloke
-     * @param
-     */
-    @Override
-    public void setWakeMode(int mode) {
-        if (mWakeMode == -1) {
-            this.mWakeMode = mode;
-        } else {
-            Log.e("PiliAudioPlayer", " 'setWakeMode(int)' does not support repeat invoke");
-        }
-
-    }
-
-
 
     @Override
     public void setPath(String path) throws IOException {
@@ -191,11 +177,11 @@ public class PiliAudioPlayer implements IAudioPlayer {
     }
 
     /**
-     *
      * @param type 0:回放 1：直播
      */
     @Override
     public void setPlayerType(int type) {
+        //只能设置一次，因此用初始值判断
         if (mAudioType == -1) {
             this.mAudioType = type;
         } else {
@@ -203,10 +189,29 @@ public class PiliAudioPlayer implements IAudioPlayer {
         }
     }
 
-    /**
-     *
-     * @param type
-     */
+    @Override
+    public int getPlayerType() {
+        return mAudioType;
+    }
+
+    @Override
+    public long getDuration() {
+        if (mPlayer != null) {
+            return mPlayer.getDuration();
+        }
+        return 0;
+    }
+
+
+    @Override
+    public long getCurrentPosition() {
+        if (mPlayer != null) {
+            return mPlayer.getCurrentPosition();
+        }
+        return 0;
+    }
+
+
     @Override
     public void setDecodeType(int type) {
         if (mDecodeType == -1) {
@@ -218,12 +223,31 @@ public class PiliAudioPlayer implements IAudioPlayer {
 
     @Override
     public void setOnPrepareListener(final PlayerCallback.OnPrepareListener listener) {
-        this.mOnPrepareListener = listener;
+        this.mPlayerOnPrepareListener = listener;
         if (mPlayer != null) {
             mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(PLMediaPlayer plMediaPlayer) {
-                    listener.onPrepared();
+                    mPlayerOnPrepareListener.onPrepared();
+                    if (mControllerOnPrepareListener != null) {
+                        mControllerOnPrepareListener.onPrepared();
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void setControllerOnPrepareListener(PlayerCallback.OnPrepareListener listener) {
+        this.mControllerOnPrepareListener = listener;
+        if (mPlayer != null) {
+            mPlayer.setOnPreparedListener(new PLMediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(PLMediaPlayer plMediaPlayer) {
+                    if (mPlayerOnPrepareListener != null) {
+                        mPlayerOnPrepareListener.onPrepared();
+                    }
+                    mControllerOnPrepareListener.onPrepared();
                 }
             });
         }

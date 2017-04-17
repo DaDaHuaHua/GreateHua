@@ -62,15 +62,6 @@ public class ZMAudioPlayer {
     }
 
     /**
-     *
-     *  mode 设置wakeLock模式
-     */
-    public ZMAudioPlayer setWakeMode(int mode) {
-        mAudioPlayer.setWakeMode(mode);
-        return this;
-    }
-
-    /**
      * 设置当前播放的是否为在线直播，如果是，底层会有一些播放优化
      *
      * @param type 0 回放 1直播

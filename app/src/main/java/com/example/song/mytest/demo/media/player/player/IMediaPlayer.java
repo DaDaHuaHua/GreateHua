@@ -38,6 +38,24 @@ interface IMediaPlayer {
     void setPlayerType(int type);
 
     /**
+     * 获取当前播放类型
+     * @return 0 回放  1直播
+     */
+    int getPlayerType();
+
+    /**
+     * 获取播放总时长
+     * @return long
+     */
+    long getDuration();
+
+    /**
+     * 获取当前播放时长
+     * @return long
+     */
+    long getCurrentPosition();
+
+    /**
      * 设置解码方式 0软解码 1硬解码 2自动解码
      */
     void setDecodeType(int type);
@@ -50,6 +68,13 @@ interface IMediaPlayer {
      * @param listener listener
      */
     void setOnPrepareListener(PlayerCallback.OnPrepareListener listener);
+
+    /**
+     * 给MediaController调用
+     * 在palyer的OnPrepared之后回调给mediaController
+     * @param listener
+     */
+    void setControllerOnPrepareListener(PlayerCallback.OnPrepareListener listener);
 
     /**
      * 播放错误回调

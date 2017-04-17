@@ -8,6 +8,6 @@ package com.example.song.mytest.demo.media.player.player;
 
 public interface IAudioPlayer extends IMediaPlayer {
     void prepareAsync();
-    void setWakeMode( int mode);
+
     void reset();
 }
