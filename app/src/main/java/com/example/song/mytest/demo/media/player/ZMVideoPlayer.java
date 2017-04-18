@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.player.IMediaController;
+import com.example.song.mytest.demo.media.player.player.IMediaPlayer;
 import com.example.song.mytest.demo.media.player.player.IVideoPlayer;
 import com.example.song.mytest.demo.media.player.player.playerimpl.PiliVideoPlayer;
 
@@ -67,8 +69,17 @@ public class ZMVideoPlayer extends RelativeLayout {
         mVideoPlayer.seekTo(time);
     }
 
+    public void reset() {
+        mVideoPlayer.reset();
+    }
+
+
     public void release() {
         mVideoPlayer.release();
+    }
+
+    public boolean isPlaying() {
+        return mVideoPlayer.isPlaying();
     }
 
     /**
@@ -156,6 +167,24 @@ public class ZMVideoPlayer extends RelativeLayout {
     }
 
 
+    public IMediaPlayer getIMediaPlayer() {
+        return mVideoPlayer;
+    }
+
+    public void setMediaController(IMediaController mediaController) {
+        if (mVideoPlayer != null) {
+            mVideoPlayer.setMediaController(mediaController);
+        }
+    }
+
+    public IMediaController getMediaController() {
+        if (mVideoPlayer != null) {
+            return mVideoPlayer.getMediaController();
+        } else {
+            throw new NullPointerException("mVideoPlayer is null");
+        }
+    }
+
     /***
      * 监听播放器的 prepare 过程
      * prepare 过程主要包括：创建资源、建立连接、请求码流等等
@@ -180,11 +209,11 @@ public class ZMVideoPlayer extends RelativeLayout {
     }
 
     /***
-     * 监听播放结束的消息
+     * 监听播放结束
      * 具体参见详细播放器的实现
      */
     public ZMVideoPlayer setOnCompleteListener(PlayerCallback.OnCompleteListener listener) {
-        if(mVideoPlayer !=null ){
+        if (mVideoPlayer != null) {
             mVideoPlayer.setOnCompleteListener(listener);
         }
         return this;

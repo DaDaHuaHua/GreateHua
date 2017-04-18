@@ -13,6 +13,7 @@ import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
 import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.player.ZMMediaController;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 
@@ -26,6 +27,7 @@ import java.io.IOException;
 
 public class PiliVideoPlayerActivity extends CommonActivity {
      private ZMVideoPlayer mVideoPlayer;
+    private ZMMediaController mMediaController;
     private TextView mTvSwitchOrientation;
     private TextView mTvSwitchRatio;
     private int mCurrentDegree = 0;
@@ -87,6 +89,8 @@ public class PiliVideoPlayerActivity extends CommonActivity {
         mTvSwitchRatio = (TextView) findViewById(R.id.switch_ratio);
         mTvSwitchRatio.setOnClickListener(this);
         mTvSwitchOrientation.setText("旋转0°");
+        mMediaController  = (ZMMediaController) findViewById(R.id.controller);
+        mVideoPlayer.setMediaController(mMediaController);
     }
 
     @Override

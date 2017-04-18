@@ -4,16 +4,14 @@ import android.content.Context;
 import android.os.PowerManager;
 import android.util.Log;
 
-import com.example.commonlibrary.util.ListUtil;
 import com.example.commonlibrary.util.StringUtil;
 import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
 import com.example.song.mytest.demo.media.player.player.IAudioPlayer;
+import com.example.song.mytest.demo.media.player.player.IMediaController;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zz on 2017/4/13.
@@ -36,6 +34,9 @@ public class PiliAudioPlayer implements IAudioPlayer {
 
     private String mPath;
 
+    private IMediaController mMediaController;
+    //当前缓冲占比
+    private int mCurBufferPercent;
 
     public PiliAudioPlayer(Context context) {
         this.mContext = context;
@@ -100,6 +101,7 @@ public class PiliAudioPlayer implements IAudioPlayer {
             public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
                 if (mOnBufferingUpdateListener != null) {
                     mOnBufferingUpdateListener.onBufferingUpdate(i);
+                    mCurBufferPercent = i;
                 }
             }
         });
@@ -127,6 +129,7 @@ public class PiliAudioPlayer implements IAudioPlayer {
     public void reset() {
         if (mPlayer != null) {
             mPlayer.reset();
+            mMediaController.reset();
         }
     }
 
@@ -167,6 +170,10 @@ public class PiliAudioPlayer implements IAudioPlayer {
         }
     }
 
+    @Override
+    public boolean isPlaying() {
+        return mPlayer.isPlaying();
+    }
 
     @Override
     public void setPath(String path) throws IOException {
@@ -211,6 +218,13 @@ public class PiliAudioPlayer implements IAudioPlayer {
         return 0;
     }
 
+    @Override
+    public int getBufferPercentage() {
+        if (mPlayer != null) {
+            return mCurBufferPercent;
+        }
+        return 0;
+    }
 
     @Override
     public void setDecodeType(int type) {
@@ -219,6 +233,20 @@ public class PiliAudioPlayer implements IAudioPlayer {
         } else {
             Log.e("PiliAudioPlayer", " 'setDecodeType(int)' do not support repeat invoke");
         }
+    }
+
+    @Override
+    public void setMediaController(IMediaController mediaController) {
+        this.mMediaController = mediaController;
+        mMediaController.onMediaControllerSet(this);
+    }
+
+    @Override
+    public IMediaController getMediaController() {
+        if (mMediaController == null) {
+            throw new NullPointerException("getMediaController() got null , have u invoked 'setMediaController(IMediaController)' ?");
+        }
+        return mMediaController;
     }
 
     @Override
@@ -300,6 +328,7 @@ public class PiliAudioPlayer implements IAudioPlayer {
             mPlayer.setOnBufferingUpdateListener(new PLMediaPlayer.OnBufferingUpdateListener() {
                 @Override
                 public void onBufferingUpdate(PLMediaPlayer plMediaPlayer, int i) {
+                    mCurBufferPercent = i;
                     mOnBufferingUpdateListener.onBufferingUpdate(i);
                 }
             });

@@ -4,13 +4,14 @@ import android.content.Context;
 
 import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
 import com.example.song.mytest.demo.media.player.player.IAudioPlayer;
+import com.example.song.mytest.demo.media.player.player.IMediaController;
 import com.example.song.mytest.demo.media.player.player.playerimpl.PiliAudioPlayer;
 
 import java.io.IOException;
 
 /**
  * Created by zz on 2017/4/13.
- *
+ * 音频播放器
  */
 
 public class ZMAudioPlayer {
@@ -61,6 +62,10 @@ public class ZMAudioPlayer {
         mAudioPlayer.reset();
     }
 
+    public boolean isPlaying() {
+        return mAudioPlayer.isPlaying();
+    }
+
     /**
      * 设置当前播放的是否为在线直播，如果是，底层会有一些播放优化
      *
@@ -89,6 +94,14 @@ public class ZMAudioPlayer {
     public ZMAudioPlayer setPath(String path) throws IOException {
         mAudioPlayer.setPath(path);
         return this;
+    }
+
+    public void setMediaController(IMediaController mediaController) {
+        mAudioPlayer.setMediaController(mediaController);
+    }
+
+    public IMediaController getMediaController() {
+        return mAudioPlayer.getMediaController();
     }
 
     public ZMAudioPlayer setOnPrepareListener(PlayerCallback.OnPrepareListener listener) {

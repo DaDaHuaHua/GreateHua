@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.song.R;
 import com.example.song.mytest.demo.media.player.MediaController;
 import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.mytest.demo.media.player.player.IMediaController;
 import com.example.song.mytest.demo.media.player.player.IVideoPlayer;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
@@ -29,6 +30,8 @@ public class PiliVideoPlayer implements IVideoPlayer {
     private int mDecodeType;
     //播放器配置
     private AVOptions mAvOptions;
+    //MediaController
+    private IMediaController mMediaController;
 
     private PlayerCallback.OnPrepareListener mPlayerOnPrepareListener;
     private PlayerCallback.OnPrepareListener mControllerOnPrepareListener;
@@ -108,11 +111,22 @@ public class PiliVideoPlayer implements IVideoPlayer {
     }
 
     @Override
+    public void reset() {
+        mPlayer.stopPlayback();
+        mMediaController.reset();
+    }
+
+    @Override
     public void release() {
         if (mPlayer != null) {
             mPlayer.stopPlayback();
             mPlayer.releaseSurfactexture();
         }
+    }
+
+    @Override
+    public boolean isPlaying() {
+        return mPlayer.isPlaying();
     }
 
     @Override
@@ -190,8 +204,27 @@ public class PiliVideoPlayer implements IVideoPlayer {
     }
 
     @Override
+    public int getBufferPercentage() {
+        return mPlayer.getBufferPercentage();
+    }
+
+    @Override
     public void setDecodeType(int type) {
         this.mDecodeType = type;
+    }
+
+    @Override
+    public void setMediaController(com.example.song.mytest.demo.media.player.player.IMediaController mediaController) {
+        this.mMediaController = mediaController;
+        mMediaController.onMediaControllerSet(this);
+    }
+
+    @Override
+    public IMediaController getMediaController() {
+        if(mMediaController == null ){
+            throw  new NullPointerException("getMediaController() got null , have u invoked 'setMediaController(IMediaController)' ?");
+        }
+        return mMediaController;
     }
 
     /***

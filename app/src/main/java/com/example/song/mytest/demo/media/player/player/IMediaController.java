@@ -7,10 +7,19 @@ import android.support.annotation.LayoutRes;
  * MediaController
  */
 
- interface IMediaController {
+public interface IMediaController extends IMediaPlayer.OnControllerSetListener {
 
-    @LayoutRes int getControllerLayout();
 
-    void setPlayer(IMediaPlayer player);
 
+    void reset();
+
+    void show();
+
+    void show(long time);
+
+//    void hide();
+
+    boolean isShowing();
+
+//    void setProgressEnabled(boolean enabled);
 }
