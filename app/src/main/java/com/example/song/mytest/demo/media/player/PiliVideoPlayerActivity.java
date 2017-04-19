@@ -51,7 +51,7 @@ public class PiliVideoPlayerActivity extends CommonActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pili_video_player);
         initView();
-        ProgressBar loading = (ProgressBar) findViewById(R.id.loading);
+        View loading = findViewById(R.id.loading_view);
         ImageView cover = (ImageView) findViewById(R.id.cover_view);
         try {
             mVideoPlayer.setDecodeType(AVOptions.MEDIA_CODEC_SW_DECODE)
