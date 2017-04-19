@@ -48,6 +48,11 @@ public interface IMediaPlayer {
      */
     int getPlayerType();
 
+    /**
+     * 获取当前播放类型
+     * @return 0 音频 1 视频
+     */
+    int getMediaType();
 
     /**
      * 获取播放总时长

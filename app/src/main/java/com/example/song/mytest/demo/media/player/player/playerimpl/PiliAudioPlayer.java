@@ -202,6 +202,11 @@ public class PiliAudioPlayer implements IAudioPlayer {
     }
 
     @Override
+    public int getMediaType() {
+        return 0;
+    }
+
+    @Override
     public long getDuration() {
         if (mPlayer != null) {
             return mPlayer.getDuration();

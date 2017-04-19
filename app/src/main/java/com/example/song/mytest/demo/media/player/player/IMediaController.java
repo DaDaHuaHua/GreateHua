@@ -17,9 +17,8 @@ public interface IMediaController extends IMediaPlayer.OnControllerSetListener {
 
     void show(long time);
 
-//    void hide();
+    void hide();
 
     boolean isShowing();
 
-//    void setProgressEnabled(boolean enabled);
 }

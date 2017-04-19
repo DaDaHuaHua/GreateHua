@@ -55,8 +55,6 @@ public class PiliVideoPlayer implements IVideoPlayer {
     @Override
     public void init() {
         buildOptions();
-        MediaController mediaController = new MediaController(mContext, false, mVideoType == 1);
-        mPlayer.setMediaController(mediaController);
     }
 
     /**
@@ -185,6 +183,11 @@ public class PiliVideoPlayer implements IVideoPlayer {
     @Override
     public int getPlayerType() {
         return mVideoType;
+    }
+
+    @Override
+    public int getMediaType() {
+        return 1;
     }
 
     @Override

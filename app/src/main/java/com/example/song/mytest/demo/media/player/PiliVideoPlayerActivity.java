@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.commonlibrary.util.ToastUtil;
@@ -22,18 +23,20 @@ import java.io.IOException;
 
 /**
  * Created by zz on 2017/4/5.
- *
  */
 
 public class PiliVideoPlayerActivity extends CommonActivity {
-     private ZMVideoPlayer mVideoPlayer;
+    private ZMVideoPlayer mVideoPlayer;
     private ZMMediaController mMediaController;
+    private boolean isControllerShowing = false;
     private TextView mTvSwitchOrientation;
     private TextView mTvSwitchRatio;
+    private RelativeLayout mRoot;
     private int mCurrentDegree = 0;
     private int mDisplayAspectRatio = PLVideoTextureView.ASPECT_RATIO_FIT_PARENT; //default
 
     private String mVideoPath = "http://pili-static.live.zm.gaiay.cn/recordings/z1.gaiay-pro.58e49691d425e14640259fcc/1491375768.1491375856.m3u8";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,31 +79,42 @@ public class PiliVideoPlayerActivity extends CommonActivity {
                     .setCoverView(cover)
                     .setVideoPath(mVideoPath)
                     .build().start();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void initView(){
+    private void initView() {
+        mRoot = (RelativeLayout) findViewById(R.id.root);
         mVideoPlayer = (ZMVideoPlayer) findViewById(R.id.player);
         mTvSwitchOrientation = (TextView) findViewById(R.id.switch_orientation);
         mTvSwitchOrientation.setOnClickListener(this);
         mTvSwitchRatio = (TextView) findViewById(R.id.switch_ratio);
         mTvSwitchRatio.setOnClickListener(this);
         mTvSwitchOrientation.setText("旋转0°");
-        mMediaController  = (ZMMediaController) findViewById(R.id.controller);
+        mMediaController = (ZMMediaController) findViewById(R.id.controller);
         mVideoPlayer.setMediaController(mMediaController);
+        mRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mMediaController.isShowing()) {
+                    mMediaController.hide();
+                } else {
+                    mMediaController.show();
+                }
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
-            case R.id.switch_orientation :
+        switch (v.getId()) {
+            case R.id.switch_orientation:
                 mCurrentDegree = (mCurrentDegree + 90) % 360;
                 mVideoPlayer.setDisplayOrientation(mCurrentDegree);
-                mTvSwitchOrientation.setText("旋转"+mCurrentDegree+"°");
+                mTvSwitchOrientation.setText("旋转" + mCurrentDegree + "°");
                 break;
 
             case R.id.switch_ratio:
