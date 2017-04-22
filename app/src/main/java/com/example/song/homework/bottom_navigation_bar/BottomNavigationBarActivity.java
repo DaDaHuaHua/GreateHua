@@ -1,4 +1,4 @@
-package com.example.song.mytest.homework.bottom_navigation_bar;
+package com.example.song.homework.bottom_navigation_bar;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

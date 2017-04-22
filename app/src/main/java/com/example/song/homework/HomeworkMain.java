@@ -1,4 +1,4 @@
-package com.example.song.mytest.homework;
+package com.example.song.homework;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.homework.rebound.ReboundActivity;
-import com.example.song.mytest.homework.shared_element.SharedElementActivityA;
-import com.example.song.mytest.homework.vector.VectorActivity;
+import com.example.song.homework.rebound.ReboundActivity;
+import com.example.song.homework.shared_element.SharedElementActivityA;
+import com.example.song.homework.vector.VectorActivity;
 
 import butterknife.BindView;
 

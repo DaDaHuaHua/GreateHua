@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.TestMainActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

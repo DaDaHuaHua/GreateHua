@@ -1,4 +1,4 @@
-package com.example.song.mytest.homework.vector;
+package com.example.song.homework.vector;
 
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;

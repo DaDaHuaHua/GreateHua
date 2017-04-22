@@ -1,4 +1,4 @@
-package com.example.song.mytest;
+package com.example.song;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
 import com.example.song.mytest.demo.DemoMain;
-import com.example.song.mytest.homework.HomeworkMain;
+import com.example.song.homework.HomeworkMain;
 
 import butterknife.BindView;
 import butterknife.OnClick;
