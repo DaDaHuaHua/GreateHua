@@ -14,6 +14,7 @@ import com.example.song.mytest.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.mytest.demo.media.PlayerMain;
 import com.example.song.mytest.demo.media.demo.TestActivity;
 import com.example.song.mytest.demo.media.player.PiliVideoPlayerActivity;
+import com.example.song.mytest.demo.recyclerView.RecyclerViewMain;
 
 import butterknife.BindView;
 
@@ -26,7 +27,7 @@ public class DemoMain extends CommonActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","DialogFragment"};
+    private String[] menu = {"播放器","DialogFragment","RecyclerView"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,8 +49,9 @@ public class DemoMain extends CommonActivity {
                 case 1:
                     startActivity(new Intent(DemoMain.this, DialogFragmentMain.class));
                     break;
-
-
+                case 2:
+                    startActivity(new Intent(DemoMain.this, RecyclerViewMain.class));
+                    break;
             }
         }
     }

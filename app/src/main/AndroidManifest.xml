@@ -60,6 +60,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".mytest.demo.media.PlayerMain"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mytest.demo.recyclerView.RecyclerViewMain"/>
     </application>
 
 </manifest>
