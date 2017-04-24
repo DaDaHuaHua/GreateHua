@@ -7,7 +7,7 @@ import org.junit.Test;
  *
  */
 
-public class BuilderMain {
+public class Main {
 
     @Test
     public void main() {
