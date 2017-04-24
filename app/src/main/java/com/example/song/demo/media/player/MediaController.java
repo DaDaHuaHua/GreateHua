@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media.player;
+package com.example.song.demo.media.player;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media.player;
+package com.example.song.demo.media.player;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -6,15 +6,14 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
-import com.example.song.mytest.demo.media.player.player.ZMMediaController;
+import com.example.song.demo.media.player.callback.PlayerCallback;
+import com.example.song.demo.media.player.player.playerimpl.ZMMediaController;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 

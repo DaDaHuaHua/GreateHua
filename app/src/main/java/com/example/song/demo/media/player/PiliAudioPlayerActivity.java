@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media.player;
+package com.example.song.demo.media.player;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -13,7 +13,7 @@ import android.view.View;
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.demo.media.player.callback.PlayerCallback;
 import com.pili.pldroid.player.PLMediaPlayer;
 
 import java.io.IOException;

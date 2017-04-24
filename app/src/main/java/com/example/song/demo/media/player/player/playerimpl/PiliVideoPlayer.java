@@ -1,14 +1,13 @@
-package com.example.song.mytest.demo.media.player.player.playerimpl;
+package com.example.song.demo.media.player.player.playerimpl;
 
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
 import com.example.song.R;
-import com.example.song.mytest.demo.media.player.MediaController;
-import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
-import com.example.song.mytest.demo.media.player.player.IMediaController;
-import com.example.song.mytest.demo.media.player.player.IVideoPlayer;
+import com.example.song.demo.media.player.callback.PlayerCallback;
+import com.example.song.demo.media.player.player.IMediaController;
+import com.example.song.demo.media.player.player.IVideoPlayer;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
@@ -217,7 +216,7 @@ public class PiliVideoPlayer implements IVideoPlayer {
     }
 
     @Override
-    public void setMediaController(com.example.song.mytest.demo.media.player.player.IMediaController mediaController) {
+    public void setMediaController(com.example.song.demo.media.player.player.IMediaController mediaController) {
         this.mMediaController = mediaController;
         mMediaController.onMediaControllerSet(this);
     }

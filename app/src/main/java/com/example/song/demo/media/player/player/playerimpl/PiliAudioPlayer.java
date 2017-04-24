@@ -1,13 +1,13 @@
-package com.example.song.mytest.demo.media.player.player.playerimpl;
+package com.example.song.demo.media.player.player.playerimpl;
 
 import android.content.Context;
 import android.os.PowerManager;
 import android.util.Log;
 
 import com.example.commonlibrary.util.StringUtil;
-import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
-import com.example.song.mytest.demo.media.player.player.IAudioPlayer;
-import com.example.song.mytest.demo.media.player.player.IMediaController;
+import com.example.song.demo.media.player.callback.PlayerCallback;
+import com.example.song.demo.media.player.player.IAudioPlayer;
+import com.example.song.demo.media.player.player.IMediaController;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 

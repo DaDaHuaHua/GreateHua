@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media;
+package com.example.song.demo.media;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.demo.media.player.PiliAudioPlayerActivity;
-import com.example.song.mytest.demo.media.player.PiliVideoPlayerActivity;
+import com.example.song.demo.media.player.PiliAudioPlayerActivity;
+import com.example.song.demo.media.player.PiliVideoPlayerActivity;
 
 import butterknife.OnClick;
 

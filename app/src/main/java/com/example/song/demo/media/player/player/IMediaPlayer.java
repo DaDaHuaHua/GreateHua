@@ -1,7 +1,6 @@
-package com.example.song.mytest.demo.media.player.player;
+package com.example.song.demo.media.player.player;
 
-import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
-import com.pili.pldroid.player.*;
+import com.example.song.demo.media.player.callback.PlayerCallback;
 
 import java.io.IOException;
 

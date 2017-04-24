@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
-import com.example.song.mytest.demo.DemoMain;
+import com.example.song.demo.DemoMain;
 import com.example.song.homework.HomeworkMain;
 
 import butterknife.BindView;

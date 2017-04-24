@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media.player;
+package com.example.song.demo.media.player;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
-import com.example.song.mytest.demo.media.player.player.IMediaController;
-import com.example.song.mytest.demo.media.player.player.IMediaPlayer;
-import com.example.song.mytest.demo.media.player.player.IVideoPlayer;
-import com.example.song.mytest.demo.media.player.player.playerimpl.PiliVideoPlayer;
+import com.example.song.demo.media.player.callback.PlayerCallback;
+import com.example.song.demo.media.player.player.IMediaController;
+import com.example.song.demo.media.player.player.IMediaPlayer;
+import com.example.song.demo.media.player.player.IVideoPlayer;
+import com.example.song.demo.media.player.player.playerimpl.PiliVideoPlayer;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media.player.player;
+package com.example.song.demo.media.player.player.playerimpl;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -15,7 +15,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.song.R;
-import com.example.song.mytest.demo.media.player.callback.PlayerCallback;
+import com.example.song.demo.media.player.callback.PlayerCallback;
+import com.example.song.demo.media.player.player.IMediaController;
+import com.example.song.demo.media.player.player.IMediaPlayer;
 
 import java.lang.ref.WeakReference;
 import java.util.Locale;
@@ -56,6 +58,8 @@ public class ZMMediaController extends LinearLayout implements IMediaController,
 
     private Handler mHandler = new UpdateHandler(this);
 
+    private OnHiddenListener mOnHiddenListener;
+    private OnShownListener mOnShownListener;
 
     private static class UpdateHandler extends Handler {
         private WeakReference<ZMMediaController> mController;
@@ -113,6 +117,32 @@ public class ZMMediaController extends LinearLayout implements IMediaController,
         return false;
     }
 
+    // FIXME: 2017/4/20  不执行
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int keyCode = event.getKeyCode();
+        if (event.getRepeatCount() == 0 && (keyCode == KeyEvent.KEYCODE_HEADSETHOOK
+                || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE || keyCode == KeyEvent.KEYCODE_SPACE)) {
+            doPauseResume();
+            show();
+            if (mIvPlay != null)
+                mIvPlay.requestFocus();
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_MEDIA_STOP) {
+            if (mPlayer.isPlaying()) {
+                mPlayer.pause();
+                updatePlayBtn();
+            }
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_MENU) {
+            hide();
+            return true;
+        } else {
+            show();
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
 
     @Override
     public void onMediaControllerSet(IMediaPlayer player) {
@@ -139,6 +169,17 @@ public class ZMMediaController extends LinearLayout implements IMediaController,
         initViews();
     }
 
+    private void initViews() {
+        mIvPlay = (ImageView) findViewById(R.id.btn_play);
+        mIvPlay.requestFocus();
+        mTvTimeCur = (TextView) findViewById(R.id.text_current);
+        mTvTimeTotal = (TextView) findViewById(R.id.text_total);
+        mSeekBar = (SeekBar) findViewById(R.id.seek_bar);
+        mSeekBar.setMax(1000);
+        mIvPlay.setOnClickListener(this);
+        mSeekBar.setOnSeekBarChangeListener(this);
+    }
+
     @Override
     public void show() {
         show(mDefShowTime);
@@ -158,6 +199,9 @@ public class ZMMediaController extends LinearLayout implements IMediaController,
             setVisibility(VISIBLE);
             mIsShowing = true;
         }
+        if(mOnShownListener != null ){
+            mOnShownListener.onShown();
+        }
         //更新播放/暂停
         updatePlayBtn();
         mHandler.sendEmptyMessage(MSG_SHOW_CONTROLLER);
@@ -173,6 +217,9 @@ public class ZMMediaController extends LinearLayout implements IMediaController,
             mHandler.removeMessages(MSG_SHOW_CONTROLLER);
             setVisibility(GONE);
             mIsShowing = false;
+            if(mOnHiddenListener != null){
+                mOnHiddenListener.onHidden();
+            }
         }
     }
 
@@ -187,17 +234,11 @@ public class ZMMediaController extends LinearLayout implements IMediaController,
         mIvPlay.setImageResource(R.drawable.btn_media_play);
         mTvTimeCur.setText(generateTime(0));
         mTvTimeTotal.setText(generateTime(0));
+        mCurrentTime = 0;
+        mDuration = 0;
+        mHandler.removeCallbacksAndMessages(null);
     }
 
-    private void initViews() {
-        mIvPlay = (ImageView) findViewById(R.id.btn_play);
-        mTvTimeCur = (TextView) findViewById(R.id.text_current);
-        mTvTimeTotal = (TextView) findViewById(R.id.text_total);
-        mSeekBar = (SeekBar) findViewById(R.id.seek_bar);
-        mSeekBar.setMax(1000);
-        mIvPlay.setOnClickListener(this);
-        mSeekBar.setOnSeekBarChangeListener(this);
-    }
 
     private void setViewEnable() {
         //观看回放按钮全部显示
@@ -317,6 +358,16 @@ public class ZMMediaController extends LinearLayout implements IMediaController,
         mDragging = false;
         mHandler.sendEmptyMessageDelayed(MSG_SHOW_CONTROLLER, 1000);
         mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
+    }
+
+    @Override
+    public void setOnShownListener(OnShownListener listener) {
+        this.mOnShownListener = listener;
+    }
+
+    @Override
+    public void setOnHiddenListener(OnHiddenListener listener) {
+        this.mOnHiddenListener = listener;
     }
 
     //没有实现快进快退功能

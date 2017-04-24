@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo;
+package com.example.song.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,10 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
+import com.example.song.demo.recyclerView.RecyclerViewMain;
 import com.example.song.mytest.demo.dialogfragment.DialogFragmentMain;
-import com.example.song.mytest.demo.media.PlayerMain;
-import com.example.song.mytest.demo.media.demo.TestActivity;
-import com.example.song.mytest.demo.media.player.PiliVideoPlayerActivity;
-import com.example.song.mytest.demo.recyclerView.RecyclerViewMain;
+import com.example.song.demo.media.PlayerMain;
+import com.example.song.demo.media.player.PiliVideoPlayerActivity;
 
 import butterknife.BindView;
 

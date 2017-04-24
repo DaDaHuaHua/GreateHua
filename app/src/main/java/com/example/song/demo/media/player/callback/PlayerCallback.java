@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.media.player.callback;
+package com.example.song.demo.media.player.callback;
 
 /**
  * Created by zz on 2017/4/6.

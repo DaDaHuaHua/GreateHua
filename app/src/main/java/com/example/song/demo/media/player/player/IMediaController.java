@@ -1,6 +1,7 @@
-package com.example.song.mytest.demo.media.player.player;
+package com.example.song.demo.media.player.player;
 
-import android.support.annotation.LayoutRes;
+
+import com.example.song.demo.media.player.player.IMediaPlayer;
 
 /**
  * Created by zz on 2017/4/17.
@@ -20,5 +21,25 @@ public interface IMediaController extends IMediaPlayer.OnControllerSetListener {
     void hide();
 
     boolean isShowing();
+
+    void setOnShownListener(OnShownListener listener);
+
+    void setOnHiddenListener(OnHiddenListener listener);
+
+
+    interface OnShownListener{
+        void onShown();
+    }
+
+    interface OnHiddenListener{
+        void onHidden();
+    }
+
+    interface OnPlayStateListener{
+        void onPlay();
+
+        void onPause();
+    }
+
 
 }
