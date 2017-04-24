@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.song.mytest.demo.media.player.ZMVideoPlayer
+    <com.example.song.demo.media.player.ZMVideoPlayer
         android:id="@+id/player"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -60,7 +60,7 @@
         android:text="比例"
         android:textSize="20sp" />
 
-    <com.example.song.mytest.demo.media.player.player.ZMMediaController
+    <com.example.song.demo.media.player.player.playerimpl.ZMMediaController
         android:id="@+id/controller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

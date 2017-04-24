@@ -44,6 +44,9 @@ public class ReboundActivity extends CommonActivity {
                 spring.addListener(new SimpleSpringListener() {
                     @Override
                     public void onSpringUpdate(Spring spring) {
+                        if(mBtnRebound == null ){
+                            return;
+                        }
                         // You can observe the updates in the spring
                         // state by asking its current value in onSpringUpdate.
                         float value = (float) spring.getCurrentValue();

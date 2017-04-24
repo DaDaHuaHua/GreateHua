@@ -32,35 +32,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.song.mytest.homework.shared_element.SharedElementActivityA"
+            android:name="com.example.song.homework.shared_element.SharedElementActivityA"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.song.mytest.homework.shared_element.SharedElementActivityB"
+            android:name="com.example.song.homework.shared_element.SharedElementActivityB"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.song.mytest.TestMainActivity"
+            android:name="com.example.song.TestMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.song.mytest.homework.HomeworkMain"
+            android:name="com.example.song.homework.HomeworkMain"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.song.mytest.demo.DemoMain"
+            android:name="com.example.song.demo.DemoMain"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.song.mytest.homework.vector.VectorActivity"
+            android:name="com.example.song.homework.vector.VectorActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".mytest.demo.media.player.PiliVideoPlayerActivity"
+        <activity android:name=".demo.media.player.PiliVideoPlayerActivity"
             android:theme="@style/AppThemeFullscreen" />
-        <activity android:name=".mytest.demo.media.player.PiliAudioPlayerActivity"
+        <activity android:name=".demo.media.player.PiliAudioPlayerActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mytest.demo.media.demo.TestActivity"
+        <activity android:name=".demo.media.demo.TestActivity"
             />
-        <activity android:name=".mytest.homework.rebound.ReboundActivity"/>
-        <activity android:name=".mytest.demo.dialogfragment.DialogFragmentMain"
+        <activity android:name=".homework.rebound.ReboundActivity"/>
+        <activity android:name=".demo.dialogfragment.DialogFragmentMain"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mytest.demo.media.PlayerMain"
+        <activity android:name=".demo.media.PlayerMain"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mytest.demo.recyclerView.RecyclerViewMain"/>
+        <activity android:name=".demo.recyclerView.RecyclerViewMain"/>
     </application>
 
 </manifest>

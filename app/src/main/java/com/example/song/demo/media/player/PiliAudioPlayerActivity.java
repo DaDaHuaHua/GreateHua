@@ -3,7 +3,6 @@ package com.example.song.demo.media.player;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;

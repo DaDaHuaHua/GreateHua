@@ -1,4 +1,4 @@
-package com.example.song.mytest.demo.dialogfragment;
+package com.example.song.demo.dialogfragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
