@@ -101,5 +101,7 @@ dependencies {
     compile 'com.facebook.rebound:rebound:0.3.8'
     //bottom-navigation-bar
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
+    //supportDesign
+    compile 'com.android.support:design:25.3.0'
 
 }

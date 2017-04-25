@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
+import com.example.song.demo.material_design.CoordinatorLayoutMain;
 import com.example.song.demo.recyclerView.RecyclerViewMain;
 import com.example.song.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
@@ -26,7 +27,7 @@ public class DemoMain extends CommonActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","DialogFragment","RecyclerView"};
+    private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +44,6 @@ public class DemoMain extends CommonActivity {
             switch (position){
                 case 0:
                     startActivity(new Intent(DemoMain.this, PlayerMain.class));
-
                     break;
                 case 1:
                     startActivity(new Intent(DemoMain.this, DialogFragmentMain.class));
@@ -51,6 +51,8 @@ public class DemoMain extends CommonActivity {
                 case 2:
                     startActivity(new Intent(DemoMain.this, RecyclerViewMain.class));
                     break;
+                case 3:
+                    startActivity(new Intent(DemoMain.this, CoordinatorLayoutMain.class));
             }
         }
     }

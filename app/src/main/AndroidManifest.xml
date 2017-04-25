@@ -53,14 +53,13 @@
             android:theme="@style/AppThemeFullscreen" />
         <activity android:name=".demo.media.player.PiliAudioPlayerActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".demo.media.demo.TestActivity"
-            />
         <activity android:name=".homework.rebound.ReboundActivity"/>
         <activity android:name=".demo.dialogfragment.DialogFragmentMain"
             android:screenOrientation="portrait"/>
         <activity android:name=".demo.media.PlayerMain"
             android:screenOrientation="portrait"/>
         <activity android:name=".demo.recyclerView.RecyclerViewMain"/>
+        <activity android:name=".demo.material_design.CoordinatorLayoutMain"/>
     </application>
 
 </manifest>
