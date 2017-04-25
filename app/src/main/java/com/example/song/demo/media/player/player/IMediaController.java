@@ -1,7 +1,6 @@
 package com.example.song.demo.media.player.player;
 
 
-import com.example.song.demo.media.player.player.IMediaPlayer;
 
 /**
  * Created by zz on 2017/4/17.
