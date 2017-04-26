@@ -34,11 +34,4 @@ public interface IMediaController extends IMediaPlayer.OnControllerSetListener {
         void onHidden();
     }
 
-    interface OnPlayStateListener{
-        void onPlay();
-
-        void onPause();
-    }
-
-
 }
