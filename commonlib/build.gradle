@@ -34,7 +34,10 @@ dependencies {
     //fastjson
     compile 'com.alibaba:fastjson:1.1.54.android'
 
-
+    //Rx
     compile 'io.reactivex.rxjava2:rxjava:2.0.3'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
+    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
+    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
 }

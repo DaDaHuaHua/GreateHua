@@ -9,6 +9,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 
+import com.example.commonlibrary.rxbus.RxBus;
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
@@ -45,6 +46,7 @@ public class PiliAudioPlayerActivity extends CommonActivity {
         audioManager.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
         prepare();
         startTelephonyListener();
+        RxBus.getDefault().post("ACTION_PLAY");
 
     }
 
