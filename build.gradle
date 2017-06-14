@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:2.3.3'
         /**
          * android-apt 是一个Gradle插件，协助Android Studio 处理annotation processors, 它有两个目的
          * 1.允许配置只在编译时作为注解处理器的依赖，而不添加到最后的APK或library

@@ -1,4 +1,4 @@
-package com.example.song.demo.recyclerview;
+package com.example.song.demo.recycler_view;
 
 import android.content.Context;
 import android.os.Bundle;
