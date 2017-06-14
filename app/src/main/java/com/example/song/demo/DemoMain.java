@@ -11,10 +11,9 @@ import android.widget.ListView;
 import com.example.song.R;
 import com.example.song.base.CommonActivity;
 import com.example.song.demo.material_design.CoordinatorLayoutMain;
-import com.example.song.demo.recyclerView.RecyclerViewMain;
+import com.example.song.demo.recyclerview.RecyclerViewMain;
 import com.example.song.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
-import com.example.song.demo.media.player.PiliVideoPlayerActivity;
 
 import butterknife.BindView;
 

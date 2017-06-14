@@ -58,7 +58,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".demo.media.PlayerMain"
             android:screenOrientation="portrait"/>
-        <activity android:name=".demo.recyclerView.RecyclerViewMain"/>
+        <activity android:name=".demo.recyclerview.RecyclerViewMain"/>
         <activity android:name=".demo.material_design.CoordinatorLayoutMain"/>
     </application>
 
