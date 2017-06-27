@@ -12,7 +12,7 @@ import android.view.View;
 import com.example.commonlibrary.rxbus.RxBus;
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 import com.example.song.demo.media.player.callback.PlayerCallback;
 import com.pili.pldroid.player.PLMediaPlayer;
 
@@ -25,7 +25,7 @@ import butterknife.BindView;
  * 测试ZMAudioPlayer
  */
 
-public class PiliAudioPlayerActivity extends CommonActivity {
+public class PiliAudioPlayerActivity extends BaseActivity {
     private String TAG = "PiliAudioPlayerTAG";
     private ZMAudioPlayer mPlayer;
     private boolean mIsStopped = false;

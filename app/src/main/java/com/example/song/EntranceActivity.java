@@ -6,12 +6,12 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class EntranceActivity extends CommonActivity {
+public class EntranceActivity extends BaseActivity {
 
     @BindView(R.id.tv_to_app)
      TextView mTvToApp;

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
@@ -20,7 +20,7 @@ import butterknife.OnClick;
  *
  */
 
-public class ReboundActivity extends CommonActivity {
+public class ReboundActivity extends BaseActivity {
     @BindView(R.id.btn_rebound)
     Button mBtnRebound;
 

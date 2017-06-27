@@ -2,7 +2,7 @@ package com.example.song.base;
 
 import android.view.View;
 
-import com.example.commonlibrary.base.activity.BaseActivity;
+import com.example.commonlibrary.base.activity.CommonActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -11,7 +11,7 @@ import butterknife.Unbinder;
  * Created by Song on 2016/11/29.
  */
 
-public class CommonActivity extends BaseActivity {
+public class BaseActivity extends CommonActivity {
     private Unbinder mUnbinder;
 
     @Override

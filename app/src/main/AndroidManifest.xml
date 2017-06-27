@@ -17,6 +17,10 @@
     //----------------  七牛 end--------------------------------
 
 
+    //---------------------------测试DSLV拖动排序需要震动权限
+    <uses-permission android:name="android.permission.VIBRATE" />
+    //---------------------------测试DSLV拖动排序需要震动权限
+
     <application
         android:name="com.example.song.application.App"
         android:allowBackup="true"
@@ -24,6 +28,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--入口-->
         <activity android:name="com.example.song.EntranceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,35 +36,55 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--共享元素-->
         <activity
             android:name="com.example.song.homework.shared_element.SharedElementActivityA"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.song.homework.shared_element.SharedElementActivityB"
             android:screenOrientation="portrait" />
+
+        <!--TestMain-->
         <activity
             android:name="com.example.song.TestMainActivity"
             android:screenOrientation="portrait" />
+
+        <!--HomeWorkMain-->
         <activity
             android:name="com.example.song.homework.HomeworkMain"
             android:screenOrientation="portrait" />
+
+        <!--DemoMain-->
         <activity
             android:name="com.example.song.demo.DemoMain"
             android:screenOrientation="portrait" />
+
+        <!--Vector-->
         <activity
             android:name="com.example.song.homework.vector.VectorActivity"
             android:screenOrientation="portrait" />
+        <!--VideoPlayer-->
         <activity android:name=".demo.media.player.PiliVideoPlayerActivity"
             android:theme="@style/AppThemeFullscreen" />
+        <!--AudioPlayer-->
         <activity android:name=".demo.media.player.PiliAudioPlayerActivity"
             android:screenOrientation="portrait"/>
+        <!--Rebound效果-->
         <activity android:name=".homework.rebound.ReboundActivity"/>
+        <!--测试DialogFragment-->
         <activity android:name=".demo.dialogfragment.DialogFragmentMain"
             android:screenOrientation="portrait"/>
+        <!--PlayerMain-->
         <activity android:name=".demo.media.PlayerMain"
             android:screenOrientation="portrait"/>
-        <activity android:name=".demo.recyclerview.RecyclerViewMain"/>
+        <!--测试RecyclerView-->
+        <activity android:name=".demo.recycler_view.RecyclerViewMain"/>
+        <!--测试CoordinatorLayout-->
         <activity android:name=".demo.material_design.CoordinatorLayoutMain"/>
+        <!--拖动排序控件-->
+        <activity android:name=".demo.dragsort.DSMain"/>
+        <activity android:name=".demo.dragsort.DslvMain"/>
+        <activity android:name=".demo.dragsort.DsgvMain"/>
     </application>
 
 </manifest>

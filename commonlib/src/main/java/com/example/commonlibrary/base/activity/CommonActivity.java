@@ -11,7 +11,7 @@ import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
  * Created by Song on 2016/11/27.
  */
 
-public class BaseActivity extends RxFragmentActivity implements View.OnClickListener {
+public class CommonActivity extends RxFragmentActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

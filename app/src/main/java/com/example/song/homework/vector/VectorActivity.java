@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -16,7 +16,7 @@ import butterknife.OnClick;
  * Created by PVer on 2017/4/4.
  */
 
-public class VectorActivity extends CommonActivity {
+public class VectorActivity extends BaseActivity {
     @BindView(R.id.iv_vector)
     ImageView mIvVector;
     @Override

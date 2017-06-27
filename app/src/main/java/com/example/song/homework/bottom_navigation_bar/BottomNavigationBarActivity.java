@@ -6,7 +6,7 @@ import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 
 import butterknife.BindView;
 
@@ -15,7 +15,7 @@ import butterknife.BindView;
  *
  */
 
-public class BottomNavigationBarActivity extends CommonActivity {
+public class BottomNavigationBarActivity extends BaseActivity {
 
     @BindView(R.id.layout_content)
     FrameLayout mLayoutContent;

@@ -6,8 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 import com.example.song.demo.DemoMain;
 import com.example.song.homework.HomeworkMain;
 
@@ -19,7 +18,7 @@ import butterknife.OnClick;
  *
  */
 
-public class TestMainActivity extends CommonActivity {
+public class TestMainActivity extends BaseActivity {
 
     @BindView(R.id.tv_to_homework)
     TextView mTvToHomewok;

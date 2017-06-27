@@ -9,11 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
+import com.example.song.demo.dragsort.DSMain;
 import com.example.song.demo.material_design.CoordinatorLayoutMain;
-import com.example.song.demo.recyclerview.RecyclerViewMain;
+
 import com.example.song.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
+import com.example.song.demo.recycler_view.RecyclerViewMain;
 
 import butterknife.BindView;
 
@@ -22,11 +24,11 @@ import butterknife.BindView;
  *
  */
 
-public class DemoMain extends CommonActivity {
+public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo"};
+    private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +54,10 @@ public class DemoMain extends CommonActivity {
                     break;
                 case 3:
                     startActivity(new Intent(DemoMain.this, CoordinatorLayoutMain.class));
+                    break;
+                case 4:
+                    startActivity(new Intent(DemoMain.this, DSMain.class));
+                    break;
             }
         }
     }

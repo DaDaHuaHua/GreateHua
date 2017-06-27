@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  *
  */
 
-public class SharedElementActivityA extends CommonActivity {
+public class SharedElementActivityA extends BaseActivity {
     @BindView(R.id.tv_search)
      TextView mTvSearch;
     @Override

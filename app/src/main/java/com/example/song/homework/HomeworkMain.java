@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 import com.example.song.homework.rebound.ReboundActivity;
 import com.example.song.homework.shared_element.SharedElementActivityA;
 import com.example.song.homework.vector.VectorActivity;
@@ -21,7 +21,7 @@ import butterknife.BindView;
  *
  */
 
-public class HomeworkMain extends CommonActivity{
+public class HomeworkMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 

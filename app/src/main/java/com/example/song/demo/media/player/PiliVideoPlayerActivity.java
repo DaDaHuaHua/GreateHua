@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
-import com.example.song.base.CommonActivity;
+import com.example.song.base.BaseActivity;
 import com.example.song.demo.media.player.callback.PlayerCallback;
 import com.example.song.demo.media.player.player.playerimpl.ZMMediaController;
 import com.pili.pldroid.player.AVOptions;
@@ -24,7 +24,7 @@ import java.io.IOException;
  * Created by zz on 2017/4/5.
  */
 
-public class PiliVideoPlayerActivity extends CommonActivity {
+public class PiliVideoPlayerActivity extends BaseActivity {
     private ZMVideoPlayer mVideoPlayer;
     private ZMMediaController mMediaController;
     private boolean isControllerShowing = false;
