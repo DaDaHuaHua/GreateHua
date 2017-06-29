@@ -17,7 +17,7 @@ class CollectionTest {
         // testIn(2)
         //testDownTo()
         //testStep()
-        testString()
+        //testString()
     }
 
 
