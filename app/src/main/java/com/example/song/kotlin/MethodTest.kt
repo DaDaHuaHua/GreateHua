@@ -4,12 +4,19 @@ import android.util.Log
 
 /**
  * Created by zz on 2017/6/27.
+ *
+ * 基本操作符
+ * 可变长参数 vararg
+ * 中缀函数 infix
+ * 析构函数  val (x ,y ,z)
  */
 
-class CollectionTest {
+class MethodTest {
 
-    val TAG = "KotlinTAG"
 
+    companion object {
+        val TAG: String = "KotlinTAG"
+    }
 
     fun main() {
         // testIs()
@@ -18,6 +25,9 @@ class CollectionTest {
         //testDownTo()
         //testStep()
         //testString()
+        //testVararg("a", "b", "c", "c")
+        // "i" love "u"
+        //testDestrust()
     }
 
 
@@ -84,7 +94,37 @@ class CollectionTest {
 
         val str3 = "one" + "\n" + "two"
 
-        Log.i(TAG , "str = $str , str1 = $str2 , str3  $str3")
+        Log.i(TAG, "str = $str , str1 = $str2 , str3  $str3")
     }
+
+    /***
+     * 可变长参数
+     */
+    fun testVararg(vararg ss: String) {
+        ss.forEachIndexed { index, s ->
+            Log.i(TAG, "index = $index   s = $s")
+        }
+    }
+
+    /**
+     * 中缀函数
+     */
+    infix fun String.love(s: String) {
+        Log.i(TAG, this + " love $s")
+    }
+
+    /***
+     * 析构
+     */
+    fun testDestrust() {
+        val pair = "a" to "b"
+        val (key, value) = pair
+        Log.i(TAG , "pair key = $key  value = $value")
+
+        val compile = "com.github.bumptech.glide:glide:3.7.0"
+        val (group , name ,version) = compile.split(":")
+        Log.i(TAG , "group $group  name = $name  version = $version")
+    }
+
 
 }

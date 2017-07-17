@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.song.base.BaseActivity;
-import com.example.song.kotlin.CollectionTest;
+import com.example.song.kotlin.MethodTest;
+import com.example.song.kotlin.NullSafe;
 import com.example.song.kotlin.OperatorTest;
+import com.example.song.kotlin.StringTest;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,12 +27,18 @@ public class EntranceActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrance);
 
-
-        CollectionTest test = new CollectionTest();
-        test.main();
-
+        /***
+         * 测试kotlin打印
+         */
         OperatorTest operatorTest = new OperatorTest();
         operatorTest.main();
+        MethodTest methodTest = new MethodTest();
+        methodTest.main();
+        StringTest stringTest = new StringTest();
+        stringTest.main();
+        NullSafe nullSafe = new NullSafe();
+        nullSafe.main();
+
 
     }
 
