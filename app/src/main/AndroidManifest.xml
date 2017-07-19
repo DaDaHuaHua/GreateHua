@@ -1,90 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.song">
-
-    //----------------  Bugly start------------------------------
+    //---------------- Bugly start------------------------------
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    //----------------  Bugly end--------------------------------
+    //---------------- Bugly end--------------------------------
 
-    //----------------  七牛 start------------------------------
+    //---------------- 七牛 start------------------------------
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    //----------------  七牛 end--------------------------------
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    //---------------- 七牛 end--------------------------------
 
 
     //---------------------------测试DSLV拖动排序需要震动权限
     <uses-permission android:name="android.permission.VIBRATE" />
     //---------------------------测试DSLV拖动排序需要震动权限
-
     <application
-        android:name="com.example.song.application.App"
+        android:name=".application.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--入口-->
-        <activity android:name="com.example.song.EntranceActivity">
+
+        <!-- 入口 -->
+        <activity android:name=".EntranceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--共享元素-->
+        <!-- 共享元素 -->
         <activity
-            android:name="com.example.song.homework.shared_element.SharedElementActivityA"
+            android:name=".homework.shared_element.SharedElementActivityA"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.song.homework.shared_element.SharedElementActivityB"
-            android:screenOrientation="portrait" />
-
-        <!--TestMain-->
-        <activity
-            android:name="com.example.song.TestMainActivity"
+            android:name=".homework.shared_element.SharedElementActivityB"
             android:screenOrientation="portrait" />
 
-        <!--HomeWorkMain-->
+        <!-- TestMain -->
         <activity
-            android:name="com.example.song.homework.HomeworkMain"
+            android:name=".TestMainActivity"
             android:screenOrientation="portrait" />
 
-        <!--DemoMain-->
+        <!-- HomeWorkMain -->
         <activity
-            android:name="com.example.song.demo.DemoMain"
+            android:name=".homework.HomeworkMain"
             android:screenOrientation="portrait" />
 
-        <!--Vector-->
+        <!-- DemoMain -->
         <activity
-            android:name="com.example.song.homework.vector.VectorActivity"
+            android:name=".demo.DemoMain"
             android:screenOrientation="portrait" />
-        <!--VideoPlayer-->
-        <activity android:name=".demo.media.player.PiliVideoPlayerActivity"
+
+        <!-- Vector -->
+        <activity
+            android:name=".homework.vector.VectorActivity"
+            android:screenOrientation="portrait" />
+        <!-- VideoPlayer -->
+        <activity
+            android:name=".demo.media.player.PiliVideoPlayerActivity"
             android:theme="@style/AppThemeFullscreen" />
-        <!--AudioPlayer-->
-        <activity android:name=".demo.media.player.PiliAudioPlayerActivity"
-            android:screenOrientation="portrait"/>
-        <!--Rebound效果-->
-        <activity android:name=".homework.rebound.ReboundActivity"/>
-        <!--测试DialogFragment-->
-        <activity android:name=".demo.dialogfragment.DialogFragmentMain"
-            android:screenOrientation="portrait"/>
-        <!--PlayerMain-->
-        <activity android:name=".demo.media.PlayerMain"
-            android:screenOrientation="portrait"/>
-        <!--测试RecyclerView-->
-        <activity android:name=".demo.recycler_view.RecyclerViewMain"/>
-        <!--测试CoordinatorLayout-->
-        <activity android:name=".demo.material_design.CoordinatorLayoutMain"/>
-        <!--拖动排序控件-->
-        <activity android:name=".demo.dragsort.DSMain"/>
-        <activity android:name=".demo.dragsort.DslvMain"/>
-        <activity android:name=".demo.dragsort.DsgvMain"/>
+        <!-- AudioPlayer -->
+        <activity
+            android:name=".demo.media.player.PiliAudioPlayerActivity"
+            android:screenOrientation="portrait" />
+        <!-- Rebound效果 -->
+        <activity android:name=".homework.rebound.ReboundActivity" />
+        <!-- 测试DialogFragment -->
+        <activity
+            android:name=".demo.dialogfragment.DialogFragmentMain"
+            android:screenOrientation="portrait" />
+        <!-- PlayerMain -->
+        <activity
+            android:name=".demo.media.PlayerMain"
+            android:screenOrientation="portrait" />
+        <!-- 测试RecyclerView -->
+        <activity android:name=".demo.recycler_view.RecyclerViewMain" />
+        <!-- 测试CoordinatorLayout -->
+        <activity android:name=".demo.material_design.CoordinatorLayoutMain" />
+        <!-- 拖动排序控件 -->
+        <activity android:name=".demo.dragsort.DSMain" />
+        <activity android:name=".demo.dragsort.DslvMain" />
+        <activity android:name=".demo.dragsort.DsgvMain" />
+        <activity android:name=".kotlin.KotlinActivity" />
+        <activity android:name=".kotlin.KotlinThread"></activity>
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@ class StringTest {
     fun main() {
 //        testSplit()
 //        testSubStr()
-        testRegex()
+//         testRegex()
     }
 
     fun testSplit() {

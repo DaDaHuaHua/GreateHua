@@ -37,7 +37,7 @@ open class OperatorTest {
         change = list.let {
             it.add("D")
             it.add("E")
-            // it.size
+//             it.size
         }
         Log.i(TAG, "list = $list")
         Log.i(TAG, "change = $change")
@@ -46,18 +46,17 @@ open class OperatorTest {
     /***
      * apply
      *
-     * apply函数是这样的，调用某对象的apply函数，在函数范围内，可以任意调用该对象的任意方法，并返回该对象
+     * apply函数是这样的，调用某对象的apply函数，在函数范围内，可以任意调用该对象的任意方法，并返回该对象,注意apply返回当前自己的对象。
      * public inline fun <T> T.apply(block: T.() -> Unit): T { block(); return this
      */
 
-    fun main2() {
+    fun main2(){
         val list: MutableList<String> = mutableListOf("A", "B", "C")
-        val change: Any
+        val change: MutableList<String>
         change = list.apply {
             add("D")
             add("E")
             this.add("F")
-            size
         }
 
         Log.i(TAG, "list = $list")
@@ -72,7 +71,7 @@ open class OperatorTest {
 
     fun main3() {
         val list: MutableList<String> = mutableListOf("A", "B", "C")
-        val change: Any
+        val change: Int
         change = list.run {
             add("D")
             add("E")

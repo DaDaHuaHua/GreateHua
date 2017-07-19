@@ -33,7 +33,6 @@ fun main(): Int {
     person.isMaarryed = true
     person.isMaarryed
 
-
     when (Color.RED) {
         Color.BLUE -> println("11")
         Color.RED, Color.BLUE,

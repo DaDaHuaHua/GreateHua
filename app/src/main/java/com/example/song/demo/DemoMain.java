@@ -16,6 +16,10 @@ import com.example.song.demo.material_design.CoordinatorLayoutMain;
 import com.example.song.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.recycler_view.RecyclerViewMain;
+import com.example.song.kotlin.KotlinActivity;
+import com.example.song.kotlin.KotlinThread;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -28,7 +32,7 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV"};
+    private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,"KotlinActivity","Kotlin协程"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +62,11 @@ public class DemoMain extends BaseActivity {
                 case 4:
                     startActivity(new Intent(DemoMain.this, DSMain.class));
                     break;
+                case 5:
+                    startActivity(new Intent(DemoMain.this, KotlinActivity.class));
+                    break;
+                case 6:
+                    startActivity(new Intent(DemoMain.this, KotlinThread.class));
             }
         }
     }

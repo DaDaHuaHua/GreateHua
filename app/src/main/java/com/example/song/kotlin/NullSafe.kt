@@ -7,7 +7,7 @@ package com.example.song.kotlin
  */
 class NullSafe {
     fun main() {
-        test(null)
+//        test(null)
     }
 
     fun test(str: String?) {
