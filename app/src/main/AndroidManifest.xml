@@ -89,7 +89,8 @@
         <activity android:name=".demo.dragsort.DslvMain" />
         <activity android:name=".demo.dragsort.DsgvMain" />
         <activity android:name=".kotlin.KotlinActivity" />
-        <activity android:name=".kotlin.KotlinThread"></activity>
+        <activity android:name=".kotlin.KotlinThread" />
+        <activity android:name=".kotlin.KaptActivity"></activity>
     </application>
 
 </manifest>

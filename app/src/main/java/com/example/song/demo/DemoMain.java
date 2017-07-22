@@ -16,6 +16,7 @@ import com.example.song.demo.material_design.CoordinatorLayoutMain;
 import com.example.song.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.recycler_view.RecyclerViewMain;
+import com.example.song.kotlin.KaptActivity;
 import com.example.song.kotlin.KotlinActivity;
 import com.example.song.kotlin.KotlinThread;
 
@@ -32,7 +33,8 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,"KotlinActivity","Kotlin协程"};
+    private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,
+            "KotlinActivity","Kotlin协程", "Kotlin-kapt"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +69,9 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 6:
                     startActivity(new Intent(DemoMain.this, KotlinThread.class));
+                    break;
+                case 7:
+                    startActivity(new Intent(DemoMain.this , KaptActivity.class));
             }
         }
     }

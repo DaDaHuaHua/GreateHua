@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'android-apt'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 25
@@ -90,36 +91,57 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //==============================================================================================
-    //butterknife
+
     //commonlib
     compile project(':commonlib')
     //commonwidget
     compile project(':commonwidget')
-    //bugly
-    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
-    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
-    //七牛播放器相关
-    //facebook--Rebound
-    //bottom-navigation-bar
-    //supportDesign
-    //glide
-    //gson其实可以不要的，已经有fastJson
+
+    //kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
     compile 'com.android.support:appcompat-v7:25.3.1'
+
+    //butterknife
     compile 'com.jakewharton:butterknife:8.2.1'
+
+    //java ButterKnife注解处理器
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+
+    //kotlin ButterKnife注解处理器
+    kapt 'com.jakewharton:butterknife-compiler:8.2.1'
+
+    //bugly
     compile 'com.tencent.bugly:crashreport:2.5.0'
     compile 'com.tencent.bugly:nativecrashreport:3.1.2'
+
+    //七牛播放器相关
     compile 'com.qiniu.pili:pili-android-qos:0.8.+'
+
+    //facebook--Rebound
     compile 'com.facebook.rebound:rebound:0.3.8'
+
+    //bottom-navigation-bar
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
+
+    //supportDesign
     compile 'com.android.support:design:25.3.1'
+
+    //glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    //gson其实可以不要的，已经有fastJson
     compile 'com.google.code.gson:gson:2.7'
+
+    //constraintLayout
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+
     //kotlin协程
     compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.16'
+
+    testCompile 'junit:junit:4.12'
+
+
 }
 repositories {
     mavenCentral()
