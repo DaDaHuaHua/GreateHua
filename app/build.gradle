@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'android-apt'
+//apply plugin: 'android-apt'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -83,6 +83,10 @@ android {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
     }
 }
+//kotlin协程
+ext {
+    anko_version = "0.10.1"
+}
 
 dependencies {
     //========================自动生成的============================================================
@@ -103,13 +107,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
 
     //butterknife
-    compile 'com.jakewharton:butterknife:8.2.1'
 
     //java ButterKnife注解处理器
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    compile 'com.jakewharton:butterknife:8.7.0'
+  //  annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     //kotlin ButterKnife注解处理器
-    kapt 'com.jakewharton:butterknife-compiler:8.2.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.7.0'
 
     //bugly
     compile 'com.tencent.bugly:crashreport:2.5.0'
@@ -138,6 +142,9 @@ dependencies {
 
     //kotlin协程
     compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.16'
+
+    //kotlin anko库
+    compile "org.jetbrains.anko:anko:$anko_version"
 
     testCompile 'junit:junit:4.12'
 

@@ -16,6 +16,7 @@ import com.example.song.demo.material_design.CoordinatorLayoutMain;
 import com.example.song.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.recycler_view.RecyclerViewMain;
+import com.example.song.kotlin.AnkoActivity;
 import com.example.song.kotlin.KaptActivity;
 import com.example.song.kotlin.KotlinActivity;
 import com.example.song.kotlin.KotlinThread;
@@ -34,7 +35,7 @@ public class DemoMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,
-            "KotlinActivity","Kotlin协程", "Kotlin-kapt"};
+            "KotlinActivity","Kotlin协程", "Kotlin-kapt","anko"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,33 +46,40 @@ public class DemoMain extends BaseActivity {
         mLv.setOnItemClickListener(new MyItemClickListener());
     }
 
+    private void startActivity(Class<?> c){
+        startActivity(new Intent(this,c));
+    }
+
     private class MyItemClickListener implements   AdapterView.OnItemClickListener{
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             switch (position){
                 case 0:
-                    startActivity(new Intent(DemoMain.this, PlayerMain.class));
+                    startActivity(PlayerMain.class);
                     break;
                 case 1:
-                    startActivity(new Intent(DemoMain.this, DialogFragmentMain.class));
+                    startActivity(DialogFragmentMain.class);
                     break;
                 case 2:
-                    startActivity(new Intent(DemoMain.this, RecyclerViewMain.class));
+                    startActivity(RecyclerViewMain.class);
                     break;
                 case 3:
-                    startActivity(new Intent(DemoMain.this, CoordinatorLayoutMain.class));
+                    startActivity(CoordinatorLayoutMain.class);
                     break;
                 case 4:
-                    startActivity(new Intent(DemoMain.this, DSMain.class));
+                    startActivity(DSMain.class);
                     break;
                 case 5:
-                    startActivity(new Intent(DemoMain.this, KotlinActivity.class));
+                    startActivity(KotlinActivity.class);
                     break;
                 case 6:
-                    startActivity(new Intent(DemoMain.this, KotlinThread.class));
+                    startActivity(KotlinThread.class);
                     break;
                 case 7:
-                    startActivity(new Intent(DemoMain.this , KaptActivity.class));
+                    startActivity(KaptActivity.class);
+                    break;
+                case 8:
+                    startActivity(AnkoActivity.class);
             }
         }
     }

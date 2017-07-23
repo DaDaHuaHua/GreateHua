@@ -90,7 +90,8 @@
         <activity android:name=".demo.dragsort.DsgvMain" />
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".kotlin.KotlinThread" />
-        <activity android:name=".kotlin.KaptActivity"></activity>
+        <activity android:name=".kotlin.KaptActivity" />
+        <activity android:name=".kotlin.AnkoActivity"></activity>
     </application>
 
 </manifest>
