@@ -13,7 +13,7 @@ import com.example.song.R
  * apt 注解处理器 annotation processing tool， kapt kotlin 注解处理器
  *
  *  build.gradle 原来java项目中我们使用atp 或 annotationProcessor +'com.jakewharton:butterknife-compiler:8.7.0'
- *  如果引入kotlin以后我们使用kapt   kapt +'com.jakewharton:butterknife-compiler:8.7.0'
+ *  如果引入kotlin以后我们要加上kapt   kapt +'com.jakewharton:butterknife-compiler:8.7.0'
  *
  */
 class KaptActivity : AppCompatActivity() {

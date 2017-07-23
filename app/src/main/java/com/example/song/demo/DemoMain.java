@@ -19,6 +19,7 @@ import com.example.song.demo.recycler_view.RecyclerViewMain;
 import com.example.song.kotlin.AnkoActivity;
 import com.example.song.kotlin.KaptActivity;
 import com.example.song.kotlin.KotlinActivity;
+import com.example.song.kotlin.KotlinMain;
 import com.example.song.kotlin.KotlinThread;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class DemoMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,
-            "KotlinActivity","Kotlin协程", "Kotlin-kapt","anko"};
+            "Kotlin"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,16 +71,8 @@ public class DemoMain extends BaseActivity {
                     startActivity(DSMain.class);
                     break;
                 case 5:
-                    startActivity(KotlinActivity.class);
+                    startActivity(KotlinMain.class);
                     break;
-                case 6:
-                    startActivity(KotlinThread.class);
-                    break;
-                case 7:
-                    startActivity(KaptActivity.class);
-                    break;
-                case 8:
-                    startActivity(AnkoActivity.class);
             }
         }
     }

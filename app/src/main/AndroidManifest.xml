@@ -88,10 +88,13 @@
         <activity android:name=".demo.dragsort.DSMain" />
         <activity android:name=".demo.dragsort.DslvMain" />
         <activity android:name=".demo.dragsort.DsgvMain" />
+
+
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".kotlin.KotlinThread" />
         <activity android:name=".kotlin.KaptActivity" />
-        <activity android:name=".kotlin.AnkoActivity"></activity>
+        <activity android:name=".kotlin.AnkoActivity"/>
+        <activity android:name=".kotlin.KotlinMain"/>
     </application>
 
 </manifest>

@@ -73,6 +73,7 @@ android {
                     'src/main/res/layout/homework',
                     'src/main/res/layout/demo',
                     'src/main/res/layout/video_player',
+                    'src/main/res/layout/kotlin',
                     'src/main/res/layout',
                     'src/main/res'
             ]
@@ -110,7 +111,7 @@ dependencies {
 
     //java ButterKnife注解处理器
     compile 'com.jakewharton:butterknife:8.7.0'
-  //  annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+   // annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     //kotlin ButterKnife注解处理器
     kapt 'com.jakewharton:butterknife-compiler:8.7.0'
