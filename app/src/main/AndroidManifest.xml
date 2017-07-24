@@ -95,6 +95,7 @@
         <activity android:name=".kotlin.KaptActivity" />
         <activity android:name=".kotlin.AnkoActivity"/>
         <activity android:name=".kotlin.KotlinMain"/>
+        <activity android:name=".kotlin.DSLActivity"/>
     </application>
 
 </manifest>

@@ -38,4 +38,34 @@
         android:text="make_call"
         />
 
+    <Button
+        android:id="@+id/btn_log"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:text="Log"
+        />
+
+    <Button
+        android:id="@+id/px2dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:text="px2dp"
+        />
+
+    <Button
+        android:id="@+id/coroutines"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:text="协程"
+        />
+
 </LinearLayout>

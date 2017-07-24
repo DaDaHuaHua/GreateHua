@@ -22,7 +22,7 @@ public class KotlinMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mListView;
 
-    private String[] tags = {"KotlinActivity", "Kotlin协程", "Kotlin-kapt", "anko"};
+    private String[] tags = {"KotlinActivity", "Kotlin协程", "Kotlin-kapt", "anko","DSL"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +53,10 @@ public class KotlinMain extends BaseActivity {
                     break;
                 case 3:
                     startActivity(AnkoActivity.class);
+                    break;
+                case 4:
+                    startActivity(DSLActivity.class);
+                    break;
 
             }
         }
