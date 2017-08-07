@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
+import com.example.song.kotlin.demo.GithubList;
 
 import butterknife.BindView;
 
@@ -22,7 +23,7 @@ public class KotlinMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mListView;
 
-    private String[] tags = {"KotlinActivity", "Kotlin协程", "Kotlin-kapt", "anko","DSL"};
+    private String[] tags = {"KotlinActivity", "Kotlin协程", "Kotlin-kapt", "anko","DSL" ,"github RecyclerView"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +57,9 @@ public class KotlinMain extends BaseActivity {
                     break;
                 case 4:
                     startActivity(DSLActivity.class);
+                    break;
+                case 5:
+                    startActivity(GithubList.class);
                     break;
 
             }

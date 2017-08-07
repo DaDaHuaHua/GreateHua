@@ -15,6 +15,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     //---------------- 七牛 end--------------------------------
 
+    //---------------- Glide start--------------------------------
+    <uses-permission android:name="android.permission.INTERNET" />
+    //---------------- Glide end--------------------------------
 
     //---------------------------测试DSLV拖动排序需要震动权限
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -96,6 +99,7 @@
         <activity android:name=".kotlin.AnkoActivity"/>
         <activity android:name=".kotlin.KotlinMain"/>
         <activity android:name=".kotlin.DSLActivity"/>
+        <activity android:name=".kotlin.demo.GithubList"/>
     </application>
 
 </manifest>
