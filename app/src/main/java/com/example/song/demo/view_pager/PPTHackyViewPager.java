@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by  on 2016/2/23.
+ * Created by sh on 2016/2/23.
  * <p>
  *可以无限循环的viewPager
  */
