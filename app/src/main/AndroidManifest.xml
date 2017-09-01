@@ -91,14 +91,17 @@
         <activity android:name=".demo.dragsort.DSMain" />
         <activity android:name=".demo.dragsort.DslvMain" />
         <activity android:name=".demo.dragsort.DsgvMain" />
-
+        <!-- 测试ViewPager -->
+        <activity
+            android:name=".demo.view_pager.ViewPagerMain"
+            android:screenOrientation="portrait" />
 
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".kotlin.KotlinThread" />
         <activity android:name=".kotlin.KaptActivity" />
-        <activity android:name=".kotlin.AnkoActivity"/>
-        <activity android:name=".kotlin.KotlinMain"/>
-        <activity android:name=".kotlin.DSLActivity"/>
+        <activity android:name=".kotlin.AnkoActivity" />
+        <activity android:name=".kotlin.KotlinMain" />
+        <activity android:name=".kotlin.DSLActivity" />
         <activity android:name=".kotlin.demo.GithubList"/>
     </application>
 

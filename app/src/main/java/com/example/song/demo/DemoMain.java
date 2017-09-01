@@ -16,6 +16,7 @@ import com.example.song.demo.material_design.CoordinatorLayoutMain;
 import com.example.song.demo.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.recycler_view.RecyclerViewMain;
+import com.example.song.demo.view_pager.ViewPagerMain;
 import com.example.song.kotlin.AnkoActivity;
 import com.example.song.kotlin.KaptActivity;
 import com.example.song.kotlin.KotlinActivity;
@@ -36,7 +37,7 @@ public class DemoMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"播放器","DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,
-            "Kotlin"};
+            "Kotlin","ViewPager"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +73,9 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 5:
                     startActivity(KotlinMain.class);
+                    break;
+                case 6:
+                    startActivity(ViewPagerMain.class);
                     break;
             }
         }
