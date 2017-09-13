@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
+import com.example.song.demo.views.custom_view.CustomViewActivity;
 import com.example.song.demo.views.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.views.dragsort.DSMain;
 import com.example.song.demo.views.material_design.CoordinatorLayoutMain;
@@ -27,7 +28,7 @@ public class ViewsMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,
-            "Kotlin","ViewPager"};
+            "Kotlin","ViewPager","自定义View"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +65,9 @@ public class ViewsMain extends BaseActivity {
                     break;
                 case 5:
                     startActivity(ViewPagerMain.class);
+                    break;
+                case 6:
+                    startActivity(CustomViewActivity.class);
                     break;
             }
         }

@@ -64,6 +64,10 @@
         <activity
             android:name=".demo.views.ViewsMain"
             android:screenOrientation="portrait" />
+        <!-- CustomView-->
+        <activity
+            android:name=".demo.views.custom_view.CustomViewActivity"
+            android:screenOrientation="portrait" />
         <!-- Vector -->
         <activity
             android:name=".homework.vector.VectorActivity"

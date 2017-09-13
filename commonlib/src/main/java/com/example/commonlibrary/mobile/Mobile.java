@@ -2,6 +2,7 @@ package com.example.commonlibrary.mobile;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 /**
  * Created by Song on 2017/1/20.
@@ -37,6 +38,7 @@ public class Mobile {
         DENSITY = metrics.density;
         SCALED_DENSITY = metrics.scaledDensity;
         metrics = null;
+        Log.i("Mobile","SCREEN_WIDTH="+SCREEN_WIDTH+"  SCREEN_HEIGHT="+SCREEN_HEIGHT+"   DENSITY="+DENSITY);
     }
 
 
