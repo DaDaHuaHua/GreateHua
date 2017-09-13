@@ -1,4 +1,4 @@
-package com.example.song.demo.recycler_view;
+package com.example.song.demo.views.recycler_view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -39,7 +39,6 @@ public class RecyclerViewMain extends BaseActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     private void initData(){

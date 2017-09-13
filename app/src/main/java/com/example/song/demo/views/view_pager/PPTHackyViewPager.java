@@ -1,4 +1,4 @@
-package com.example.song.demo.view_pager;
+package com.example.song.demo.views.view_pager;
 
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -37,10 +37,19 @@ public class PPTHackyViewPager extends HackyViewPager {
     public void setAdapter(PagerAdapter adapter) {
         mInnerAdapter = new InnerPagerAdapter(adapter);
         super.setAdapter(mInnerAdapter);
-        setCurrentItem(1);
+        super.setCurrentItem(1);
     }
 
-    private List<ViewPager.OnPageChangeListener> mOnPageChangeListeners = new ArrayList<>();
+    @Override
+    public void setCurrentItem(int position) {
+        if (position >= mInnerAdapter.getCount()) {
+            throw new IndexOutOfBoundsException("Index is " + position + " , max is " + mInnerAdapter.getCount());
+        }
+        super.setCurrentItem(position + 1);
+    }
+
+
+    private List<OnPageChangeListener> mOnPageChangeListeners = new ArrayList<>();
 
     public void addOnPageChangeListener(ViewPager.OnPageChangeListener listener) {
         this.mOnPageChangeListeners.add(listener);
@@ -59,9 +68,9 @@ public class PPTHackyViewPager extends HackyViewPager {
         public void onPageScrollStateChanged(int state) {
             if (state == ViewPager.SCROLL_STATE_IDLE) {
                 if (position == mInnerAdapter.getCount() - 1) {
-                    setCurrentItem(1, false);
+                    PPTHackyViewPager.super.setCurrentItem(1, false);
                 } else if (position == 0) {
-                    setCurrentItem(mInnerAdapter.getCount() - 2, false);
+                    PPTHackyViewPager.super.setCurrentItem(mInnerAdapter.getCount() - 2, false);
                 }
             }
             if (mOnPageChangeListeners != null && mOnPageChangeListeners.size() > 0) {
@@ -87,7 +96,7 @@ public class PPTHackyViewPager extends HackyViewPager {
                 for (OnPageChangeListener mPageChangeListener : mOnPageChangeListeners) {
                     //最前面一个和最后面一个不能走onPageSelected
                     if (position != 0 && position != mInnerAdapter.getCount() - 1) {
-                        mPageChangeListener.onPageSelected(position-1);
+                        mPageChangeListener.onPageSelected(position - 1);
                     }
                 }
             }

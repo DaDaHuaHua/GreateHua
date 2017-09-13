@@ -1,4 +1,4 @@
-package com.example.song.demo.dialogfragment;
+package com.example.song.demo.views.dialogfragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.example.song.R;
 import com.example.song.base.BaseDialogFragment;
-
-import butterknife.BindView;
 
 /**
  * Created by zz on 2017/4/11.

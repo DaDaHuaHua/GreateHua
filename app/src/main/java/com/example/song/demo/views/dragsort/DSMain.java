@@ -1,4 +1,4 @@
-package com.example.song.demo.dragsort;
+package com.example.song.demo.views.dragsort;
 
 import android.content.Intent;
 import android.os.Bundle;

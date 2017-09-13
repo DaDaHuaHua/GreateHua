@@ -1,4 +1,4 @@
-package com.example.song.demo.dialogfragment;
+package com.example.song.demo.views.dialogfragment;
 
 import android.os.Parcel;
 import android.os.Parcelable;

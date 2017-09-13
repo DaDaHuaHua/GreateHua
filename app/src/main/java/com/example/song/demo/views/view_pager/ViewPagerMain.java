@@ -1,4 +1,4 @@
-package com.example.song.demo.view_pager;
+package com.example.song.demo.views.view_pager;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -60,7 +60,10 @@
         <activity
             android:name=".demo.DemoMain"
             android:screenOrientation="portrait" />
-
+        <!-- ViewsMain-->
+        <activity
+            android:name=".demo.views.ViewsMain"
+            android:screenOrientation="portrait" />
         <!-- Vector -->
         <activity
             android:name=".homework.vector.VectorActivity"
@@ -77,23 +80,23 @@
         <activity android:name=".homework.rebound.ReboundActivity" />
         <!-- 测试DialogFragment -->
         <activity
-            android:name=".demo.dialogfragment.DialogFragmentMain"
+            android:name=".demo.views.dialogfragment.DialogFragmentMain"
             android:screenOrientation="portrait" />
         <!-- PlayerMain -->
         <activity
             android:name=".demo.media.PlayerMain"
             android:screenOrientation="portrait" />
         <!-- 测试RecyclerView -->
-        <activity android:name=".demo.recycler_view.RecyclerViewMain" />
+        <activity android:name=".demo.views.recycler_view.RecyclerViewMain" />
         <!-- 测试CoordinatorLayout -->
-        <activity android:name=".demo.material_design.CoordinatorLayoutMain" />
+        <activity android:name=".demo.views.material_design.CoordinatorLayoutMain" />
         <!-- 拖动排序控件 -->
-        <activity android:name=".demo.dragsort.DSMain" />
-        <activity android:name=".demo.dragsort.DslvMain" />
-        <activity android:name=".demo.dragsort.DsgvMain" />
+        <activity android:name=".demo.views.dragsort.DSMain" />
+        <activity android:name=".demo.views.dragsort.DslvMain" />
+        <activity android:name=".demo.views.dragsort.DsgvMain" />
         <!-- 测试ViewPager -->
         <activity
-            android:name=".demo.view_pager.ViewPagerMain"
+            android:name=".demo.views.view_pager.ViewPagerMain"
             android:screenOrientation="portrait" />
 
         <activity android:name=".kotlin.KotlinActivity" />
@@ -102,7 +105,7 @@
         <activity android:name=".kotlin.AnkoActivity" />
         <activity android:name=".kotlin.KotlinMain" />
         <activity android:name=".kotlin.DSLActivity" />
-        <activity android:name=".kotlin.demo.GithubList"/>
+        <activity android:name=".kotlin.demo.GithubList" />
     </application>
 
 </manifest>

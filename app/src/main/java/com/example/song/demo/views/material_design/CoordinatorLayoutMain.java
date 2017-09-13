@@ -1,4 +1,4 @@
-package com.example.song.demo.material_design;
+package com.example.song.demo.views.material_design;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

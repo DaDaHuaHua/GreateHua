@@ -1,4 +1,4 @@
-package com.example.song.demo.view_pager;
+package com.example.song.demo.views.view_pager;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
