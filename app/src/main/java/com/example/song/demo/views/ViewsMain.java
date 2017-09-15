@@ -3,6 +3,7 @@ package com.example.song.demo.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,7 @@ import com.example.song.base.BaseActivity;
 import com.example.song.demo.views.custom_view.CustomViewActivity;
 import com.example.song.demo.views.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.views.dragsort.DSMain;
+import com.example.song.demo.views.floating_window.FloatingWindowMain;
 import com.example.song.demo.views.material_design.CoordinatorLayoutMain;
 import com.example.song.demo.views.recycler_view.RecyclerViewMain;
 import com.example.song.demo.views.view_pager.ViewPagerMain;
@@ -28,7 +30,7 @@ public class ViewsMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,
-            "Kotlin","ViewPager","自定义View"};
+            "Kotlin","ViewPager","自定义View","FloatingWindow"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,7 +71,13 @@ public class ViewsMain extends BaseActivity {
                 case 6:
                     startActivity(CustomViewActivity.class);
                     break;
+                case 7:
+                    startActivity(FloatingWindowMain.class);
+                    break;
             }
         }
     }
+
+    private static final String TAG = "ViewsMain";
+
 }

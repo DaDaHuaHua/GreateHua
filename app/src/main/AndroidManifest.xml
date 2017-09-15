@@ -22,6 +22,11 @@
     //---------------------------测试DSLV拖动排序需要震动权限
     <uses-permission android:name="android.permission.VIBRATE" />
     //---------------------------测试DSLV拖动排序需要震动权限
+
+
+    //---------------------------测试悬浮窗----------------------
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".application.App"
         android:allowBackup="true"
@@ -68,6 +73,11 @@
         <activity
             android:name=".demo.views.custom_view.CustomViewActivity"
             android:screenOrientation="portrait" />
+
+        <!-- FloatingWindow-->
+        <activity
+            android:name=".demo.views.floating_window.FloatingWindowMain"
+            android:screenOrientation="portrait" />
         <!-- Vector -->
         <activity
             android:name=".homework.vector.VectorActivity"
@@ -110,6 +120,9 @@
         <activity android:name=".kotlin.KotlinMain" />
         <activity android:name=".kotlin.DSLActivity" />
         <activity android:name=".kotlin.demo.GithubList" />
+
+
+        <service android:name=".demo.views.floating_window.FloatingWindowService" />
     </application>
 
 </manifest>

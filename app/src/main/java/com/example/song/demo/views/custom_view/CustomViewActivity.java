@@ -2,6 +2,7 @@ package com.example.song.demo.views.custom_view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
@@ -16,4 +17,8 @@ public class CustomViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
     }
+
+
+    private static final String TAG = "CustomViewActivity";
+
 }
