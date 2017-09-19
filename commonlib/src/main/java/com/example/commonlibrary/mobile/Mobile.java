@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by Song on 2017/1/20.
  */
@@ -31,6 +33,12 @@ public class Mobile {
      */
     public static float SCALED_DENSITY;
 
+    /***
+     * 屏幕状态栏高度
+     * @param context
+     */
+    public static int STATUS_BAR_HEIGHT;
+
     public static void init(Context context) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         SCREEN_WIDTH = metrics.widthPixels;
@@ -38,6 +46,15 @@ public class Mobile {
         DENSITY = metrics.density;
         SCALED_DENSITY = metrics.scaledDensity;
         metrics = null;
+        try {
+            Class<?> c = Class.forName("com.android.internal.R$dimen");
+            Object o = c.newInstance();
+            Field field = c.getField("status_bar_height");
+            int x = (Integer) field.get(o);
+            STATUS_BAR_HEIGHT = context.getResources().getDimensionPixelSize(x);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Log.i("Mobile","SCREEN_WIDTH="+SCREEN_WIDTH+"  SCREEN_HEIGHT="+SCREEN_HEIGHT+"   DENSITY="+DENSITY);
     }
 

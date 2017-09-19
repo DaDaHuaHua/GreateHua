@@ -35,10 +35,12 @@ public class FloatingWindowService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (timer == null) {
-            timer = new Timer();
-            timer.scheduleAtFixedRate(new RefreshTask(), 0, 500);
-        }
+//        if (timer == null) {
+//            timer = new Timer();
+//            timer.scheduleAtFixedRate(new RefreshTask(), 0, 500);
+//        }
+
+        MyWindowManager.createSimpleWindow(getApplicationContext());
         return super.onStartCommand(intent, flags, startId);
     }
 

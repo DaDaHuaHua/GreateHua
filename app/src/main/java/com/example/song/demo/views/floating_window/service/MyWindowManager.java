@@ -5,10 +5,13 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.commonlibrary.mobile.Mobile;
 import com.example.song.R;
+import com.example.song.demo.views.floating_window.SimpleFloatingView;
 import com.example.song.demo.views.floating_window.view.FloatWindowBigView;
 import com.example.song.demo.views.floating_window.view.FloatWindowSmallView;
 
@@ -54,8 +57,7 @@ public class MyWindowManager {
     /**
      * 创建一个小悬浮窗。初始位置为屏幕的右部中间位置。
      *
-     * @param context
-     *            必须为应用程序的Context.
+     * @param context 必须为应用程序的Context.
      */
     public static void createSmallWindow(Context context) {
         WindowManager windowManager = getWindowManager(context);
@@ -83,8 +85,7 @@ public class MyWindowManager {
     /**
      * 将小悬浮窗从屏幕上移除。
      *
-     * @param context
-     *            必须为应用程序的Context.
+     * @param context 必须为应用程序的Context.
      */
     public static void removeSmallWindow(Context context) {
         if (smallWindow != null) {
@@ -97,8 +98,7 @@ public class MyWindowManager {
     /**
      * 创建一个大悬浮窗。位置为屏幕正中间。
      *
-     * @param context
-     *            必须为应用程序的Context.
+     * @param context 必须为应用程序的Context.
      */
     public static void createBigWindow(Context context) {
         WindowManager windowManager = getWindowManager(context);
@@ -123,8 +123,7 @@ public class MyWindowManager {
     /**
      * 将大悬浮窗从屏幕上移除。
      *
-     * @param context
-     *            必须为应用程序的Context.
+     * @param context 必须为应用程序的Context.
      */
     public static void removeBigWindow(Context context) {
         if (bigWindow != null) {
@@ -137,8 +136,7 @@ public class MyWindowManager {
     /**
      * 更新小悬浮窗的TextView上的数据，显示内存使用的百分比。
      *
-     * @param context
-     *            可传入应用程序上下文。
+     * @param context 可传入应用程序上下文。
      */
     public static void updateUsedPercent(Context context) {
         if (smallWindow != null) {
@@ -159,8 +157,7 @@ public class MyWindowManager {
     /**
      * 如果WindowManager还未创建，则创建一个新的WindowManager返回。否则返回当前已创建的WindowManager。
      *
-     * @param context
-     *            必须为应用程序的Context.
+     * @param context 必须为应用程序的Context.
      * @return WindowManager的实例，用于控制在屏幕上添加或移除悬浮窗。
      */
     private static WindowManager getWindowManager(Context context) {
@@ -173,8 +170,7 @@ public class MyWindowManager {
     /**
      * 如果ActivityManager还未创建，则创建一个新的ActivityManager返回。否则返回当前已创建的ActivityManager。
      *
-     * @param context
-     *            可传入应用程序上下文。
+     * @param context 可传入应用程序上下文。
      * @return ActivityManager的实例，用于获取手机可用内存。
      */
     private static ActivityManager getActivityManager(Context context) {
@@ -187,8 +183,7 @@ public class MyWindowManager {
     /**
      * 计算已使用内存的百分比，并返回。
      *
-     * @param context
-     *            可传入应用程序上下文。
+     * @param context 可传入应用程序上下文。
      * @return 已使用内存的百分比，以字符串形式返回。
      */
     public static String getUsedPercentValue(Context context) {
@@ -201,7 +196,7 @@ public class MyWindowManager {
             br.close();
             long totalMemorySize = Integer.parseInt(subMemoryLine.replaceAll("\\D+", ""));
             long availableSize = getAvailableMemory(context) / 1024;
-            Log.i("MemInfo" ,"totalMemorySize="+totalMemorySize+" availableSize="+getAvailableMemory(context) );
+            Log.i("MemInfo", "totalMemorySize=" + totalMemorySize + " availableSize=" + getAvailableMemory(context));
             int percent = (int) ((totalMemorySize - availableSize) / (float) totalMemorySize * 100);
             return percent + "%";
         } catch (IOException e) {
@@ -213,14 +208,39 @@ public class MyWindowManager {
     /**
      * 获取当前可用内存，返回数据以字节为单位。
      *
-     * @param context
-     *            可传入应用程序上下文。
+     * @param context 可传入应用程序上下文。
      * @return 当前可用内存。
      */
     private static long getAvailableMemory(Context context) {
         ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
         getActivityManager(context).getMemoryInfo(mi);
         return mi.availMem;
+    }
+
+    public static void createSimpleWindow(Context context) {
+        WindowManager windowManager = getWindowManager(context);
+        int screenWidth = Mobile.SCREEN_WIDTH;
+        int screenHeight = Mobile.SCREEN_HEIGHT;
+        SimpleFloatingView simpleFloatingView = new SimpleFloatingView(context);
+        if (smallWindowParams == null) {
+            smallWindowParams = new WindowManager.LayoutParams();
+            smallWindowParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+            smallWindowParams.format = PixelFormat.RGBA_8888;
+            smallWindowParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+            smallWindowParams.gravity = Gravity.LEFT | Gravity.TOP;
+            smallWindowParams.width = screenWidth;
+            smallWindowParams.height = screenHeight / 2;
+            smallWindowParams.x = 0;
+            smallWindowParams.y = screenHeight / 2;
+        }
+        simpleFloatingView.setParams(smallWindowParams);
+        windowManager.addView(simpleFloatingView, smallWindowParams);
+    }
+
+    public static void removeSimpleWindow(Context context, View view) {
+        WindowManager windowManager = getWindowManager(context);
+        windowManager.removeView(view);
     }
 
 }
