@@ -16,8 +16,12 @@ import com.example.song.demo.views.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.views.dragsort.DSMain;
 import com.example.song.demo.views.floating_window.FloatingWindowMain;
 import com.example.song.demo.views.material_design.CoordinatorLayoutMain;
+import com.example.song.demo.views.rebound.ReboundActivity;
 import com.example.song.demo.views.recycler_view.RecyclerViewMain;
+import com.example.song.demo.views.shared_element.SharedElementActivityA;
+import com.example.song.demo.views.vector.VectorActivity;
 import com.example.song.demo.views.view_pager.ViewPagerMain;
+import com.example.song.homework.HomeworkMain;
 import com.example.song.kotlin.KotlinMain;
 
 import butterknife.BindView;
@@ -29,26 +33,26 @@ public class ViewsMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"DialogFragment","RecyclerView","CoordinatorLayoutDemo" , "DSLV / DSGV" ,
-            "Kotlin","ViewPager","自定义View","FloatingWindow"};
+    private String[] menu = {"DialogFragment", "RecyclerView", "CoordinatorLayoutDemo", "DSLV / DSGV",
+            "facebook-Rebound", "ViewPager", "自定义View", "FloatingWindow", "Vector", "SharedElement"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple_list_view);
-        mLv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu){
+        mLv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu) {
         });
         mLv.setOnItemClickListener(new ViewsMain.MyItemClickListener());
     }
 
-    private void startActivity(Class<?> c){
-        startActivity(new Intent(this,c));
+    private void startActivity(Class<?> c) {
+        startActivity(new Intent(this, c));
     }
 
-    private class MyItemClickListener implements   AdapterView.OnItemClickListener{
+    private class MyItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            switch (position){
+            switch (position) {
 
                 case 0:
                     startActivity(DialogFragmentMain.class);
@@ -63,7 +67,7 @@ public class ViewsMain extends BaseActivity {
                     startActivity(DSMain.class);
                     break;
                 case 4:
-                    startActivity(KotlinMain.class);
+                    startActivity(ReboundActivity.class);
                     break;
                 case 5:
                     startActivity(ViewPagerMain.class);
@@ -74,6 +78,13 @@ public class ViewsMain extends BaseActivity {
                 case 7:
                     startActivity(FloatingWindowMain.class);
                     break;
+                case 8:
+                    startActivity(VectorActivity.class);
+                    break;
+                case 9:
+                    startActivity(SharedElementActivityA.class);
+                    break;
+
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.song.homework.rebound;
+package com.example.song.demo.views.rebound;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

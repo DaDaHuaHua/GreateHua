@@ -10,9 +10,9 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
-import com.example.song.homework.rebound.ReboundActivity;
-import com.example.song.homework.shared_element.SharedElementActivityA;
-import com.example.song.homework.vector.VectorActivity;
+import com.example.song.demo.views.rebound.ReboundActivity;
+import com.example.song.demo.views.shared_element.SharedElementActivityA;
+import com.example.song.demo.views.vector.VectorActivity;
 
 import butterknife.BindView;
 
@@ -25,7 +25,7 @@ public class HomeworkMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"Vector","SharedElement","facebook-Rebound"};
+    private String[] menu = {};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,17 +39,7 @@ public class HomeworkMain extends BaseActivity {
    private class MyItemClickListener implements   AdapterView.OnItemClickListener{
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            switch (position){
-                case 0:
-                    startActivity(new Intent(HomeworkMain.this, VectorActivity.class));
-                    break;
-                case 1:
-                    startActivity(new Intent(HomeworkMain.this , SharedElementActivityA.class));
-                    break;
-                case  2:
-                    startActivity(new Intent(HomeworkMain.this, ReboundActivity.class));
-                    break;
-            }
+
         }
     }
 }

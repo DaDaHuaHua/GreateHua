@@ -31,7 +31,7 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","views"};
+    private String[] menu = {"播放器","views","Kotlin"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +55,9 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 1:
                     startActivity(ViewsMain.class);
+                    break;
+                case 2:
+                    startActivity(KotlinMain.class);
                     break;
             }
         }

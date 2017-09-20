@@ -45,10 +45,10 @@
         </activity>
         <!-- 共享元素 -->
         <activity
-            android:name=".homework.shared_element.SharedElementActivityA"
+            android:name=".demo.views.shared_element.SharedElementActivityA"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".homework.shared_element.SharedElementActivityB"
+            android:name=".demo.views.shared_element.SharedElementActivityB"
             android:screenOrientation="portrait" />
 
         <!-- TestMain -->
@@ -80,7 +80,7 @@
             android:screenOrientation="portrait" />
         <!-- Vector -->
         <activity
-            android:name=".homework.vector.VectorActivity"
+            android:name=".demo.views.vector.VectorActivity"
             android:screenOrientation="portrait" />
         <!-- VideoPlayer -->
         <activity
@@ -91,7 +91,7 @@
             android:name=".demo.media.player.PiliAudioPlayerActivity"
             android:screenOrientation="portrait" />
         <!-- Rebound效果 -->
-        <activity android:name=".homework.rebound.ReboundActivity" />
+        <activity android:name=".demo.views.rebound.ReboundActivity" />
         <!-- 测试DialogFragment -->
         <activity
             android:name=".demo.views.dialogfragment.DialogFragmentMain"

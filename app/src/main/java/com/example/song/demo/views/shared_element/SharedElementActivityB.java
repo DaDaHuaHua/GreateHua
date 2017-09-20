@@ -1,4 +1,4 @@
-package com.example.song.homework.shared_element;
+package com.example.song.demo.views.shared_element;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
