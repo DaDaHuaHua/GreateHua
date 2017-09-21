@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,28 +38,37 @@ public class MyView2 extends View {
                 mHeight = getHeight();
             }
         });
+        mPath.addArc(200, 200, 400, 400, 90, 270);
+        mPath.arcTo(400, 200, 600, 400, 180, 270, false);
+        mPath.lineTo(400, 600);
+        mPath.close();
+
     }
 
     private int mWidth;
     private int mHeight;
     Paint mPaint = new Paint();
-
+    Path mPath = new Path();
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-         Bitmap bitmap =readBitmap(getContext(),R.mipmap.ic_launcher);
-           canvas.drawBitmap(bitmap,0,0,mPaint);
+        Bitmap bitmap = readBitmap(getContext(), R.mipmap.ic_launcher);
+        canvas.drawBitmap(bitmap, 0, 0, mPaint);
         canvas.drawColor(Color.parseColor("#88880000"));
         mPaint.setStrokeWidth(2);
+        mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
-        canvas.drawOval(100, 100, 500, 300, mPaint);
+//        canvas.drawOval(100, 100, 500, 300, mPaint);
+//
+//        mPaint.setStyle(Paint.Style.FILL);
+//        canvas.drawOval(100,600,500,800,mPaint);
+//
+//        mPaint.setColor(Color.parseColor("#88ff0000"));
+//        canvas.drawRoundRect(100 ,900,500,1200,50f,50f,mPaint);
 
-        mPaint.setStyle(Paint.Style.FILL);
-        canvas.drawOval(100,600,500,800,mPaint);
+        canvas.drawPath(mPath, mPaint);
 
-        mPaint.setColor(Color.parseColor("#88ff0000"));
-        canvas.drawRoundRect(100 ,900,500,1200,50f,50f,mPaint);
 
     }
 
