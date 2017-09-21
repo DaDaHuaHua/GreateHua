@@ -112,6 +112,7 @@
         <activity
             android:name=".demo.views.view_pager.ViewPagerMain"
             android:screenOrientation="portrait" />
+        <activity android:name=".demo.views.dialog.DialogTest"/>
 
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".kotlin.KotlinThread" />

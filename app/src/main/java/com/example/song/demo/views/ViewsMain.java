@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.views.custom_view.CustomViewActivity;
+import com.example.song.demo.views.dialog.DialogTest;
 import com.example.song.demo.views.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.views.dragsort.DSMain;
 import com.example.song.demo.views.floating_window.FloatingWindowMain;
@@ -34,7 +35,7 @@ public class ViewsMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"DialogFragment", "RecyclerView", "CoordinatorLayoutDemo", "DSLV / DSGV",
-            "facebook-Rebound", "ViewPager", "自定义View", "FloatingWindow", "Vector", "SharedElement"};
+            "facebook-Rebound", "ViewPager", "自定义View", "FloatingWindow", "Vector", "SharedElement","Dialog"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,6 +85,8 @@ public class ViewsMain extends BaseActivity {
                 case 9:
                     startActivity(SharedElementActivityA.class);
                     break;
+                case 10:
+                    startActivity(DialogTest.class);
 
             }
         }
