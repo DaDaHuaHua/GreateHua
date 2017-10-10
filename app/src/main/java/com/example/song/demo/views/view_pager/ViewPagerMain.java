@@ -28,16 +28,16 @@ public class ViewPagerMain extends BaseActivity {
         setContentView(R.layout.activity_view_pager);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         for (int i = 0; i < 2; i++) {
-            mData.add(""+i);
+            mData.add("" + i);
         }
         findViewById(R.id.view_add_data).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int size = mData.size();
-                mData.add(""+size);
-                mData.add(""+(size+1));
+                mData.add("" + size);
+                mData.add("" + (size + 1));
                 mAdapter.notifyDataSetChanged();
-                viewPager.setAdapter(mAdapter);
+                // viewPager.setAdapter(mAdapter);
             }
         });
 
@@ -70,12 +70,13 @@ public class ViewPagerMain extends BaseActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
-                ToastUtil.showMessage("当前是 ： " + position);
+                int getPosition = mAdapter.getItemPosition(mData.get(position));
+                ToastUtil.showMessage("当前是 ： " + position + "  getPosition: " + getPosition);
+
             }
 
             @Override

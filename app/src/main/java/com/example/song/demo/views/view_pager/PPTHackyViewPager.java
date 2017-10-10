@@ -18,9 +18,25 @@ import java.util.List;
 import butterknife.internal.ListenerClass;
 
 /**
- * Created by sh on 2016/2/23.
+ * Created by 宋华 on 2017/10/10.
  * <p>
- * 用来解决PPT无限循环的问题
+ *
+ * <p>实现无限循环的ViewPager</>
+ * <p>实现思路：
+ *   通过内部维护了一个PagerAdapter（InnerAdapter）,代理外部传入的Adapter实现
+ *   eg:
+ *   外部数据：
+ *            0,1,2,3
+ *   代理后的实际数据：
+ *            3,0,1,2,3,0
+ *
+ *   重写方法：
+ *            {@link #setAdapter(PagerAdapter)}
+ *            {@link #setCurrentItem(int)}
+ *            {@link #addOnPageChangeListener(OnPageChangeListener)}
+ *            {@link #removeOnPageChangeListener(OnPageChangeListener)}
+ *
+ * </>
  */
 public class PPTHackyViewPager extends HackyViewPager {
     public PPTHackyViewPager(Context context) {
@@ -45,8 +61,6 @@ public class PPTHackyViewPager extends HackyViewPager {
         super.setAdapter(mInnerAdapter);
         super.setCurrentItem(1);
     }
-
-
 
 
     @Override
@@ -160,10 +174,24 @@ public class PPTHackyViewPager extends HackyViewPager {
             mOuterAdapter.destroyItem(container, position, object);
         }
 
+        private int mChildCount = 0;
+
+        //解决外部Adapter notify以后数据下一页不刷新的问题
         @Override
-        public int getItemPosition(Object object) {
+        public void notifyDataSetChanged() {
+            mChildCount = getCount();
+            super.notifyDataSetChanged();
+        }
+
+        @Override
+        public int getItemPosition(Object object)   {
+            if ( mChildCount > 0) {
+                mChildCount --;
+                return POSITION_NONE;
+            }
             return super.getItemPosition(object);
         }
+
     }
 
 }
