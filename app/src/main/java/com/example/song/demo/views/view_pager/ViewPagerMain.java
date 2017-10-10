@@ -12,20 +12,39 @@ import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <p> Created by 宋华 on 2017/9/1.
  */
 public class ViewPagerMain extends BaseActivity {
+    private List<String> mData = new ArrayList<>();
+    private PagerAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        viewPager.setAdapter(new PagerAdapter() {
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        for (int i = 0; i < 2; i++) {
+            mData.add(""+i);
+        }
+        findViewById(R.id.view_add_data).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int size = mData.size();
+                mData.add(""+size);
+                mData.add(""+(size+1));
+                mAdapter.notifyDataSetChanged();
+                viewPager.setAdapter(mAdapter);
+            }
+        });
+
+        mAdapter = new PagerAdapter() {
             @Override
             public int getCount() {
-                return 3;
+                return mData.size();
             }
 
             @Override
@@ -35,9 +54,9 @@ public class ViewPagerMain extends BaseActivity {
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
-                View v = getLayoutInflater().inflate(R.layout.item_view_pager_demo, container,false);
+                View v = getLayoutInflater().inflate(R.layout.item_view_pager_demo, container, false);
                 TextView tv = (TextView) v.findViewById(R.id.tv_item);
-                tv.setText("-- " + position + " --");
+                tv.setText("-- " + mData.get(position) + " --");
                 container.addView(v);
                 return v;
             }
@@ -46,7 +65,8 @@ public class ViewPagerMain extends BaseActivity {
             public void destroyItem(ViewGroup container, int position, Object object) {
                 container.removeView((View) object);
             }
-        });
+        };
+        viewPager.setAdapter(mAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

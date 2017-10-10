@@ -5,16 +5,22 @@ import android.database.DataSetObserver;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+
+
+import com.example.song.demo.views.view_pager.HackyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.internal.ListenerClass;
+
 /**
  * Created by sh on 2016/2/23.
  * <p>
- *可以无限循环的viewPager
+ * 用来解决PPT无限循环的问题
  */
 public class PPTHackyViewPager extends HackyViewPager {
     public PPTHackyViewPager(Context context) {
@@ -40,6 +46,9 @@ public class PPTHackyViewPager extends HackyViewPager {
         super.setCurrentItem(1);
     }
 
+
+
+
     @Override
     public void setCurrentItem(int position) {
         if (position >= mInnerAdapter.getCount()) {
@@ -49,19 +58,19 @@ public class PPTHackyViewPager extends HackyViewPager {
     }
 
 
-    private List<OnPageChangeListener> mOnPageChangeListeners = new ArrayList<>();
+    private List<ViewPager.OnPageChangeListener> mOnPageChangeListeners = new ArrayList<>();
 
     public void addOnPageChangeListener(ViewPager.OnPageChangeListener listener) {
         this.mOnPageChangeListeners.add(listener);
     }
 
-    public void removeOnPageChangeListener(OnPageChangeListener listener) {
+    public void removeOnPageChangeListener(ViewPager.OnPageChangeListener listener) {
         if (mOnPageChangeListeners != null) {
             mOnPageChangeListeners.remove(listener);
         }
     }
 
-    private class InnerOnPageChangeListener implements OnPageChangeListener {
+    private class InnerOnPageChangeListener implements ViewPager.OnPageChangeListener {
         private int position;
 
         @Override
@@ -74,7 +83,7 @@ public class PPTHackyViewPager extends HackyViewPager {
                 }
             }
             if (mOnPageChangeListeners != null && mOnPageChangeListeners.size() > 0) {
-                for (OnPageChangeListener mPageChangeListener : mOnPageChangeListeners) {
+                for (ViewPager.OnPageChangeListener mPageChangeListener : mOnPageChangeListeners) {
                     mPageChangeListener.onPageScrollStateChanged(state);
                 }
             }
@@ -83,7 +92,7 @@ public class PPTHackyViewPager extends HackyViewPager {
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {
             if (mOnPageChangeListeners != null && mOnPageChangeListeners.size() > 0) {
-                for (OnPageChangeListener mPageChangeListener : mOnPageChangeListeners) {
+                for (ViewPager.OnPageChangeListener mPageChangeListener : mOnPageChangeListeners) {
                     mPageChangeListener.onPageScrolled(arg0, arg1, arg2);
                 }
             }
@@ -93,7 +102,7 @@ public class PPTHackyViewPager extends HackyViewPager {
         public void onPageSelected(int curPosition) {
             position = curPosition;
             if (mOnPageChangeListeners != null && mOnPageChangeListeners.size() > 0) {
-                for (OnPageChangeListener mPageChangeListener : mOnPageChangeListeners) {
+                for (ViewPager.OnPageChangeListener mPageChangeListener : mOnPageChangeListeners) {
                     //最前面一个和最后面一个不能走onPageSelected
                     if (position != 0 && position != mInnerAdapter.getCount() - 1) {
                         mPageChangeListener.onPageSelected(position - 1);
@@ -151,5 +160,10 @@ public class PPTHackyViewPager extends HackyViewPager {
             mOuterAdapter.destroyItem(container, position, object);
         }
 
+        @Override
+        public int getItemPosition(Object object) {
+            return super.getItemPosition(object);
+        }
     }
+
 }
