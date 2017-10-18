@@ -65,6 +65,10 @@
         <activity
             android:name=".demo.DemoMain"
             android:screenOrientation="portrait" />
+        <!-- 文字生成Bitmap -->
+        <activity
+            android:name=".demo.image.TextToBitmapActivity"
+            android:screenOrientation="portrait" />
         <!-- ViewsMain-->
         <activity
             android:name=".demo.views.ViewsMain"

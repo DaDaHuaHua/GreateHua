@@ -126,9 +126,14 @@ public class BitmapUtil extends FileUtil {
         paint.setAlpha(255);
         Rect rect = new Rect();
         paint.getTextBounds(text, 0, text.length(), rect);
-        Bitmap bitmap = Bitmap.createBitmap(rect.width(), rect.height(), Bitmap.Config.ARGB_8888);
+
+        Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
+        paint.getFontMetrics(fontMetrics);
+
+
+        Bitmap bitmap = Bitmap.createBitmap(rect.width()+20, rect.height()+20, Bitmap.Config.ARGB_8888);
         canvas.setBitmap(bitmap);
-        canvas.drawText(text, 0, 0, paint);
+        canvas.drawText(text, 0,0 , paint);
         canvas.save(Canvas.ALL_SAVE_FLAG);
         canvas.restore();
         if(!saveBitmap(bitmap,Environment.getExternalStorageDirectory() + "/掌门水印文字.png")){

@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
+import com.example.song.demo.image.TextToBitmapActivity;
 import com.example.song.demo.views.ViewsMain;
 import com.example.song.demo.views.dragsort.DSMain;
 import com.example.song.demo.views.material_design.CoordinatorLayoutMain;
@@ -31,7 +32,7 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","views","Kotlin"};
+    private String[] menu = {"播放器","views","Kotlin","生成图片"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +59,9 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 2:
                     startActivity(KotlinMain.class);
+                    break;
+                case 3:
+                    startActivity(TextToBitmapActivity.class);
                     break;
             }
         }
