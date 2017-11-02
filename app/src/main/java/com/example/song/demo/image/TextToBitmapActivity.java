@@ -46,6 +46,7 @@ public class TextToBitmapActivity extends BaseActivity {
                     mIvShow.setImageBitmap(createBitmap());
                 }
                 break;
+            default:break;
         }
     }
 
@@ -54,7 +55,9 @@ public class TextToBitmapActivity extends BaseActivity {
         if (StringUtil.isBlank(text)) {
             text = "掌门全球直播";
         }
-        return BitmapUtil.createBitmapFromText(text, Color.WHITE, DensityUtil.sp2px(15));
+//        return BitmapUtil.createBitmapFromText(text, Color.WHITE, DensityUtil.sp2px(15));
+//        return BitmapUtil.createBitmap(getResources(),R.drawable.icon_text_simple,text,Color.WHITE,DensityUtil.sp2px(15));
+        return null;
     }
 
 
