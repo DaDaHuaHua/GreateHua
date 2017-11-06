@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
+import com.example.song.demo.image.TextToBitmapActivity;
 import com.example.song.demo.views.rebound.ReboundActivity;
 import com.example.song.demo.views.shared_element.SharedElementActivityA;
 import com.example.song.demo.views.vector.VectorActivity;
@@ -18,28 +19,31 @@ import butterknife.BindView;
 
 /**
  * Created by PVer on 2017/4/2.
- *
  */
 
 public class HomeworkMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {};
+    private String[] menu = {"实现单链表"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple_list_view);
-        mLv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu){
+        mLv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu) {
         });
         mLv.setOnItemClickListener(new MyItemClickListener());
     }
 
-   private class MyItemClickListener implements   AdapterView.OnItemClickListener{
+    private class MyItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            switch (position) {
+                case 0:
+                    startActivity(new Intent(HomeworkMain.this, TextToBitmapActivity.class));
+                    break;
+            }
         }
     }
 }
