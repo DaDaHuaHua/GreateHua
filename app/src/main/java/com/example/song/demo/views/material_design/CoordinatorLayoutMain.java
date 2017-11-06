@@ -1,14 +1,24 @@
 package com.example.song.demo.views.material_design;
 
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Scroller;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
+import com.example.song.demo.simple.SimpleListFragment;
 
-import butterknife.OnClick;
+import butterknife.BindView;
 
 /**
  * Created by PVer on 2017/4/25.
@@ -17,20 +27,23 @@ import butterknife.OnClick;
 
 public class CoordinatorLayoutMain extends BaseActivity {
 
+    @BindView(R.id.content)
+    NestedScrollView mLayoutContent;
+
+    @BindView(R.id.iv_top)
+    ImageView mIvContent;
+    SimpleListFragment mListFragment;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinator_main);
+        initView();
     }
 
-    @OnClick({R.id.fab})
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        switch (v.getId()){
-            case R.id.fab:
-                Snackbar.make(findViewById(R.id.fab),"show SnackBar ",Snackbar.LENGTH_SHORT).show();
-                break;
-        }
+    private void initView() {
+        mLayoutContent.setFillViewport(true);
+        mListFragment = SimpleListFragment.newInstance();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, mListFragment).commit();
     }
 }
