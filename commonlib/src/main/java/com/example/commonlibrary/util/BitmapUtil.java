@@ -32,6 +32,7 @@ import static android.graphics.Color.TRANSPARENT;
 
 public class BitmapUtil extends FileUtil {
 
+
     /**
      * 计算给定Bitmap占用的空间大小,如果bmp参数为null,则返回-1
      *
