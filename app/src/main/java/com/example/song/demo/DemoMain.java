@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.image.TextToBitmapActivity;
@@ -41,6 +42,7 @@ public class DemoMain extends BaseActivity {
         mLv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu){
         });
         mLv.setOnItemClickListener(new MyItemClickListener());
+        ToastUtil.showMessage("我是改动后的包！！！");
     }
 
     private void startActivity(Class<?> c){

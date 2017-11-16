@@ -14,6 +14,9 @@ import com.example.song.demo.image.TextToBitmapActivity;
 import com.example.song.demo.views.rebound.ReboundActivity;
 import com.example.song.demo.views.shared_element.SharedElementActivityA;
 import com.example.song.demo.views.vector.VectorActivity;
+import com.example.song.homework.activity.BinarySearchTreeActivity;
+import com.example.song.homework.activity.HashMapActivity;
+import com.example.song.homework.activity.LinkedListActivity;
 
 import butterknife.BindView;
 
@@ -25,7 +28,7 @@ public class HomeworkMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"实现单链表"};
+    private String[] menu = {"实现单链表","HashMap","BinarySearchTree"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +44,15 @@ public class HomeworkMain extends BaseActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             switch (position) {
                 case 0:
-                    startActivity(new Intent(HomeworkMain.this, TextToBitmapActivity.class));
+                    startActivity(new Intent(HomeworkMain.this, LinkedListActivity.class));
+                    break;
+                case 1:
+                    startActivity(new Intent(HomeworkMain.this, HashMapActivity.class));
+                    break;
+                case 2:
+                    startActivity(new Intent(HomeworkMain.this, BinarySearchTreeActivity.class));
+                    break;
+                default:
                     break;
             }
         }

@@ -65,7 +65,20 @@ android {
         type.signingConfig signingConfigs.alpha
         type.debuggable = true
     }
-
+    buildTypes.all { type ->
+        def typeName = name;
+        if (typeName.contains("debug")) {
+            typeName = typeName.replace("debug", "alpha")
+        }
+        if (typeName.contains("release")) {
+            typeName = typeName.replace("release", "rc")
+        }
+        Properties resConfig = new Properties();
+        resConfig.load(new FileInputStream("${rootDir}/config/third/" + typeName + ".properties"));
+        resValue("string", "sofix_app_id", resConfig.sophix_app_id);
+        resValue("string", "sophix_app_secret", resConfig.sophix_app_secret);
+        resValue("string", "sophix_rsa", resConfig.sophix_rsa);
+    }
     sourceSets {
         main {
             res.srcDirs = [
@@ -83,6 +96,8 @@ android {
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
     }
+
+
 }
 //kotlin协程
 ext {
@@ -111,7 +126,7 @@ dependencies {
 
     //java ButterKnife注解处理器
     compile 'com.jakewharton:butterknife:8.7.0'
-   // annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    // annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     //kotlin ButterKnife注解处理器
     kapt 'com.jakewharton:butterknife-compiler:8.7.0'
@@ -153,8 +168,14 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
+    //sophix
+    compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.6'
+
 
 }
 repositories {
     mavenCentral()
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/releases"
+    }
 }
