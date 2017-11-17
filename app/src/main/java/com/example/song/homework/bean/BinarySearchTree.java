@@ -46,45 +46,114 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
-    public void delete(T t){
+    public void delete(T t) {
         TreeNode<T> node = get(t);
-        if(node == null ){
+        if (node == null) {
             throw new NoSuchElementException("没有该元素");
         }
         TreeNode<T> parent = node.parent;
-        //是根节点
-        if(parent == null){
-            mRoot = null;
-        }else{
-            //是叶子节点
-            if(node.leftChild == null && node.rightChild == null ){
+
+        //是叶子节点
+        if (node.leftChild == null && node.rightChild == null) {
+            if (parent == null) {
+                mRoot = null;
+            } else {
                 //在parent的左边
-                if(node.data.compareTo(parent.leftChild.data)< 0 ){
+                if (parent.leftChild == node) {
                     parent.leftChild = null;
-                }else{
-                    parent.rightChild =null;
+                } else {
+                    parent.rightChild = null;
                 }
-                node.parent = null;
-            }//只有左子节点
-            else if(node.leftChild != null ){
+            }
+        }//只有左子节点
+        else if (node.leftChild != null && node.rightChild == null) {
+            //根节点
+            if (mRoot == null) {
+                mRoot = node.leftChild;
+                node.leftChild.parent = null;
+                node.leftChild = null;
+            } else {
                 //在parent的左边
-                if(node.data.compareTo(parent.leftChild.data)<0){
+                if (parent.leftChild == node) {
                     parent.leftChild = node.leftChild;
-                    node.leftChild.parent = parent;
-                }else{
+                } else {
                     parent.rightChild = node.leftChild;
-                    node.leftChild.parent = parent;
                 }
-                node.parent = null;
-            }//只有右子节点
-            else  if(node.rightChild != null){
-                if(node.data.compareTo(parent.leftChild))
+                node.leftChild.parent = parent;
+                node.leftChild = null;
+            }
+        }//只有右子节点
+        else if (node.leftChild == null && node.rightChild != null) {
+            if (parent == null) {
+                mRoot = node.rightChild;
+                node.rightChild.parent = null;
+            } else {
+                //在parent左边
+                if (parent.leftChild == node) {
+                    parent.leftChild = node.rightChild;
+                } else {
+                    parent.rightChild = node.rightChild;
+                }
+                node.rightChild.parent = parent;
+            }
+        }//既有左子节点， 也有右子节点
+        else {
+            //右子节点 没有左子节点
+            if (node.rightChild.leftChild == null) {
+                if (node.parent == null) {
+                    mRoot = node.rightChild;
+                    node.leftChild.parent = node.rightChild;
+                    node.rightChild.leftChild = node.leftChild;
+                } else {
+                    if (parent.rightChild == node) {
+                        parent.rightChild = node.rightChild;
+                    } else {
+                        parent.leftChild = node.rightChild;
+                    }
+                    node.rightChild.leftChild = node.leftChild;
+                    node.rightChild.parent = parent;
+                    node.leftChild.parent = node.rightChild;
+                }
+            } else {
+                TreeNode<T> minNode = getMinNode(node.rightChild);
+                minNode.leftChild = node.leftChild;
+                node.leftChild.parent = minNode;
+
+                minNode.parent.leftChild = minNode.rightChild;
+                minNode.rightChild.parent = minNode.parent;
+
+                minNode.rightChild = node.rightChild;
+                node.rightChild.parent = minNode;
+
+                if(parent == null ){
+                    mRoot = minNode;
+                }else{
+                    if (parent.rightChild == node) {
+                        parent.rightChild = minNode;
+                    } else {
+                        parent.leftChild = minNode;
+                    }
+                }
+                minNode.parent = parent;
             }
         }
-
+        node.leftChild = null;
+        node.rightChild = null;
+        node.parent = null;
     }
 
-    private TreeNode<T> get(T t) {
+    private TreeNode<T> getMinNode(TreeNode<T> start) {
+        if (start == null) {
+            return null;
+        }
+        TreeNode<T> node = start;
+        while (node.leftChild != null) {
+            node = node.leftChild;
+        }
+        return node;
+    }
+
+    public TreeNode<T> get(T t) {
         TreeNode<T> target = mRoot;
         while (target != null) {
             if (t.compareTo(target.data) < 0) {

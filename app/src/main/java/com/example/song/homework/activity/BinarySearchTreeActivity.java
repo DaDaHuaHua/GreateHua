@@ -14,13 +14,23 @@ public class BinarySearchTreeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BinarySearchTree<Integer> data = new BinarySearchTree<>();
+        data.add(10);
         data.add(2);
-        data.add(12);
         data.add(3);
-        data.add(5);
+        data.add(100);
         data.add(1);
-        data.add(13);
-        data.set(14,14);
+        data.add(50);
+        data.add(20);
+        data.add(120);
+        data.add(40);
+        data.add(60);
+        data.add(110);
+        data.add(150);
+        data.add(115);
+        data.add(14);
+        data.set(14,11);
+        data.delete(100);
+        data.delete(10);
         data.printMidOrder();
     }
 }
