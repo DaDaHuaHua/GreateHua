@@ -223,7 +223,7 @@ public class BinarySearchTreeTeacher {
         SearchBinaryTree tree = new SearchBinaryTree();
         for(int i: arrays) {
             tree.put(i);
-        }
+        }·  ·
         tree.midOrderTraverse(tree.root);
         System.out.println();
         TreeNode node = tree.searchNode(1);
