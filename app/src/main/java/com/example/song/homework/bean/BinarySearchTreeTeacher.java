@@ -1,5 +1,7 @@
 package com.example.song.homework.bean;
 
+import java.util.NoSuchElementException;
+
 /**
  * <p> Created by 宋华 on 2017/11/17.
  */
@@ -218,17 +220,17 @@ public class BinarySearchTreeTeacher {
         return curRoot;
     }
 
-    public static void main(String[] args) {
-        int[] arrays = {12, 3 ,23, 5 ,8, 1, 19};
-        SearchBinaryTree tree = new SearchBinaryTree();
-        for(int i: arrays) {
-            tree.put(i);
-        }·  ·
-        tree.midOrderTraverse(tree.root);
-        System.out.println();
-        TreeNode node = tree.searchNode(1);
-//		System.out.println(node !=null ? node.data: null);
-        tree.delNode(node);
-        tree.midOrderTraverse(tree.root);
-    }
+//    public static void main(String[] args) {
+//        int[] arrays = {12, 3 ,23, 5 ,8, 1, 19};
+//        SearchBinaryTree tree = new SearchBinaryTree();
+//        for(int i: arrays) {
+//            tree.put(i);
+//        }·  ·
+//        tree.midOrderTraverse(tree.root);
+//        System.out.println();
+//        TreeNode node = tree.searchNode(1);
+////		System.out.println(node !=null ? node.data: null);
+//        tree.delNode(node);
+//        tree.midOrderTraverse(tree.root);
+//    }
 }
