@@ -16,9 +16,9 @@ public class BinarySearchTreeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//         test01();
+         test01();
 //        testDel02();
-        testDel03();
+//        testDel03();
         data.printMidOrder();
     }
 
@@ -38,7 +38,7 @@ public class BinarySearchTreeActivity extends BaseActivity {
         data.add(115);
         data.add(14);
         data.set(14, 11);
-        data.delete01(100);
+//        data.delete01(100);
         data.delete01(10);
     }
 

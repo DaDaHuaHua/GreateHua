@@ -124,7 +124,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 node.leftChild.parent = minNode;
 
                 minNode.parent.leftChild = minNode.rightChild;
-                minNode.rightChild.parent = minNode.parent;
+                if (minNode.rightChild != null) {
+                    minNode.rightChild.parent = minNode.parent;
+                }
 
                 minNode.rightChild = node.rightChild;
                 node.rightChild.parent = minNode;
@@ -311,7 +313,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
             maxNode.parent = null;
         }
     }
-
 
 
     private TreeNode<T> getMinNode(TreeNode<T> start) {

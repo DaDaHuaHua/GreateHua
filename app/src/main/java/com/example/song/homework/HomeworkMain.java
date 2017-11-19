@@ -15,8 +15,10 @@ import com.example.song.demo.views.rebound.ReboundActivity;
 import com.example.song.demo.views.shared_element.SharedElementActivityA;
 import com.example.song.demo.views.vector.VectorActivity;
 import com.example.song.homework.activity.BinarySearchTreeActivity;
+import com.example.song.homework.activity.HaffmanTreeActivity;
 import com.example.song.homework.activity.HashMapActivity;
 import com.example.song.homework.activity.LinkedListActivity;
+import com.example.song.homework.bean.HaffmanTree;
 
 import butterknife.BindView;
 
@@ -28,7 +30,7 @@ public class HomeworkMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"实现单链表","HashMap","BinarySearchTree"};
+    private String[] menu = {"实现单链表","HashMap","BinarySearchTree","HaffmanTree"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +53,9 @@ public class HomeworkMain extends BaseActivity {
                     break;
                 case 2:
                     startActivity(new Intent(HomeworkMain.this, BinarySearchTreeActivity.class));
+                    break;
+                case 3:
+                    startActivity(new Intent(HomeworkMain.this, HaffmanTreeActivity.class));
                     break;
                 default:
                     break;
