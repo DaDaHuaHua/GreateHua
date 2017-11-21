@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.song.greathua.EntranceActivity">
+    android:orientation="vertical">
 
 
-<TextView
-    android:id="@+id/tv_to_app"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:background="@color/colorAccent"
-    android:layout_weight="1"
-    android:gravity="center"
-    android:textSize="20sp"
-    android:text="myApp"
-    />
+    <TextView
+        android:id="@+id/tv_to_app"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="myApp"
+        android:textSize="20sp" />
+
     <TextView
         android:id="@+id/tv_to_test"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
         android:layout_weight="1"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        android:textSize="20sp"
         android:text="myTest"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:textColor="#ff0000"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:text="About App"
         />
 
 </LinearLayout>

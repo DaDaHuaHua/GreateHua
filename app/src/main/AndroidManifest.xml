@@ -53,7 +53,7 @@
             android:value="@string/sophix_app_secret" />
         <meta-data
             android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="@string/sophix_app_secret" />
+            android:value="@string/sophix_rsa" />
 
         <!-- 入口 -->
         <activity android:name=".EntranceActivity">

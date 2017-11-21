@@ -3,6 +3,7 @@ package com.example.song.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,14 +13,8 @@ import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.image.TextToBitmapActivity;
-import com.example.song.demo.views.ViewsMain;
-import com.example.song.demo.views.dragsort.DSMain;
-import com.example.song.demo.views.material_design.CoordinatorLayoutMain;
-
-import com.example.song.demo.views.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.media.PlayerMain;
-import com.example.song.demo.views.recycler_view.RecyclerViewMain;
-import com.example.song.demo.views.view_pager.ViewPagerMain;
+import com.example.song.demo.views.ViewsMain;
 import com.example.song.kotlin.KotlinMain;
 
 import butterknife.BindView;
@@ -42,7 +37,8 @@ public class DemoMain extends BaseActivity {
         mLv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu){
         });
         mLv.setOnItemClickListener(new MyItemClickListener());
-        ToastUtil.showMessage("我是改动后的包！！！");
+//        ToastUtil.showMessage("我是改动后的包！！！");
+//        Log.i("测试Hotfix","测试成功");
     }
 
     private void startActivity(Class<?> c){
