@@ -16,6 +16,7 @@ public class BinarySearchTreeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
          test01();
 //        testDel02();
 //        testDel03();
