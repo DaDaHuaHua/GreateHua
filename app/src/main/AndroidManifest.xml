@@ -151,6 +151,10 @@
         <activity android:name=".kotlin.DSLActivity" />
         <activity android:name=".kotlin.demo.GithubList" />
 
+        <!-- //////////////////////////优化相关 ///////////////////////////////////////////// -->
+        <!-- 图片内存压缩-->
+        <activity android:name=".optimize.bitmap_cache.BitmapCacheActivity" />
+
 
         <service android:name=".demo.views.floating_window.service.FloatingWindowService" />
     </application>

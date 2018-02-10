@@ -3,19 +3,18 @@ package com.example.song.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.image.TextToBitmapActivity;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.views.ViewsMain;
 import com.example.song.kotlin.KotlinMain;
+import com.example.song.optimize.bitmap_cache.BitmapCacheActivity;
 
 import butterknife.BindView;
 
@@ -28,7 +27,7 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","views","Kotlin","生成图片"};
+    private String[] menu = {"播放器","views","Kotlin","生成图片","图片内存优化"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +60,8 @@ public class DemoMain extends BaseActivity {
                 case 3:
                     startActivity(TextToBitmapActivity.class);
                     break;
+                case 4:
+                    startActivity(BitmapCacheActivity.class);
             }
         }
     }
