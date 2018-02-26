@@ -20,34 +20,31 @@ import butterknife.BindView;
 
 /**
  * Created by PVer on 2017/4/2.
- *
  */
 
 public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器","views","Kotlin","生成图片","图片内存优化"};
+    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple_list_view);
-        mLv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu){
+        mLv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu) {
         });
         mLv.setOnItemClickListener(new MyItemClickListener());
-//        ToastUtil.showMessage("我是改动后的包！！！");
-//        Log.i("测试Hotfix","测试成功");
     }
 
-    private void startActivity(Class<?> c){
-        startActivity(new Intent(this,c));
+    private void startActivity(Class<?> c) {
+        startActivity(new Intent(this, c));
     }
 
-    private class MyItemClickListener implements  AdapterView.OnItemClickListener{
+    private class MyItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            switch (position){
+            switch (position) {
                 case 0:
                     startActivity(PlayerMain.class);
                     break;
@@ -62,6 +59,9 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 4:
                     startActivity(BitmapCacheActivity.class);
+                    break;
+                default:
+                    break;
             }
         }
     }
