@@ -4,8 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GreateHua.iml" filepath="$PROJECT_DIR$/GreateHua.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonlib/commonlib.iml" filepath="$PROJECT_DIR$/commonlib/commonlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonwidget/commonwidget.iml" filepath="$PROJECT_DIR$/commonwidget/commonwidget.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testLib/testLib.iml" filepath="$PROJECT_DIR$/testLib/testLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testLib/testlibrary/testlibrary.iml" filepath="$PROJECT_DIR$/testLib/testlibrary/testlibrary.iml" />
     </modules>
   </component>
 </project>

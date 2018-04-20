@@ -1,1 +1,1 @@
-include ':app', ':commonlib', ':commonwidget'
+include ':app', ':commonlib', ':commonwidget', 'testLib:testlibrary'

@@ -12,10 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        flavorDimensions "versionCode"
         ndk {
 // 设置支持的SO库架构
-            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
 
     }
@@ -54,7 +53,7 @@ android {
             dimension "default"
         }
         xiaomi {
-            applicationId 'com.ong.xiaomi'
+            applicationId 'com.song.xiaomi'
             dimension "default"
         }
         free {
@@ -65,6 +64,24 @@ android {
             applicationId 'com.song.paid'
             dimension "default"
         }
+    }
+    variantFilter {
+        variant ->
+//            println "variant name is ${name}"
+//            if(name.contains('xiaomiExp')){
+//                setIg nore(false)
+//            }else{
+//                setIgnore(true)
+//            }
+
+//            variant.flavors.each {
+//                if ((it.name.contains('xiaomi')|| it.name.contains('google')) && (buildType.name.contains("exp") || buildType.name.contains('beta'))) {
+//                    setIgnore(false)
+//                } else {
+//                    setIgnore(true)
+//                }
+//            }
+
     }
     buildTypes.all { type ->
         type.signingConfig signingConfigs.alpha
@@ -108,8 +125,12 @@ android {
 ext {
     anko_version = "0.10.1"
 }
-
+configurations{
+    xiaomiExpCompile{}
+}
 dependencies {
+//    xiaomiCompile project(':testLib:testlibrary')
+    xiaomiExpCompile project(':testLib:testlibrary')
     //========================自动生成的============================================================
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -182,5 +203,23 @@ repositories {
     mavenCentral()
     maven {
         url "http://maven.aliyun.com/nexus/content/repositories/releases"
+    }
+}
+
+
+
+apply plugin: Plugin1
+
+android2{
+    test()
+    test('this is test')
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
+    defaultConfig{
+        applicationId 'com.songhua.test'
+        minSdkVersion 23
+        targetSdkVersion 1
+        versionCode 1
+        versionName '1.0'
     }
 }
