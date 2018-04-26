@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.DemoMain;
 import com.example.song.homework.HomeworkMain;
+import com.example.song.test.TestActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,6 +41,7 @@ public class TestMainActivity extends BaseActivity {
         switch (v.getId()){
             case R.id.tv_to_homework:
                 startActivity(new Intent(TestMainActivity.this, HomeworkMain.class));
+//                startActivity(new Intent(TestMainActivity.this, TestActivity.class));
                 break;
             case R.id.tv_to_demo:
                 startActivity(new Intent(TestMainActivity.this, DemoMain.class));

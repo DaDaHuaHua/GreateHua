@@ -73,7 +73,6 @@
         <!-- 共享元素-->
 
 
-
         <!-- TestMain -->
         <activity
             android:name=".TestMainActivity"
@@ -160,6 +159,9 @@
 
 
         <service android:name=".demo.views.floating_window.service.FloatingWindowService" />
+
+        <activity android:name=".test.TestActivity"
+            android:theme="@style/dark"/>
     </application>
 
 </manifest>
