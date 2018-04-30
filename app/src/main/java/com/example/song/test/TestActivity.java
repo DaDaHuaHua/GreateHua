@@ -2,7 +2,6 @@ package com.example.song.test;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.WindowManager;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
