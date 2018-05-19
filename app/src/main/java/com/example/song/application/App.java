@@ -5,10 +5,15 @@ import android.util.Log;
 
 import com.example.commonlibrary.base.application.BaseApplication;
 import com.example.song.BuildConfig;
+import com.example.song.demo.DB.MyObjectBox;
+import com.facebook.stetho.Stetho;
 import com.taobao.sophix.PatchStatus;
 import com.taobao.sophix.SophixManager;
 import com.taobao.sophix.listener.PatchLoadStatusListener;
 import com.tencent.bugly.crashreport.CrashReport;
+
+import io.objectbox.BoxStore;
+import io.objectbox.android.AndroidObjectBrowser;
 
 /**
  * Created by Song on 2017/1/20.
@@ -26,6 +31,27 @@ public class App extends BaseApplication {
         super.onCreate();
         CrashReport.initCrashReport(getApplicationContext(), BuildConfig.BUGLY_APP_ID, true);
         initHotfix();
+        initDB();
+        initStetho();
+    }
+
+
+    private BoxStore mBoxStore;
+
+    private  void initDB(){
+        mBoxStore = MyObjectBox.builder().androidContext(App.this).build();
+        if(BuildConfig.DEBUG){
+            new AndroidObjectBrowser(mBoxStore).start(this);
+        }
+        Log.d("App", "Using ObjectBox " + BoxStore.getVersion() + " (" + BoxStore.getVersionNative() + ")");
+    }
+
+    public BoxStore getBoxStore(){
+        return mBoxStore;
+    }
+
+    private void initStetho(){
+        Stetho.initializeWithDefaults(this);
     }
 
     private void initHotfix() {

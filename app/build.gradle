@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 //apply plugin: 'android-apt'
 apply plugin: 'kotlin-kapt'
 
+
 android {
     compileSdkVersion 25
     defaultConfig {
@@ -12,10 +13,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        ndk {
-// 设置支持的SO库架构
-            abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-        }
+//        ndk {
+//// 设置支持的SO库架构
+//            abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
 
     }
     signingConfigs {
@@ -129,17 +130,18 @@ configurations{
     xiaomiExpCompile{}
 }
 dependencies {
-//    xiaomiCompile project(':testLib:testlibrary')
-    xiaomiExpCompile project(':testLib:testlibrary')
+
     //========================自动生成的============================================================
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     //==============================================================================================
 
     //commonlib
     compile project(':commonlib')
+
     //commonwidget
     compile project(':commonwidget')
 
@@ -152,6 +154,7 @@ dependencies {
 
     //java ButterKnife注解处理器
     compile 'com.jakewharton:butterknife:8.7.0'
+
     // annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     //kotlin ButterKnife注解处理器
@@ -191,13 +194,16 @@ dependencies {
     //kotlin Layout RecyclerView
     compile "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
     compile "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version"
-
     testCompile 'junit:junit:4.12'
 
     //sophix
     compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.6'
-
-
+    //数据库框架
+    implementation  project(':libdb')
+   compile "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+//    releaseCompile "io.objectbox:objectbox-android:$objectboxVersion"
+    //stetho
+    compile 'com.facebook.stetho:stetho:1.5.0'
 }
 repositories {
     mavenCentral()
@@ -205,7 +211,7 @@ repositories {
         url "http://maven.aliyun.com/nexus/content/repositories/releases"
     }
 }
-
+apply plugin:'io.objectbox'
 
 
 apply plugin: Plugin1

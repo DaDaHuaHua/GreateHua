@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
+import com.example.song.demo.DB.DBMainActivity;
 import com.example.song.demo.image.TextToBitmapActivity;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.views.ViewsMain;
@@ -26,7 +27,7 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化"};
+    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +60,9 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 4:
                     startActivity(BitmapCacheActivity.class);
+                    break;
+                case 5:
+                    startActivity(DBMainActivity.class);
                     break;
                 default:
                     break;

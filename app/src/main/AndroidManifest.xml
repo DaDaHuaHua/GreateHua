@@ -139,6 +139,9 @@
             android:name=".demo.views.view_pager.ViewPagerMain"
             android:screenOrientation="portrait" />
         <activity android:name=".demo.views.dialog.DialogTest" />
+        <!-- 测试数据库-->
+        <activity android:name=".demo.DB.DBMainActivity"
+            android:screenOrientation="portrait"/>
         <!-- 数据结构 -->
         <activity android:name=".homework.activity.BinarySearchTreeActivity" />
         <activity android:name=".homework.activity.HashMapActivity" />

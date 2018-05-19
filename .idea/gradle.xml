@@ -13,8 +13,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/commonlib" />
             <option value="$PROJECT_DIR$/commonwidget" />
-            <option value="$PROJECT_DIR$/testLib" />
-            <option value="$PROJECT_DIR$/testLib/testlibrary" />
+            <option value="$PROJECT_DIR$/libdb" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
