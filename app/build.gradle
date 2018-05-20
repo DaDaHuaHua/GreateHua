@@ -200,7 +200,6 @@ dependencies {
     compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.6'
     //数据库框架
     implementation  project(':libdb')
-   compile "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
 //    releaseCompile "io.objectbox:objectbox-android:$objectboxVersion"
     //stetho
     compile 'com.facebook.stetho:stetho:1.5.0'
@@ -211,11 +210,10 @@ repositories {
         url "http://maven.aliyun.com/nexus/content/repositories/releases"
     }
 }
-apply plugin:'io.objectbox'
+
 
 
 apply plugin: Plugin1
-
 android2{
     test()
     test('this is test')
