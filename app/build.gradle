@@ -13,10 +13,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//        ndk {
-//// 设置支持的SO库架构
-//            abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-//        }
+        ndk {
+// 设置支持的SO库架构
+            abiFilters 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
 
     }
     signingConfigs {
@@ -200,6 +200,7 @@ dependencies {
     compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.6'
     //数据库框架
     implementation  project(':libdb')
+    compile "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
 //    releaseCompile "io.objectbox:objectbox-android:$objectboxVersion"
     //stetho
     compile 'com.facebook.stetho:stetho:1.5.0'
@@ -227,3 +228,4 @@ android2{
         versionName '1.0'
     }
 }
+apply plugin:'io.objectbox'

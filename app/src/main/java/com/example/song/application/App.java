@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.example.commonlibrary.base.application.BaseApplication;
 import com.example.song.BuildConfig;
-import com.example.song.libdb.testdb.MyObjectBox;
+import com.example.song.demo.DB.MyObjectBox;
 import com.facebook.stetho.Stetho;
 import com.taobao.sophix.PatchStatus;
 import com.taobao.sophix.SophixManager;

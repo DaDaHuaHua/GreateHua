@@ -48,11 +48,10 @@ public class DBMainActivity extends BaseActivity {
         notesBox = boxStore.boxFor(Note.class);
 
         // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
-//        notesQuery = notesBox.query().order(Note_.text).build();
+        notesQuery = notesBox.query().order(Note_.text).build();
         updateNotes();
     }
 
-    /** Manual trigger to re-query and update the UI. For a reactive alternative check {@link ReactiveNoteActivity}. */
     private void updateNotes() {
         List<Note> notes = notesQuery.find();
         notesAdapter.setNotes(notes);
