@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.song.R;
+import com.example.song.autodb.test.TestAutoDBActivity;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.DB.DBMainActivity;
 import com.example.song.demo.image.TextToBitmapActivity;
@@ -27,7 +28,7 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试"};
+    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试","测试AutoDB"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +65,8 @@ public class DemoMain extends BaseActivity {
                 case 5:
                     startActivity(DBMainActivity.class);
                     break;
+                case 6 :
+                    startActivity(TestAutoDBActivity.class);
                 default:
                     break;
             }
