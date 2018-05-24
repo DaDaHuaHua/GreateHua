@@ -10,6 +10,7 @@ import com.example.song.autodb.anno.DBField;
 import com.example.song.autodb.anno.DBTable;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -32,6 +33,9 @@ public class BaseDao<T> implements IBaseDao<T> {
     //<字段名,属性>
     private Map<String, Field> mCachedMap;
 
+    private BaseDao(){
+
+    }
 
     protected boolean init(SQLiteDatabase sqLiteDatabase, Class<T> entityClass) {
         this.mSQLiteDatabase = sqLiteDatabase;
@@ -157,6 +161,20 @@ public class BaseDao<T> implements IBaseDao<T> {
         return result;
     }
 
+    @Override
+    public long update(T entity, T where) {
+        ContentValues contentValues = getContentValues(getValues(entity));
+        Condition condition = new Condition(getValues(where));
+        return mSQLiteDatabase.update(tableName, contentValues, condition.whereClause, condition.whereArgs);
+    }
+
+    @Override
+    public int delete(T where) {
+        Map<String ,String > map = getValues(where);
+        Condition condition =  new Condition(map);
+        return mSQLiteDatabase.delete(tableName,condition.whereClause,condition.whereArgs);
+    }
+
     private ContentValues getContentValues(Map<String, String> map) {
         ContentValues contentValues = new ContentValues();
         Set keys = map.keySet();
@@ -201,5 +219,32 @@ public class BaseDao<T> implements IBaseDao<T> {
             }
         }
         return map;
+    }
+
+
+    public static class Condition {
+        private String whereClause;
+        private String[] whereArgs;
+
+
+        public Condition(Map<String, String> whereClause) {
+            ArrayList<String> list = new ArrayList<>();
+
+            StringBuilder builder = new StringBuilder();
+            builder.append("1=1");
+
+            Set<String> keys = whereClause.keySet();
+            Iterator<String> iterator = keys.iterator();
+            while (iterator.hasNext()) {
+                String key = iterator.next();
+                String value = whereClause.get(key);
+                if (value != null) {
+                    builder.append(" and " + key + "=?");
+                    list.add(value);
+                }
+            }
+            this.whereClause = builder.toString();
+            this.whereArgs = list.toArray(new String[list.size()]);
+        }
     }
 }

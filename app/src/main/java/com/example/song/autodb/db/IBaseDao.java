@@ -9,9 +9,9 @@ import java.util.List;
 public interface IBaseDao<T> {
     long insert(T entity);
 
-//    long update(T entity, T where);
-//
-//    int delete(T where);
+    long update(T entity, T where);
+
+    int delete(T where);
 //
 //    List<T> query(T where);
 //

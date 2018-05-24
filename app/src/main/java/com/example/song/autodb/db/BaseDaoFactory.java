@@ -4,6 +4,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.song.BuildConfig;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 /**
  * Created by SongH on 2018/5/22.
  */
@@ -27,11 +31,17 @@ public class BaseDaoFactory {
     public <T> BaseDao<T> getBaseDao(Class<T> entityClass) {
         BaseDao<T> baseDao = null;
         try {
-            baseDao = BaseDao.class.newInstance();
+            Constructor<BaseDao> constructor = BaseDao.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            baseDao = constructor.newInstance();
             baseDao.init(mSQLiteDatabase, entityClass);
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
         return baseDao;
