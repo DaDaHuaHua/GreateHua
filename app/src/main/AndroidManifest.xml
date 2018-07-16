@@ -144,6 +144,8 @@
             android:screenOrientation="portrait"/>
         <!-- 测试AutoDB-->
         <activity android:name=".autodb.test.TestAutoDBActivity" />
+        <!-- 测试ConstraintLayout Chanin-->
+        <activity android:name=".demo.constraintlayout.ConstraintActivity" />
         <!-- 数据结构 -->
         <activity android:name=".homework.activity.BinarySearchTreeActivity" />
         <activity android:name=".homework.activity.HashMapActivity" />
@@ -167,6 +169,7 @@
 
         <activity android:name=".test.TestActivity"
             android:theme="@style/dark"/>
+
 
     </application>
 

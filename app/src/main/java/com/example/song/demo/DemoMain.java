@@ -28,7 +28,7 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试","测试AutoDB"};
+    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试","测试AutoDB","constraint Chain"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

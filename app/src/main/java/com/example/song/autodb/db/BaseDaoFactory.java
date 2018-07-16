@@ -6,7 +6,6 @@ import com.example.song.BuildConfig;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /**
  * Created by SongH on 2018/5/22.
@@ -28,10 +27,10 @@ public class BaseDaoFactory {
         mSQLiteDatabase = SQLiteDatabase.openOrCreateDatabase(sqliteDataBasePath, null);
     }
 
-    public <T> BaseDao<T> getBaseDao(Class<T> entityClass) {
-        BaseDao<T> baseDao = null;
+    public <T extends BaseDao<M>, M> T getBaseDao(Class<T> daoClass, Class<M> entityClass) {
+        BaseDao<M> baseDao = null;
         try {
-            Constructor<BaseDao> constructor = BaseDao.class.getDeclaredConstructor();
+            Constructor<T> constructor = daoClass.getDeclaredConstructor();
             constructor.setAccessible(true);
             baseDao = constructor.newInstance();
             baseDao.init(mSQLiteDatabase, entityClass);
@@ -44,6 +43,6 @@ public class BaseDaoFactory {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        return baseDao;
+        return (T) baseDao;
     }
 }

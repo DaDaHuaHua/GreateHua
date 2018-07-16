@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,7 +34,7 @@ public class BaseDao<T> implements IBaseDao<T> {
     //<字段名,属性>
     private Map<String, Field> mCachedMap;
 
-    private BaseDao(){
+    private BaseDao() {
 
     }
 
@@ -59,7 +60,6 @@ public class BaseDao<T> implements IBaseDao<T> {
             initCacheMap();
             isInited = true;
         }
-
         return isInited;
     }
 
@@ -157,7 +157,6 @@ public class BaseDao<T> implements IBaseDao<T> {
         ContentValues values = getContentValues(map);
         //开始插入
         long result = mSQLiteDatabase.insert(tableName, null, values);
-
         return result;
     }
 
@@ -170,14 +169,81 @@ public class BaseDao<T> implements IBaseDao<T> {
 
     @Override
     public int delete(T where) {
-        Map<String ,String > map = getValues(where);
-        Condition condition =  new Condition(map);
-        return mSQLiteDatabase.delete(tableName,condition.whereClause,condition.whereArgs);
+        Map<String, String> map = getValues(where);
+        Condition condition = new Condition(map);
+        return mSQLiteDatabase.delete(tableName, condition.whereClause, condition.whereArgs);
+    }
+
+    @Override
+    public List<T> query(T where) {
+        return query(where, null, null, null);
+    }
+
+    @Override
+    public List<T> query(T where, String orderBy, Integer startIndex, Integer limit) {
+        Map<String, String> map = getValues(where);
+
+        String limitString = null;
+        if (startIndex != null && limit != null) {
+            limitString = startIndex + " , " + limit;
+        }
+        Condition condition = new Condition(map);
+        Cursor cursor = mSQLiteDatabase.query(tableName, null, condition.whereClause, condition.whereArgs,
+                null, null, orderBy, limitString);
+
+        return getResult(cursor,where);
+    }
+
+    private List<T> getResult(Cursor cursor, T obj) {
+        ArrayList list = new ArrayList();
+        Object item = null;
+        cursor.moveToFirst();
+        while ((cursor.moveToNext())) {
+            try {
+                item = obj.getClass().newInstance();
+                Iterator<Map.Entry<String, Field>> iterator = mCachedMap.entrySet().iterator();
+                while (iterator.hasNext()) {
+                    Map.Entry<String, Field> entry = iterator.next();
+                    //列名
+                    String columnName = entry.getKey();
+                    //取得列名在游标中的位置
+                    Integer columnIndex = cursor.getColumnIndex(columnName);
+
+                    Field field = entry.getValue();
+                    Class type = field.getType();
+
+                    if (columnIndex != -1) {
+                        if (type == String.class) {
+                            field.set(item, cursor.getString(columnIndex));
+                        } else if (type == Double.class) {
+                            field.set(item, cursor.getDouble(columnIndex));
+                        } else if (type == Integer.class) {
+                            field.set(item, cursor.getInt(columnIndex));
+                        } else if (type == Long.class) {
+                            field.set(item, cursor.getLong(columnIndex));
+                        } else if (type == byte[].class) {
+                            field.set(item, cursor.getBlob(columnIndex));
+                        } else {
+                            continue;
+                        }
+
+                    }
+                }
+                list.add(item);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        cursor.close();
+        return list;
+
     }
 
     private ContentValues getContentValues(Map<String, String> map) {
         ContentValues contentValues = new ContentValues();
-        Set keys = map.keySet();
+        Set<String> keys = map.keySet();
         Iterator<String> iterator = keys.iterator();
         while (iterator.hasNext()) {
             String key = iterator.next();
@@ -192,9 +258,7 @@ public class BaseDao<T> implements IBaseDao<T> {
     public Map<String, String> getValues(T entity) {
         HashMap<String, String> map = new HashMap<>();
         //返回的是所有的成员变量,user的成员变量
-        Iterator<Field> fieldIterator = mCachedMap.values().iterator();
-        while (fieldIterator.hasNext()) {
-            Field field = fieldIterator.next();
+        for (Field field : mCachedMap.values()) {
             field.setAccessible(true);
             //获取成员变量的值
             try {

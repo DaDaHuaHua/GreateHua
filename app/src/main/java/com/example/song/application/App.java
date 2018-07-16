@@ -1,11 +1,13 @@
 package com.example.song.application;
 
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
 import com.example.commonlibrary.base.application.BaseApplication;
 import com.example.song.BuildConfig;
 import com.example.song.demo.DB.MyObjectBox;
+import com.example.song.demo.hook.HookUtil;
 import com.facebook.stetho.Stetho;
 import com.taobao.sophix.PatchStatus;
 import com.taobao.sophix.SophixManager;
@@ -33,6 +35,12 @@ public class App extends BaseApplication {
         initHotfix();
         initDB();
         initStetho();
+        testHook(this);
+    }
+
+    private void testHook(Application application){
+        HookUtil hookUtil = new HookUtil();
+        hookUtil.hookStartActivity(this);
     }
 
 
