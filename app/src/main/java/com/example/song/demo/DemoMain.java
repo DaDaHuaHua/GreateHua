@@ -12,6 +12,8 @@ import com.example.song.R;
 import com.example.song.autodb.test.TestAutoDBActivity;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.DB.DBMainActivity;
+import com.example.song.demo.canvas.DrawBitmapMeshActivity;
+import com.example.song.demo.constraintlayout.ConstraintActivity;
 import com.example.song.demo.image.TextToBitmapActivity;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.views.ViewsMain;
@@ -28,7 +30,8 @@ public class DemoMain extends BaseActivity {
     @BindView(R.id.list)
     ListView mLv;
 
-    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试","测试AutoDB","constraint Chain"};
+    private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试","测试AutoDB","constraint Chain"
+            ,"DrawBitmapMesh"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +70,13 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 6 :
                     startActivity(TestAutoDBActivity.class);
+                    break;
+                case 7:
+                    startActivity(ConstraintActivity.class);
+                    break;
+                case 8:
+                    startActivity(DrawBitmapMeshActivity.class);
+                    break;
                 default:
                     break;
             }

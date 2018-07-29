@@ -170,6 +170,9 @@
         <activity android:name=".test.TestActivity"
             android:theme="@style/dark"/>
 
+        <!-- Canvas start-->
+        <activity android:name=".demo.canvas.DrawBitmapMeshActivity" />
+        <!-- Canvas end-->
 
     </application>
 
