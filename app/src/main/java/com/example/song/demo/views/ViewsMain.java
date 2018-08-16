@@ -3,7 +3,6 @@ package com.example.song.demo.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +11,7 @@ import android.widget.ListView;
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
 import com.example.song.demo.views.custom_view.CustomViewActivity;
-import com.example.song.demo.views.dialog.DialogTest;
+import com.example.song.demo.views.view_property.ViewPropertyActivity;
 import com.example.song.demo.views.dialogfragment.DialogFragmentMain;
 import com.example.song.demo.views.dragsort.DSMain;
 import com.example.song.demo.views.floating_window.FloatingWindowMain;
@@ -22,8 +21,6 @@ import com.example.song.demo.views.recycler_view.RecyclerViewMain;
 import com.example.song.demo.views.shared_element.SharedElementActivityA;
 import com.example.song.demo.views.vector.VectorActivity;
 import com.example.song.demo.views.view_pager.ViewPagerMain;
-import com.example.song.homework.HomeworkMain;
-import com.example.song.kotlin.KotlinMain;
 
 import butterknife.BindView;
 
@@ -35,7 +32,7 @@ public class ViewsMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"DialogFragment", "RecyclerView", "CoordinatorLayoutDemo", "DSLV / DSGV",
-            "facebook-Rebound", "ViewPager", "自定义View", "FloatingWindow", "Vector", "SharedElement","Dialog"};
+            "facebook-Rebound", "ViewPager", "自定义View", "FloatingWindow", "Vector", "SharedElement","clipChild"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,7 +83,7 @@ public class ViewsMain extends BaseActivity {
                     startActivity(SharedElementActivityA.class);
                     break;
                 case 10:
-                    startActivity(DialogTest.class);
+                    startActivity(ViewPropertyActivity.class);
 
             }
         }
