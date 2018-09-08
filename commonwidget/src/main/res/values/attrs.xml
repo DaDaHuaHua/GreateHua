@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BlingTextView">
+        <attr name="blingColor" format="color|reference" />
+        <attr name="speed" format="enum">
+            <enum name="high" value="10" />
+            <enum name="medium" value="10" />
+            <enum name="low" value="10" />
+        </attr>
+    </declare-styleable>
+</resources>

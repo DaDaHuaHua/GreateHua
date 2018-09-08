@@ -164,7 +164,6 @@
         <!-- 图片内存压缩-->
         <activity android:name=".optimize.bitmap_cache.BitmapCacheActivity" />
 
-
         <service android:name=".demo.views.floating_window.service.FloatingWindowService" />
 
         <activity android:name=".test.TestActivity"
