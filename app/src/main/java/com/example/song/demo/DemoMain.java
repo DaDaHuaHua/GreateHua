@@ -2,12 +2,14 @@ package com.example.song.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.commonlibrary.util.ToastUtil;
 import com.example.song.R;
 import com.example.song.autodb.test.TestAutoDBActivity;
 import com.example.song.base.BaseActivity;
@@ -46,9 +48,26 @@ public class DemoMain extends BaseActivity {
         startActivity(new Intent(this, c));
     }
 
+
+    private InvitingDialog mDialog;
+    private Handler mHandler = new Handler();
+
     private class MyItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if (mDialog == null) {
+                mDialog = new InvitingDialog(DemoMain.this);
+            }
+
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ToastUtil.showMessage("Dialog Show ~ ");
+                    if (!mDialog.isShowing()) {
+                        mDialog.show();
+                    }
+                }
+            }, 5000);
             switch (position) {
                 case 0:
                     startActivity(PlayerMain.class);
@@ -68,7 +87,7 @@ public class DemoMain extends BaseActivity {
                 case 5:
                     startActivity(DBMainActivity.class);
                     break;
-                case 6 :
+                case 6:
                     startActivity(TestAutoDBActivity.class);
                     break;
                 case 7:
