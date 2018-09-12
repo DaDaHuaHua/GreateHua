@@ -4,7 +4,28 @@
     android:layout_height="match_parent">
 <android.support.v7.widget.RecyclerView
     android:id="@+id/id_recycler"
+    android:layout_above="@+id/et_num"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     />
+
+    <EditText
+        android:id="@+id/et_num"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/tv_ok"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:background="@null" />
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="OK"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        />
 </RelativeLayout>
