@@ -19,6 +19,7 @@ import com.example.song.demo.constraintlayout.ConstraintActivity;
 import com.example.song.demo.image.TextToBitmapActivity;
 import com.example.song.demo.media.PlayerMain;
 import com.example.song.demo.views.ViewsMain;
+import com.example.song.demo.views.audioActionView.AudioActionActivity;
 import com.example.song.kotlin.KotlinMain;
 import com.example.song.optimize.bitmap_cache.BitmapCacheActivity;
 
@@ -33,7 +34,7 @@ public class DemoMain extends BaseActivity {
     ListView mLv;
 
     private String[] menu = {"播放器", "views", "Kotlin", "生成图片", "图片内存优化","ObjectBox测试","测试AutoDB","constraint Chain"
-            ,"DrawBitmapMesh"};
+            ,"DrawBitmapMesh","AudioActionView"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,6 +96,9 @@ public class DemoMain extends BaseActivity {
                     break;
                 case 8:
                     startActivity(DrawBitmapMeshActivity.class);
+                    break;
+                case 9:
+                    startActivity(AudioActionActivity.class);
                     break;
                 default:
                     break;
