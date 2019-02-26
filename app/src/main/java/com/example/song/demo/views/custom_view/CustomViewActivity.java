@@ -2,11 +2,9 @@ package com.example.song.demo.views.custom_view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 
-import com.example.commonlibrary.mobile.Mobile;
 import com.example.song.R;
 import com.example.song.base.BaseActivity;
 
@@ -19,10 +17,16 @@ public class CustomViewActivity extends BaseActivity {
 
     @BindView(R.id.my_view)
     View myView;
+
+    @BindView(R.id.image_view)
+    ImageView mImageView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
+        mImageView.setBackgroundResource(R.drawable.lot_btn_reviewingshape);
+        mImageView.setSelected(false);
     }
 
 

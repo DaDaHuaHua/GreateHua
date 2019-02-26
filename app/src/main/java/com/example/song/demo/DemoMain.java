@@ -49,25 +49,10 @@ public class DemoMain extends BaseActivity {
     }
 
 
-    private InvitingDialog mDialog;
-    private Handler mHandler = new Handler();
-
     private class MyItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if (mDialog == null) {
-                mDialog = new InvitingDialog(DemoMain.this);
-            }
 
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    ToastUtil.showMessage("Dialog Show ~ ");
-                    if (!mDialog.isShowing()) {
-                        mDialog.show();
-                    }
-                }
-            }, 5000);
             switch (position) {
                 case 0:
                     startActivity(PlayerMain.class);
