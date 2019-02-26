@@ -170,6 +170,7 @@
 
         <!-- Canvas start-->
         <activity android:name=".demo.canvas.DrawBitmapMeshActivity" />
+        <activity android:name=".demo.views.audioActionView.AudioActionActivity" />
         <!-- Canvas end-->
 
     </application>
