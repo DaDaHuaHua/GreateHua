@@ -3,7 +3,6 @@ package com.example.song.kotlin
 import android.util.Log
 
 /**
- * Created by zz on 2017/6/27.
  *
  * 基本操作符
  * 可变长参数 vararg

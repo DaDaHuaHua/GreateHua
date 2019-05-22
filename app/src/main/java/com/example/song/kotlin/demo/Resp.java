@@ -3,7 +3,6 @@ package com.example.song.kotlin.demo;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by xiang on 2017/6/4.
  */
 
 public class Resp {

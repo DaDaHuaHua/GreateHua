@@ -3,7 +3,6 @@
 //import android.view.View
 //
 ///**
-// * Created by PVer on 2017/7/17.
 // * 内部类 与 伴生对象 与 访问控制
 // */
 //class AlertDialog {

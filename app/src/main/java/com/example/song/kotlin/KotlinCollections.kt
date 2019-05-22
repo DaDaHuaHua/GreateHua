@@ -6,7 +6,6 @@ import java.io.FileReader
 import java.util.function.BiFunction
 
 /**
- * Created by PVer on 2017/6/25.
  *
  */
 class KotlinCollections {

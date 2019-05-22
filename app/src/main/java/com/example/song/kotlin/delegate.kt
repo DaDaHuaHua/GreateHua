@@ -6,7 +6,6 @@ import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 /**
- * Created by PVer on 2017/7/17.
  * 委托
  * kotlin中的委托 替代继承的一种方式
  */

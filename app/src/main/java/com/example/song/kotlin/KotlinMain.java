@@ -15,7 +15,6 @@ import com.example.song.kotlin.demo.GithubList;
 import butterknife.BindView;
 
 /**
- * Created by PVer on 2017/7/23.
  */
 
 public class KotlinMain extends BaseActivity {

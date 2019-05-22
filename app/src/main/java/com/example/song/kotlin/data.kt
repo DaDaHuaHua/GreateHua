@@ -1,7 +1,6 @@
 package com.example.song.kotlin
 
 /**
- * Created by PVer on 2017/7/17.
  *  数据类、构造器
  */
 

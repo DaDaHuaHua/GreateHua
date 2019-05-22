@@ -1,7 +1,6 @@
 package com.example.song.kotlin
 
 /**
- * Created by PVer on 2017/7/3.
  * 本地函数
  */
 class NativeTest(val id: Int, val name: String?, val pwd: String?) {

@@ -1,7 +1,6 @@
 package com.example.song.kotlin
 
 /**
- * Created by PVer on 2017/6/16.
  * kotlin 源文件
  */
 fun max(x: Int, y: Int) = if (x > y) {

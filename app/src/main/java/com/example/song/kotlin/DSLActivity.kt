@@ -7,7 +7,6 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.sdk25.coroutines.onLongClick
 
 /**
- * Created by PVer on 2017/7/24.
  */
 class DSLActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

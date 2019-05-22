@@ -3,7 +3,6 @@ package com.example.song.kotlin
 import android.util.Log
 
 /**
- * Created by PVer on 2017/7/1.
  * 字符串
  * 正则表达式
  * null安全

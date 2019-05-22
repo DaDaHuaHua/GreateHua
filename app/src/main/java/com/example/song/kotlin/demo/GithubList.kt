@@ -24,9 +24,6 @@ import org.jetbrains.anko.coroutines.experimental.bg
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-/**
- * Created by PVer on 2017/8/7.
- */
 class RecyclerUI : AnkoComponent<MyAdapter> {
     override fun createView(ui: AnkoContext<MyAdapter>): View = with(ui) {
         verticalLayout {

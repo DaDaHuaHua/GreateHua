@@ -1,7 +1,6 @@
 package com.example.song.kotlin
 
 /**
- * Created by PVer on 2017/7/19.
  * 测试Kotlin中的泛型
  */
 

@@ -3,7 +3,6 @@ package com.example.song.kotlin
 import android.util.Log
 
 /**
- * Created by zz on 2017/6/28.
  *
  * 常用操作符 let apply  run with
  *

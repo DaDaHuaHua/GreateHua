@@ -6,7 +6,6 @@ import android.view.ViewManager
 import org.jetbrains.anko.custom.ankoView
 
 /**
- * Created by PVer on 2017/7/24.
  */
 
 

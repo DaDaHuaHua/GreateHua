@@ -4,7 +4,6 @@ import android.view.View
 import android.widget.Button
 
 /**
- * Created by PVer on 2017/7/18.
  * lambda 表达式
  */
 fun main(args: Array<String>) {

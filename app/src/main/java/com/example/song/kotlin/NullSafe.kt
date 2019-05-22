@@ -1,7 +1,6 @@
 package com.example.song.kotlin
 
 /**
- * Created by PVer on 2017/7/3.
  * Kotlin的null安全
  * 由编译器来保证
  */
